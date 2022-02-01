@@ -1,0 +1,108 @@
+﻿@model CPDPortalMVC.Models.ProgramRequestViewModel
+@using CPDPortalMVC.Util
+@{
+    Layout = null;
+}
+
+<style>
+
+    
+   input[type=text].form-control, input[type=password].form-control {
+    background: transparent;
+    border:1px solid #808080;
+    
+}
+
+   
+  
+    .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background:none;
+   
+   
+    border-radius: 4px;
+    
+}
+
+    label {
+
+        color: black;
+    }
+    .field-validation-error {
+
+        color:crimson;
+    }
+
+</style>
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(Model => Model.ProgramRequestID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactFirstName, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ContactFirstName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ContactFirstName, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactLastName, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ContactLastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ContactLastName ,"", new { htmlAttributes = new { @class = "error" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactPhone, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ContactPhone, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactEmail, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ContactEmail, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ContactEmail, "", new { htmlAttributes = new { @class = "error" } })
+   </div>
+       
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProgramDate1, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ProgramDate1, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ProgramDate1, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProgramStartTime, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ProgramStartTime, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ProgramStartTime, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProgramEndTime, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ProgramEndTime, new { htmlAttributes = new { @class = "form-control" , id = "ProgramEnd" } })
+        @Html.ValidationMessageFor(model => model.ProgramEndTime, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SubmittedDate, new { @class = "control-label" })
+        @Html.EditorFor(model => model.SubmittedDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.SubmittedDate, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RequestStatus, new { @class = "control-label" })
+        @Html.EditorFor(model => model.RequestStatus, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.RequestStatus, "", new { htmlAttributes = new { @class = "error" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Approved, new { @class = "control-label" })
+       @Html.CheckBoxFor(m => m.Approved , new { @class = "control-label" })
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Submit" id="btnEdit"  class="btn btn-default" />
+    </div>
+}

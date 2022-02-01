@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a97f49d97874a83a1b5b85072710afa" Name="Diagram1" ZoomLevel="30">
+        <EntityTypeShape EntityType="CPDPortalModel.Role" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CPDPortalModel.User" Width="1.5" PointX="3.875" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="CPDPortalModel.UserRole" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CPDPortalModel.Sponsor" Width="1.5" PointX="8.5" PointY="8.375" />
+        <EntityTypeShape EntityType="CPDPortalModel.Privilege" Width="1.5" PointX="10.125" PointY="0.5" />
+        <EntityTypeShape EntityType="CPDPortalModel.TherapeuticArea" Width="2.375" PointX="6.875" PointY="0.5" />
+        <AssociationConnector Association="CPDPortalModel.FK_Privilege_TherapeuticArea" />
+        <EntityTypeShape EntityType="CPDPortalModel.TherapeuticProgram" Width="2.875" PointX="8.5" PointY="4.125" />
+        <AssociationConnector Association="CPDPortalModel.FK_TherapeuticProgram_TherapeuticArea" />
+        <EntityTypeShape EntityType="CPDPortalModel.RequestStatusLookup" Width="1.5" PointX="0.75" PointY="13.625" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserTypeLookUp" Width="1.5" PointX="14" PointY="11.375" />
+        <EntityTypeShape EntityType="CPDPortalModel.ProgramRequestSessionCredit" Width="3.125" PointX="4.375" PointY="8.625" />
+        <EntityTypeShape EntityType="CPDPortalModel.TerritoryLookUp" Width="3.125" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.Province" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.SpeakerPayment" Width="1.5" PointX="3.5" PointY="14.875" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserProvince" Width="1.5" PointX="6.125" PointY="18.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserTerritory" Width="1.5" PointX="6.125" PointY="11.125" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserProvince_User" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserTerritory_UserInfo" />
+        <EntityTypeShape EntityType="CPDPortalModel.ProgramRequestFileUploadOther" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserStatu" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.Program" Width="1.5" PointX="12.375" PointY="6" />
+        <AssociationConnector Association="CPDPortalModel.FK_TherapeuticProgram_Program" />
+        <EntityTypeShape EntityType="CPDPortalModel.PayeeInfo" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.ProgramRequest" Width="12.75" PointX="25.125" PointY="1.25" />
+        <AssociationConnector Association="CPDPortalModel.FK_ProgramRequest_Program" />
+        <AssociationConnector Association="CPDPortalModel.FK_ProgramRequest_RequestStatusLookup" />
+        <AssociationConnector Association="CPDPortalModel.FK_SpeakerPayment_ProgramRequest" />
+        <EntityTypeShape EntityType="CPDPortalModel.ProgramRequestFileUpload" Width="1.5" PointX="20.75" PointY="8.25" />
+        <AssociationConnector Association="CPDPortalModel.FK_ProgramRequestFileUpload_ProgramRequest" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserRegistration" Width="1.5" PointX="6.125" PointY="13.75" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserRegistration_User" />
+        <EntityTypeShape EntityType="CPDPortalModel.COISlidesUpload" Width="1.5" PointX="18.5" PointY="21.875" />
+        <EntityTypeShape EntityType="CPDPortalModel.TerritoryIDRegionLookup" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserInfo_Production_SalesRepSpeakers" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserInfo_Production_SpeakerOnly" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.UserInfo" Width="1.5" PointX="16.25" PointY="3.875" />
+        <AssociationConnector Association="CPDPortalModel.FK_COISlidesUpload_UserInfo" />
+        <AssociationConnector Association="CPDPortalModel.FK_ProgramRequest_Moderator" />
+        <AssociationConnector Association="CPDPortalModel.FK_ProgramRequest_Speaker" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserInfo_Sponsor" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserInfo_TherapeuticArea" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserInfo_User" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserInfo_UserStatus" />
+        <AssociationConnector Association="CPDPortalModel.FK_UserInfo_UserTypeLookUp" />
+        <EntityTypeShape EntityType="CPDPortalModel.SessionCreditLookUp" Width="1.5" PointX="13.375" PointY="14.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.AssignedRole" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CPDPortalModel.ProgramRequestModule" Width="1.5" PointX="15.75" PointY="15.5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

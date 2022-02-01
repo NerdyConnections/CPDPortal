@@ -1,0 +1,150 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+                <div class="margin-top-24">
+                    <h3>New Horizons in Dyslipidemia Management in Primary Care</h3>
+                       
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li>Please note that you cannot not make any changes to the approved program (slides/materials).&nbsp; The program must be delivered exactly as approved by the CFPC.                          </li>
+                    </ul>
+               
+                </div>
+
+                <div class="margin-top-24">
+
+                    <h3>
+                        Program Slides and Handouts <br>
+                    </h3>
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="10" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="12%" bgcolor="#339999" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="14%" bgcolor="#339999" align="center">Handouts</td>
+                                <td style="font-size: 16px; color: #FFF;" width="28%" bgcolor="#339999" align="center">Credit Designation</td>
+                                <td style="font-size: 16px; color: #FFF;" width="46%" bgcolor="#339999" align="center">Description</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF; padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/PM1/New Horizons in Dyslipidemia Management Core Deck.pptx" target="_new"><img src="/Images/PM1/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td style="font-size: 16px; color: #FFF; padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/PM1/New Horizons in Dyslipidemia Management Core Deck.pdf" target="_new"><img src="/Images/PM1/pdf.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">1.0 Mainpro+</td>
+                                <td bgcolor="#FFFFFF" align="center">Core Presentation Deck</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="5" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="12%" height="29" bgcolor="#003366" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="14%" bgcolor="#003366" align="center">Handouts</td>
+                                <td style="font-size: 16px; color: #FFF;" width="28%" bgcolor="#003366" align="center">Credit Designation</td>
+                                <td colspan="2" style="font-size: 16px; color: #FFF;" bgcolor="#003366" align="center">Case 1: Mark</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/PM1/Case1.pptx" target="_new"><img src="/Images/PM1/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/PM1/Case1.pdf" target="_new"><img src="/Images/PM1/pdf.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">0.5 Mainpro+</td>
+                                <td width="9%" bgcolor="#FFFFFF" align="center"><img src="/Images/PM1/case1.png" alt="" width="40" height="53"></td>
+                                <td width="37%" bgcolor="#FFFFFF" align="center">Diabetes &amp; Cardiovascular Disease</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="5" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="12%" height="29" bgcolor="#003366" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="14%" bgcolor="#003366" align="center">Handouts</td>
+                                <td style="font-size: 16px; color: #FFF;" width="28%" bgcolor="#003366" align="center">Credit Designation</td>
+                                <td colspan="2" style="font-size: 16px; color: #FFF;" bgcolor="#003366" align="center">Case 2: Raj</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/PM1/Case2.pptx" target="_new"><img src="/Images/PM1/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/PM1/Case2.pdf" target="_new"><img src="/Images/PM1/pdf.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">0.5 Mainpro+</td>
+                                <td width="9%" bgcolor="#FFFFFF" align="center"><img src="/Images/PM1/case2.png" alt="" width="40" height="53"></td>
+                                <td width="37%" bgcolor="#FFFFFF" align="center">LDL-C: How Low Do You Go?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="5" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="12%" height="29" bgcolor="#003366" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="14%" bgcolor="#003366" align="center">Handouts</td>
+                                <td style="font-size: 16px; color: #FFF;" width="28%" bgcolor="#003366" align="center">Credit Designation</td>
+                                <td colspan="2" style="font-size: 16px; color: #FFF;" bgcolor="#003366" align="center">Case 3: Frank</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/PM1/Case3.pptx" target="_new"><img src="/Images/PM1/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/PM1/Case3.pdf" target="_new"><img src="/Images/PM1/pdf.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">0.5 Mainpro+</td>
+                                <td width="9%" bgcolor="#FFFFFF" align="center"><img src="/Images/PM1/case3.png" alt="" width="40" height="53"></td>
+                                <td width="37%" bgcolor="#FFFFFF" align="center">ASCVD with Multiple CV Risk Factors</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="5" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="12%" height="29" bgcolor="#003366" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="14%" bgcolor="#003366" align="center">Handouts</td>
+                                <td style="font-size: 16px; color: #FFF;" width="28%" bgcolor="#003366" align="center">Credit Designation</td>
+                                <td colspan="2" style="font-size: 16px; color: #FFF;" bgcolor="#003366" align="center">Case 4: Jack</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/PM1/Case4.pptx" target="_new"><img src="/Images/PM1/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/PM1/Case4.pdf" target="_new"><img src="/Images/PM1/pdf.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">0.5 Mainpro+</td>
+                                <td width="9%" bgcolor="#FFFFFF" align="center"><img src="/Images/PM1/case4.png" alt="" width="40" height="53"></td>
+                                <td width="37%" bgcolor="#FFFFFF" align="center">Familial Hypercholesterolemia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+               
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

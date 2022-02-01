@@ -1,0 +1,65 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="margin-top-24">
+                    <h3>Bad to the Bone: Medications Associated with Increased Fracture Risk</h3>
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li>Please note that you cannot not make any changes to the approved program (slides/materials).&nbsp; The program must be delivered exactly as approved by the CFPC.</li>
+                    </ul>
+                </div>
+
+                <div class="margin-top-24">
+
+                    <h3>
+                        Program Slides<br>
+                    </h3>
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="10" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="13%" bgcolor="#339999" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="37%" bgcolor="#339999" align="center">Credit Designation</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF; padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PPTX/3/BadToBones.pptx" target="_new"><img src="/Images/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">Up to 1.5 Mainpro+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

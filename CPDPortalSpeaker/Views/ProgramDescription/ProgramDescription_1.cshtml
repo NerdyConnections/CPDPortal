@@ -1,0 +1,107 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+
+            <div class="1">
+                <h1>Speaker Responsibilies</h1>
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+                <div class="margin-top-24">
+                    <p>Thank you for accepting our invitation as subject matter expert for a certified educational activity on Dyslipidemia. &nbsp;You will assist us in delivering the content of this activity at regional sessions across Canada.&nbsp; Your expertise in Cardiovascular Medicine and the management of patients with dyslipidemia is essential to the overall success of the program.</p>
+                    <p>The Scientific Planning Committee oversaw the design of this program to be scientifically rigorous, educationally sound, fair balanced, and free of commercial bias. As per the CFPC guidelines for certified activities, you are required to use the presentation materials that will be provided to you and are not permitted to make any changes.</p>
+                    <p>This certified educational activity was developed by the Canadian Heart Research Centre, a not-for-profit Physician Organization and is intended for primary care physicians. &nbsp;This program has received an educational grant and in-kind support from Amgen Canada                            </p>
+                    <h3>
+                        Educational Content
+                    </h3>
+                    <ul>
+                        <li>This program contains a core didactic presentation as well as four case-based modules                            </li>
+                    </ul>
+                    <h3>
+                        Overall Learning Objectives: &nbsp;Upon completion of this activity, participants will be able to:
+                    </h3>
+                    <ol>
+                        <li>Discuss the role of LDL-C lowering in cardiovascular risk reduction with emphasis on the results of recently completed clinical trials </li>
+                        <li>Evaluate recommendations for lipid lowering agents beyond or in addition to statin therapy for patients with atherosclerotic cardiovascular disease </li>
+                        <li>Explain the mechanism of action of proprotein convertase subtilisin/kexin type 9 (PCSK9) inhibitors and apply the latest clinical data to patient management strategies </li>
+                        <li>Apply best guideline practice recommendations into routine clinical practice based on specific patient characteristics </li>
+                    </ol>
+
+                    <h3>
+                        Educational Format
+                    </h3>
+                    <p><strong>This program is designed as a Mainpro+ one-credit-per hour and includes the following interactive components </strong></p>
+                    <ul>
+                        <li>Multiple Choice Audience Questions </li>
+                        <li>Case-Based Learning                            </li>
+                    </ul>
+                    <h3>
+                        Conflict of Interest
+                    </h3>
+                    <p>The College of Family Physicians of Canada and the Canadian Heart Research Centre requires instructors, presenters, planners, managers and other individuals who are in a position to control and/or deliver the content of this activity to disclose any real or apparent conflict of interest they may have as related to the content of this activity. All identified conflicts of interest are thoroughly vetted by the Canadian Heart Research Centre for fair balance, scientific objectivity of studies mentioned in the materials or used as the basis for content, and appropriateness of patient care recommendations.</p>
+                    <ul>
+                        <li>You must complete and submit      the Conflict of Interest Form to the Canadian Heart Research Centre.&nbsp; </li>
+                        <li>You must disclose any real or      apparent conflicts of interest to the program participants prior to the      start of the program.                            </li>
+                    </ul>
+                    <h3>Honorarium </h3>
+                    <p>To make your participation possible, the Canadian Heart Research Centre will provide you with: </p>
+                    <ul>
+                        <li>An honorarium for presenting      the program materials.&nbsp; The      honoraria amount for your role and a presenter and/or a moderator was provided      in the initial invitation.&nbsp; If you      have any questions, please do not hesitate to contact us at <a href="mailto:info@ccpdhm.com">info@ccpdhm.com</a></li>
+                        <li>Reimbursement of transportation      costs (/taxi fares/parking).&nbsp; You      will be asked to provide a copy of the receipts. </li>
+                    </ul>
+                    <p>The Canadian Heart Research Centre is committed to providing quality education. We appreciate the opportunity to work with you. </p>
+                    <p>Please do not hesitate to get in touch with us should you have any questions. </p>
+                    <p>
+                        <br>
+                        With best regards,
+                    </p>
+                    <p>
+                        Lianne Goldin<br>
+                        Executive Director <br>
+                        Continuing Professional Development
+                    </p>
+                    <p>&nbsp;</p>
+                    <h3>
+                        <p>Important Links:</p>
+                    </h3>
+                    <ul>
+                        <li><a href="downloads/QuickTips_COI_Final_ENGLISH.pdf" target="new" style="color: #333333">Quick Tips: Identification and Management of Conflicts of Interest and Transparency to Learners</a></li>
+                        <li><a href="downloads/cma-policy-guidelines-for-physicians-in-interactions-with-industry-pd08-01-e.pdf" target="new" style="color: #333333">CMA Guidelines for Physicians in Interactions with Industry</a></li>
+                        <li><a href="downloads/Code-Formatted_Regular_EN-2.pdf" target="new" style="color: #333333">Innovative Medicines Canada Code of Ethical Practices</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

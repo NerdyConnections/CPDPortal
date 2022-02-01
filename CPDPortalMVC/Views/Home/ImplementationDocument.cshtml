@@ -1,0 +1,77 @@
+﻿@using CPDPortalMVC.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Internal Implementation Documents</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="margin-top-24">
+
+                    <table width="70%" cellspacing="0" cellpadding="10" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="6%"><a href="~/PDF/ImplementationGuide.pdf" style="color: #333"><img src="/Images/pdf-download.png" width="30" height="36" align="bottom"></a></td>
+                                <td width="94%"> <h3><a href="~/PDF/ImplementationGuide.pdf" target="_new" style="color: #333"> Internal Implementation Guide</a></h3></td>
+                            </tr>
+                            <!--tr>
+                                <td><a href="~/DOC/CHEEvents.xlsx" style="color: #333"><img src="/Images/excel.png" width="30" height="36"></a></td>
+                                <td><h3><a href="~/DOC/CHEEvents.xlsx" target="_new" style="color: #333">PRF Template GMBU CHE Events</a></h3></td>
+                            </!--tr-->
+                            <!--tr>
+                                <td><a href="/DOC/MasterSpeakerList.xlsx" style="color: #333"><img src="/Images/excel.png" alt="" width="30" height="36"></a></td>
+                                <td><h3><a href="/DOC/MasterSpeakerList.xlsx" target="_new" style="color: #333">Master Speaker List</a></h3></td>
+                            </tr-->
+                          
+                            <tr>
+                                <td><a href="~/DOC/AmgenTrainingRecording.mp4" style="color: #333"><img src="/images/play.png" alt="" width="30" height="30"></a></td>
+                                <td><h3><a href="~/DOC/AmgenTrainingRecording.mp4" target="_new" style="color: #333">Amgen CPD Portal Training Video</a></h3></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+       
+
+          
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+<script src="/Scripts/jquery-3.1.0.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/jquery.easing.min.js"></script>
+<script src="/Scripts/circleCharts.js"></script>
+
+
+<script>
+
+        $(document).ready(function () {
+            /**/
+
+        });
+</script>

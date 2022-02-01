@@ -1,0 +1,230 @@
+﻿@model CPDPortalSpeaker.Models.PayeeModel
+@using CPDPortalSpeaker.Util
+@using CPDPortalSpeaker.Models
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Payee", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+  @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.IsSubmitted)
+
+        <div role="main" class="container overlay-z2">
+
+            <div class="pnl-portal frmProgramRequest">
+                <div class="row">
+                   
+                    <div class="col-md-12">
+
+
+                        <div id="Coilinks">
+                        </div>
+                      
+                        <!-- <h1 id="lblTitle"></h1>-->
+                        <h1>@Resources.Resource.PAYEE_HEADER</h1> <label style="font-size:14px">
+
+                                    @Resources.Resource.PAYEE_FORM_INSTRUCTIONS:
+                                </label>
+                            <ul>
+                                <li>
+                                    @Resources.Resource.PAYEE_INS_1:
+                                </li>
+                                <li>
+                                    @Resources.Resource.PAYEE_INS_2:
+                                </li>
+                                <li>
+                                    @Resources.Resource.PAYEE_INS_3: (<span class="glyphicon glyphicon-ok"></span>)<br>
+                                    <br>
+                                </li>
+                            </ul>
+                       
+                        <div class="btn-back"> <a href='@Url.Action("Index", "Home")'> <span class="glyphicon glyphicon-chevron-left"></span><span>Back</span> </a></div>
+                        <!--<div class="lead1" style="color: #534d4d"></div>-->
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="row">
+
+                <div class="form-group form-group-sm col-sm-6">
+                    <label class="" title="I request the cheque(s) to be issued as following">@Resources.Resource.PAYEE_REQUEST (@Resources.Resource.PAYEE_OPTIONS)</label>
+                    <div>
+                        @*<label><input type="radio" name="issuecheque"> To a Company Name</label> &nbsp;&nbsp;*@
+                        <label>@Html.RadioButtonFor(m => m.PaymentMethod, "Institution", new { id = "chkInstitution" }) @Resources.Resource.PAYEE_COMPANY</label> &nbsp;&nbsp;
+
+
+                        <label>@Html.RadioButtonFor(m => m.PaymentMethod, "Personal", new { id = "chkPersonal" }) @Resources.Resource.PAYEE_PERSONALLY</label>
+                        &nbsp; <label> </label>
+                        @Html.ValidationMessageFor(m => m.PaymentMethod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group form-group-sm col-sm-4">
+                    <label class="" title="Session Date">@Resources.Resource.PAYEE_CHECKPAYABLETO :  @Html.ValidationMessageFor(m => m.PayableTo, "", new { @class = "text-danger" })</label>&nbsp;
+                    @Html.TextBoxFor(m => m.PayableTo, new { @class = "form-control" })
+                   
+                </div>
+
+                <div  id = "DivIRN" class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Internal Reference Number">@Resources.Resource.PAYEE_REF_NUM :</label>
+                    @Html.TextBoxFor(m => m.IRN, new { @class = "form-control", id = "IRN" } )
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-6">
+                   @Resources.Resource.PAYEE_ADDR1 : @Html.ValidationMessageFor(m => m.MailingAddress1, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.MailingAddress1, new { @class = "form-control" })
+                  
+                </div>
+                <div class="form-group form-group-sm col-sm-6">
+                    @Resources.Resource.PAYEE_ADDR2 :
+                    @Html.TextBoxFor(m => m.MailingAddress2, new { @class = "form-control" })
+
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Attention To">@Resources.Resource.PAYEE_ATTN_TO :  @Html.ValidationMessageFor(m => m.AttentionTo, "", new { @class = "text-danger" })</label>
+                    @Html.TextBoxFor(m => m.AttentionTo, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="City">@Resources.Resource.PAYEE_CITY : @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })	 </label>
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Province">@Resources.Resource.PAYEE_PROVINCE :  @Html.ValidationMessageFor(m => m.Province, "", new { @class = "text-danger" })</label>
+                    @Html.DropDownListFor(model => model.Province, new SelectList(UserHelper.GetProvinces(), "Value", "Text"), "Please Select Province", new { @class = "form-control" })
+                   
+                </div>
+
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Postal Code">@Resources.Resource.PAYEE_POSTAL : @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })</label>
+                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                </div>
+
+                <div  id = "DivTaxNumber"  class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Tax Number (HST / Other)">@Resources.Resource.PAYEE_TAX :</label>
+                    @Html.TextBoxFor(m => m.TaxNumber, new { @class = "form-control" , id= "TaxNumber" })
+                    @Html.ValidationMessageFor(m => m.TaxNumber, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">@Resources.Resource.PAYEE_INS</label>
+                    <em>(if Applicable)</em>
+                    @Html.TextAreaFor(m => m.Instructions, new { placeholder = Resources.Resource.Message, id = "CompanyInstructions", @class = "form-control" })
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-2 pull-right">
+                    <label class="" title="">&nbsp;</label>
+                    <input type="submit" class="form-control btn btn-default btn-sm"  id ="btn-submit" value="@Resources.Resource.SUBMIT"   style="bottom:0px" />
+                </div>
+            </div>
+           
+
+        </div>
+    
+}
+@section Scripts {
+<script type="text/javascript">
+
+  
+    $(document).ready(function (e) {
+
+       
+
+
+        if ($('#chkInstitution').is(':checked'))
+        {
+            
+            $('#DivIRN').show();
+            $('#DivTaxNumber').show();
+            
+        }
+
+        if ($('#chkPersonal').is(':checked'))
+        {
+          
+
+            $('#DivIRN').hide();
+            $('#DivTaxNumber').hide();
+            $('#TaxNumber').val('');
+            $('#IRN').val('');
+
+        }
+
+        $('#chkInstitution').on("click", function ()
+        {
+            
+
+            if ($('#chkInstitution').is(':checked'))
+            {             
+
+                $('#DivIRN').show();
+                $('#DivTaxNumber').show();
+            }
+
+            else
+            {
+
+
+
+            }
+        });
+
+
+        $('#chkPersonal').on("click", function ()
+        {
+            
+
+            if ($('#chkPersonal').is(':checked'))
+            {
+                               
+                $('#DivIRN').hide();
+                $('#DivTaxNumber').hide();
+                $('#TaxNumber').val('');
+                $('#IRN').val('');
+            }
+
+            else {
+
+              
+                $('#DivIRN').show();
+                $('#DivTaxNumber').show();
+            }
+        });
+
+        var submitted = '@Model.IsSubmitted';  
+        debugger;
+
+        if(submitted === 'True') {
+            $("#btn-submit").attr('disabled','disabled').css('opacity',0.5);
+            $("#CompanyInstructions").attr('disabled','disabled').css('opacity',0.5);
+
+
+            $('input[type = radio], input[type = checkbox], input[type = text], input[type = textarea], select').attr('disabled', 'disabled').attr('readonly', 'readonly');
+
+        }
+
+
+
+
+
+    });
+
+</script> 
+    }
+

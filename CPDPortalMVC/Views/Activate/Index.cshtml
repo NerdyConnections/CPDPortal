@@ -1,0 +1,175 @@
+﻿
+
+@{
+   
+    Layout = "~/Views/Shared/_LoginMaster.cshtml";
+}
+<style>
+     input[type=text], input[type=email]{
+    width: 400px;
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+    -webkit-transition: unset;
+   /*color: #fff;*/
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+     #box{
+
+         width:400px;
+         margin: 0 auto;
+         
+     }
+    
+   h4{
+       text-align : center;
+     
+
+   }
+     #button_activate {
+        width: 100px;
+        float: right;       
+        margin-top: 20px;
+        background: gray;
+        color: white;
+        margin-bottom:10px;
+}
+     .lblUsername {
+
+       
+         font-size:14px;
+         font-weight:100;
+     }
+     .activateBorder{
+
+         border:1px solid black;
+     }
+
+     #lblEmail {
+
+        
+         font-size:12px;
+         margin-top:2px;
+
+     }
+
+     .error{
+
+         color:red;
+     }
+
+     .footer1{
+
+         display : none;
+     }
+
+     #txtEmail {
+
+         font-size:16px;
+     }
+
+</style>
+<form id="ActivateForm">
+    <div class="pnl-regsiter">
+        <div class="row">
+            <div class="col-md-12">
+               
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2 activateBorder">
+                <div class="form-group ">
+                    <h4>AMGEN CPD ACCOUNT ACTIVATION</h4>
+                    <div id="box">
+                        <label class="lblUsername">Please enter your username(your @@amgen email address) </label>
+                        <input id="txtEmail" type="email" name="email" required class="form-control ctrl-login" placeholder="" />
+                        <div id="lblEmail" class="error">  </div>            
+                        <input type="submit" class="form-control" id="button_activate" value="Next" />
+
+                    </div>
+
+                 
+
+
+                 </div>
+
+        </div>
+
+        <div id="ErrPassNotMatch" class="error"></div>
+    
+        
+
+        </div>
+    </div>
+    
+
+</form>
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+   
+    $(document).on('click', '#button_activate', function (e) {
+
+        e.preventDefault();
+
+        var txtemail = $('#txtEmail').val();
+
+        if (txtemail === "") {
+
+            $('#lblEmail').html("Required")
+            return;
+        }
+
+        else {
+            $('#lblEmail').html(" ")
+
+        }
+
+        if (validateEmail(txtemail) === false) {
+
+            $('#lblEmail').html("Please Enter Valid Email");
+
+            return;
+        }
+
+        else {
+            $('#lblEmail').html(" ");
+
+        }
+
+
+        var RegModel = {
+            Email: txtemail
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Index", "Activate")',
+            data: RegModel,
+            dataType: "json",
+            success: function (result) {
+
+                if (result.Url) {
+                   
+                    window.location.href = result.Url;
+                } else {
+                   
+                    $('#lblEmail').html(result.Error);
+                }
+            },
+            error: function () {
+
+            }
+        });
+
+       
+
+    });
+
+</script>

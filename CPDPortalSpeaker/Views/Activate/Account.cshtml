@@ -1,0 +1,195 @@
+﻿@model CPDPortalSpeaker.Models.SpeakerActivationModel
+
+@using CPDPortalSpeaker.Util
+@{
+    Layout = "~/Views/Shared/_LoginMaster.cshtml";
+}
+<style>
+    #Province {
+        width: 300px;
+    }
+
+    .frmProgramRequest label {
+        font-size: 15px;
+        margin-bottom: -4px;
+    }
+</style>
+
+@using (Html.BeginForm("Account", "Activate", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.UserId);
+
+         <section>
+            <div role="main" class="container overlay-z2">
+
+
+                <div class="pnl-portal frmProgramRequest">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <h1 id="lblTitle"></h1>-->
+                            <h1>@Resources.Resource.AcctActivate1</h1>
+                            <div class="lead1">@Resources.Resource.AcctActivate2</div>
+                            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Resources.Resource.Back</span></div>
+                            <!--<div class="lead1" style="color: #534d4d"></div>-->
+                        </div>
+                    </div>
+
+                    <div class="row"></div>
+
+                    <div class="row">
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="First Name">@Resources.Resource.FIRSTNAME: </label>
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="Last Name">@Resources.Resource.LASTNAME:</label>
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="speciality">@Resources.Resource.Specialty:</label>
+                            @Html.TextBoxFor(model => model.Speciality, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Speciality, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="Clinic Name">@Resources.Resource.CLINIC_NAME:</label>
+                           @Html.TextBoxFor(model => model.Clinic, new { @class = "form-control" })
+                           @Html.ValidationMessageFor(m => m.Clinic, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="Phone">@Resources.Resource.Phone:</label>
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group form-group-sm col-sm-4">
+                            <label class="" title="address">@Resources.Resource.ADDRESS:</label>
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="City">@Resources.Resource.CITY:  </label>
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group form-group-sm col-sm-4">
+                            <label class="" title="province">@Resources.Resource.ProvinceSelect</label>
+                            @Html.DropDownListFor(model => model.Province, new SelectList(UserHelper.GetProvinces(), "Value", "Text"), "Please Select Province", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Province, "", new { @class = "text-danger" })
+                        </div>                      
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="Additional Phone Number (optional)">@Resources.Resource.AdditionalPhoneNumber : </label>
+                           @Html.TextBoxFor(model => model.AdditionalPhone, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="Username">@Resources.Resource.Username:</label>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="password">@Resources.Resource.Password:</label>
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group form-group-sm col-sm-2">
+                            <label class="" title="re-enter password">@Resources.Resource.PasswordReenter:</label>
+                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @type = "password" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>                  
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group form-group-sm col-sm-2 pull-right">
+                                <!-- Trigger the modal with a button -->
+
+                                <input type="submit" class="form-control btn btn-default btn-sm" id="btnSubmit" value="@Resources.Resource.SubmitBTN">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </section>
+
+
+
+        <script>
+
+            $(document).ready(function () {
+
+
+
+                $('#checkAllTerritory').on("click", function () {
+
+                    if ($('#checkAllTerritory').is(":checked")) {
+
+                        $('#TerritoryCheckboxes :checkbox').each(function () {
+                            $(this).prop("checked", true);
+                        });
+
+                    } else {
+
+                        $('#TerritoryCheckboxes :checkbox').each(function () {
+                            $(this).prop("checked", false);
+                        });
+
+                    }
+                });
+
+
+
+                $('#checkAllProvinces').on("click", function () {
+
+                    if ($('#checkAllProvinces').is(":checked")) {
+
+                        $('#provinceCheckboxes :checkbox').each(function () {
+                            $(this).prop("checked", true);
+                        });
+
+                    } else {
+
+                        $('#provinceCheckboxes :checkbox').each(function () {
+                            $(this).prop("checked", false);
+                        });
+                    }
+                });
+
+
+
+
+
+
+            });
+
+
+
+
+        </script>
+        }
+
+        
+

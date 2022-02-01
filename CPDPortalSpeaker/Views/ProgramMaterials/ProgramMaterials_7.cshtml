@@ -1,0 +1,86 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+                <div class="margin-top-24">
+                    <h3>A PRIMARY CARE GUIDE TO KEY CLINICAL QUESTIONS IN OSTEOPOROSIS MANAGEMENT</h3>
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li>Please note that you cannot not make any changes to the approved program (slides/materials).&nbsp; The program must be delivered exactly as approved by the CFPC.</li>
+                    </ul>
+                </div>
+
+
+                <div class="margin-top-24">
+
+                    <h3>
+                        Program Slides<br>
+                    </h3>
+                    <table width="90%" border="0" align="center" cellpadding="10" cellspacing="0" style="border: #999 thin solid">
+                        <tbody>
+                            <tr>
+                                <td width="13%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Slides</td>
+                                <td width="37%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                            </tr>
+                            <tr>
+                                <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF; padding:10px"><a href="/PDF/7/A PRIMARY CARE GUIDE TO KEY CLINICAL QUESTIONS IN OSTEOPOROSIS MANAGEMENT SPEAKER SITE.pptx" target="_new"><img src="/Images/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td align="center" bgcolor="#FFFFFF">Up to 2.75 Mainpro+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div style="padding:20px">
+
+                <div id="circle1" class="circleChart" data-value=""></div>
+                <div id="circle2" class="circleChart" data-value=""></div>
+                <div id="circle3" class="circleChart" data-value=""></div>
+                <div id="circle4" class="circleChart" data-value=""></div>
+
+            </div>
+        </div>
+        
+
+     </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+    

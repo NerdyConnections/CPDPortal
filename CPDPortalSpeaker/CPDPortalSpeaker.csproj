@@ -1,0 +1,1359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A83A36F-4C15-4AB5-95DE-E7AF1A0C9BFB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CPDPortalSpeaker</RootNamespace>
+    <AssemblyName>CPDPortalSpeaker</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resource.fr-CA.Designer.cs">
+      <DependentUpon>Resource.fr-CA.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivateController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CultureController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OptoutController.cs" />
+    <Compile Include="Controllers\PayeeController.cs" />
+    <Compile Include="Controllers\ProgramMaterialsController.cs" />
+    <Compile Include="Controllers\ProgramDescriptionController.cs" />
+    <Compile Include="Controllers\SpeakerRespController.cs" />
+    <Compile Include="CustomAttribute\AllowCrossSiteJson.cs" />
+    <Compile Include="CustomValidation\ValidateProvinces.cs" />
+    <Compile Include="CustomValidation\ValidateTerritories.cs" />
+    <Compile Include="DAL\ActivateRepository.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\FileUploadRepository.cs" />
+    <Compile Include="DAL\PayeeRepository.cs" />
+    <Compile Include="DAL\UserRepository.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfirmedSession.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PayeeModel.cs" />
+    <Compile Include="Models\ProvinceModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\RegistrationStatus.cs" />
+    <Compile Include="Models\SpeakerActivationModel.cs" />
+    <Compile Include="Models\SpeakerProgramDetail.cs" />
+    <Compile Include="Models\TerritoryModel.cs" />
+    <Compile Include="Models\UserActivationModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\LeftNavInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\Encryptor.cs" />
+    <Compile Include="Util\UserHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\programRequest.css" />
+    <Content Include="Content\Speaker.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\1bk.jpg" />
+    <Content Include="Images\1px_grey.gif" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\2a.jpg" />
+    <Content Include="Images\2\1-b.png" />
+    <Content Include="Images\2\2-b.png" />
+    <Content Include="Images\2\3-b.png" />
+    <Content Include="Images\2\4-b.png" />
+    <Content Include="Images\2\5-b.png" />
+    <Content Include="Images\2\case1-b.png" />
+    <Content Include="Images\2\case2-b.png" />
+    <Content Include="Images\2\case3-b.png" />
+    <Content Include="Images\2\case4-b.png" />
+    <Content Include="Images\2\case5-b.png" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\3\slideimgs\case0-1.png" />
+    <Content Include="Images\3\slideimgs\case0.png" />
+    <Content Include="Images\3\slideimgs\case1.png" />
+    <Content Include="Images\3\slideimgs\case2.png" />
+    <Content Include="Images\3\slideimgs\case3.png" />
+    <Content Include="Images\3\slideimgs\case4.png" />
+    <Content Include="Images\3\slideimgs\case5.png" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7\b3-slide_img.png" />
+    <Content Include="Images\7\belanger.png" />
+    <Content Include="Images\7\bell.png" />
+    <Content Include="Images\7\brown.png" />
+    <Content Include="Images\7\brown_j.png" />
+    <Content Include="Images\7\kendler.png" />
+    <Content Include="Images\7\khan.png" />
+    <Content Include="Images\8\SlideDownloadBtn.jpg" />
+    <Content Include="Images\8\SlideDownloadBtn_fr.jpg" />
+    <Content Include="Images\alpha.gif" />
+    <Content Include="Images\Amgen.svg" />
+    <Content Include="Images\bernucci.png" />
+    <Content Include="Images\bg-opt.jpg" />
+    <Content Include="Images\bg-prog.jpg" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bg1-prog.jpg" />
+    <Content Include="Images\bg2-prog.jpg" />
+    <Content Include="Images\button_login.png" />
+    <Content Include="Images\CCPD.svg" />
+    <Content Include="Images\CHRC-CCPDHM-logo.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Images\CHRC.svg" />
+    <Content Include="Images\CHRClogos_mer.png" />
+    <Content Include="Images\CHRClogos_mer.svg" />
+    <Content Include="Images\CHRClogos_mer_grey.svg" />
+    <Content Include="Images\CPDLOGO\amgen.png" />
+    <Content Include="Images\Delete.jpg" />
+    <Content Include="Images\dufour.png" />
+    <Content Include="Images\EvalForm\EvalAF.jpg" />
+    <Content Include="Images\EvalForm\EvalAgreement.jpg" />
+    <Content Include="Images\EvalForm\EvalBarrier.jpg" />
+    <Content Include="Images\EvalForm\EvalBias.jpg" />
+    <Content Include="Images\EvalForm\EvalCanMeds.jpg" />
+    <Content Include="Images\EvalForm\EvalCase1.jpg" />
+    <Content Include="Images\EvalForm\EvalCase2.jpg" />
+    <Content Include="Images\EvalForm\EvalCase3.jpg" />
+    <Content Include="Images\EvalForm\EvalCase4.jpg" />
+    <Content Include="Images\EvalForm\EvalCase5.jpg" />
+    <Content Include="Images\EvalForm\EvalCase6.jpg" />
+    <Content Include="Images\EvalForm\EvalCase7.jpg" />
+    <Content Include="Images\EvalForm\EvalCase8.jpg" />
+    <Content Include="Images\EvalForm\EvalChanges.jpg" />
+    <Content Include="Images\EvalForm\EvalFooter.jpg" />
+    <Content Include="Images\EvalForm\EvalFuture.jpg" />
+    <Content Include="Images\EvalForm\EvalParticipation.jpg" />
+    <Content Include="Images\EvalForm\EvalSpeakers.jpg" />
+    <Content Include="Images\EvalForm\EvalTop1.jpg" />
+    <Content Include="Images\EvalForm\EvalTop2.jpg" />
+    <Content Include="Images\goodman.png" />
+    <Content Include="Images\gregoire.png" />
+    <Content Include="Images\h.jpg" />
+    <Content Include="Images\h2.jpg" />
+    <Content Include="Images\habert.png" />
+    <Content Include="Images\health-521386_1920.png" />
+    <Content Include="Images\leiter.png" />
+    <Content Include="Images\lin.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\Mancini.png" />
+    <Content Include="Images\mealExpenses.jpg" />
+    <Content Include="Images\ngui.png" />
+    <Content Include="Images\notebook.jpg" />
+    <Content Include="Images\notebook.png" />
+    <Content Include="Images\notebook1st.jpg" />
+    <Content Include="Images\ondemand\1.png" />
+    <Content Include="Images\ondemand\2.png" />
+    <Content Include="Images\ondemand\3.png" />
+    <Content Include="Images\ondemand\4.png" />
+    <Content Include="Images\ondemand\5.png" />
+    <Content Include="Images\ondemand\6.png" />
+    <Content Include="Images\ondemand\7.png" />
+    <Content Include="Images\ondemand\8.png" />
+    <Content Include="Images\ondemand\9.png" />
+    <Content Include="Images\ph.jpg" />
+    <Content Include="Images\ph2.jpg" />
+    <Content Include="Images\PM1\case1.png" />
+    <Content Include="Images\PM1\case2.png" />
+    <Content Include="Images\PM1\case3.png" />
+    <Content Include="Images\PM1\case4.png" />
+    <Content Include="Images\prog1.jpg" />
+    <Content Include="Images\prog2.jpg" />
+    <Content Include="Images\ProgramMaterialsSlide1.png" />
+    <Content Include="Images\square.svg" />
+    <Content Include="Images\ViewFile.jpg" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="PDF\Cookies.pdf" />
+    <Content Include="PDF\COIFormTemplate.doc" />
+    <Content Include="PDF\The Clinical Exchange Case-Based Learning Modules.pptx" />
+    <Content Include="PDF\The Clinical Exchange Core Program Core Deck.pptx" />
+    <Content Include="PDF\PM1\Case 1.pdf" />
+    <Content Include="PPTX\PM1\Case 1.pptx" />
+    <Content Include="PPTX\PM1\Case 2.pptx" />
+    <Content Include="PDF\PM1\Case 2.pdf" />
+    <Content Include="PPTX\PM1\Case3.pptx" />
+    <Content Include="PDF\PM1\Case 3.pdf" />
+    <Content Include="PPTX\PM1\Case4.pptx" />
+    <Content Include="PDF\PM1\Case 4.pdf" />
+    <Content Include="PDF\cma-policy-guidelines-for-physicians-in-interactions-with-industry-pd08-01-e.pdf" />
+    <Content Include="PDF\Code-Formatted_Regular_EN-2.pdf" />
+    <Content Include="PDF\QuickTips_COI_Final_ENGLISH.pdf" />
+    <Content Include="PPTX\3\BadToBones.pptx" />
+    <Content Include="PDF\Dyslipidemia in Primary Care_Addressing Barriers to Optimal Lipid Management_August 23rd.pptx" />
+    <Content Include="PDF\7\A PRIMARY CARE GUIDE TO KEY CLINICAL QUESTIONS IN OSTEOPOROSIS MANAGEMENT SPEAKER SITE.pptx" />
+    <Content Include="PDF\7\cma-policy-guidelines-for-physicians-in-interactions-with-industry-pd08-01-e.pdf" />
+    <Content Include="PDF\7\QuickTips_COI_Final_ENGLISH.pdf" />
+    <Content Include="PDF\7\Code-Formatted_Regular_EN-2.pdf" />
+    <Content Include="PDF\8\COA.pdf" />
+    <Content Include="PDF\8\Evaluation Form.pdf" />
+    <Content Include="PDF\8\InvitationNationalLive.pdf" />
+    <Content Include="PDF\8\InvitationNationalWeb.pdf" />
+    <Content Include="PDF\8\InvitationRegionalLive.pdf" />
+    <Content Include="PDF\8\InvitationRegionalWeb.pdf" />
+    <Content Include="PDF\8\NationalInvitation.pdf" />
+    <Content Include="PDF\8\ParticipantHandOut.pdf" />
+    <Content Include="PDF\8\RegionalInvitation.pdf" />
+    <Content Include="PDF\8\SignInSheet.pdf" />
+    <Content Include="PDF\COIFormTemplate_Fr.pdf" />
+    <Content Include="PPTX\8\ProgramSlides.pptx" />
+    <Content Include="PPTX\8\ProgramSlides_fr.pptx" />
+    <Content Include="PPTX\8\ProgramSlides10.pptx" />
+    <Content Include="PPTX\8\ProgramSlides15.pptx" />
+    <Content Include="PPTX\8\ProgramSlides10_fr.pptx" />
+    <Content Include="PPTX\8\ProgramSlides15_fr.pptx" />
+    <None Include="Properties\PublishProfiles\AliSpeakerUAT.pubxml" />
+    <None Include="Properties\PublishProfiles\AmgenSpeakerProd.pubxml" />
+    <None Include="Properties\PublishProfiles\AmgenSpeakerUAT.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalDeployment.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalDeployment2.pubxml" />
+    <None Include="Properties\PublishProfiles\NewProduction.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\circleCharts.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="videos\2\data\apple-touch-icon.png" />
+    <Content Include="videos\2\data\browsersupport.js" />
+    <Content Include="videos\2\data\eraser.cur" />
+    <Content Include="videos\2\data\favicon.ico" />
+    <Content Include="videos\2\data\highlighter.cur" />
+    <Content Include="videos\2\data\html5-unsupported.html" />
+    <Content Include="videos\2\data\html5.png" />
+    <Content Include="videos\2\data\img0.png" />
+    <Content Include="videos\2\data\img1.png" />
+    <Content Include="videos\2\data\img10.png" />
+    <Content Include="videos\2\data\img11.png" />
+    <Content Include="videos\2\data\img12.png" />
+    <Content Include="videos\2\data\img13.png" />
+    <Content Include="videos\2\data\img14.png" />
+    <Content Include="videos\2\data\img15.png" />
+    <Content Include="videos\2\data\img16.jpg" />
+    <Content Include="videos\2\data\img17.jpg" />
+    <Content Include="videos\2\data\img18.jpg" />
+    <Content Include="videos\2\data\img19.jpg" />
+    <Content Include="videos\2\data\img2.png" />
+    <Content Include="videos\2\data\img20.jpg" />
+    <Content Include="videos\2\data\img3.png" />
+    <Content Include="videos\2\data\img4.png" />
+    <Content Include="videos\2\data\img5.png" />
+    <Content Include="videos\2\data\img6.png" />
+    <Content Include="videos\2\data\img7.png" />
+    <Content Include="videos\2\data\img8.png" />
+    <Content Include="videos\2\data\img9.png" />
+    <Content Include="videos\2\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\2\data\ismplayer\play.svg" />
+    <Content Include="videos\2\data\ismplayer\preview.png" />
+    <Content Include="videos\2\data\ismplayer\style.css" />
+    <Content Include="videos\2\data\ismplayer\style_mini.css" />
+    <Content Include="videos\2\data\lock.cur" />
+    <Content Include="videos\2\data\marker.cur" />
+    <Content Include="videos\2\data\player.js" />
+    <Content Include="videos\2\data\slide1.css" />
+    <Content Include="videos\2\data\slide1.js" />
+    <Content Include="videos\2\data\slide2.css" />
+    <Content Include="videos\2\data\slide2.js" />
+    <Content Include="videos\2\data\slide3.css" />
+    <Content Include="videos\2\data\slide3.js" />
+    <Content Include="videos\2\data\slide4.css" />
+    <Content Include="videos\2\data\slide4.js" />
+    <Content Include="videos\2\data\slide5.css" />
+    <Content Include="videos\2\data\slide5.js" />
+    <Content Include="videos\2\data\thmb1.png" />
+    <Content Include="videos\2\data\thmb2.png" />
+    <Content Include="videos\2\data\thmb3.png" />
+    <Content Include="videos\2\data\thmb4.png" />
+    <Content Include="videos\2\data\thmb5.png" />
+    <Content Include="videos\2\data\video1.mp4" />
+    <Content Include="videos\2\data\video2.mp4" />
+    <Content Include="videos\2\data\video3.mp4" />
+    <Content Include="videos\2\data\video4.mp4" />
+    <Content Include="videos\2\data\video5.mp4" />
+    <Content Include="videos\2\index.html" />
+    <Content Include="videos\2\ismplayer.html" />
+    <Content Include="videos\2\metainfo.xml" />
+    <Content Include="videos\3\data\apple-touch-icon.png" />
+    <Content Include="videos\3\data\browsersupport.js" />
+    <Content Include="videos\3\data\eraser.cur" />
+    <Content Include="videos\3\data\favicon.ico" />
+    <Content Include="videos\3\data\highlighter.cur" />
+    <Content Include="videos\3\data\html5-unsupported.html" />
+    <Content Include="videos\3\data\html5.png" />
+    <Content Include="videos\3\data\img0.png" />
+    <Content Include="videos\3\data\img1.png" />
+    <Content Include="videos\3\data\img10.png" />
+    <Content Include="videos\3\data\img11.png" />
+    <Content Include="videos\3\data\img12.png" />
+    <Content Include="videos\3\data\img13.png" />
+    <Content Include="videos\3\data\img14.png" />
+    <Content Include="videos\3\data\img15.png" />
+    <Content Include="videos\3\data\img16.png" />
+    <Content Include="videos\3\data\img17.png" />
+    <Content Include="videos\3\data\img18.png" />
+    <Content Include="videos\3\data\img19.png" />
+    <Content Include="videos\3\data\img2.png" />
+    <Content Include="videos\3\data\img20.jpg" />
+    <Content Include="videos\3\data\img21.jpg" />
+    <Content Include="videos\3\data\img22.jpg" />
+    <Content Include="videos\3\data\img23.jpg" />
+    <Content Include="videos\3\data\img24.jpg" />
+    <Content Include="videos\3\data\img25.jpg" />
+    <Content Include="videos\3\data\img26.jpg" />
+    <Content Include="videos\3\data\img27.jpg" />
+    <Content Include="videos\3\data\img28.jpg" />
+    <Content Include="videos\3\data\img3.png" />
+    <Content Include="videos\3\data\img4.png" />
+    <Content Include="videos\3\data\img5.png" />
+    <Content Include="videos\3\data\img6.png" />
+    <Content Include="videos\3\data\img7.png" />
+    <Content Include="videos\3\data\img8.png" />
+    <Content Include="videos\3\data\img9.png" />
+    <Content Include="videos\3\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\3\data\ismplayer\play.svg" />
+    <Content Include="videos\3\data\ismplayer\preview.png" />
+    <Content Include="videos\3\data\ismplayer\style.css" />
+    <Content Include="videos\3\data\ismplayer\style_mini.css" />
+    <Content Include="videos\3\data\lock.cur" />
+    <Content Include="videos\3\data\marker.cur" />
+    <Content Include="videos\3\data\player.js" />
+    <Content Include="videos\3\data\slide1.css" />
+    <Content Include="videos\3\data\slide1.js" />
+    <Content Include="videos\3\data\slide2.css" />
+    <Content Include="videos\3\data\slide2.js" />
+    <Content Include="videos\3\data\slide3.css" />
+    <Content Include="videos\3\data\slide3.js" />
+    <Content Include="videos\3\data\slide4.css" />
+    <Content Include="videos\3\data\slide4.js" />
+    <Content Include="videos\3\data\slide5.css" />
+    <Content Include="videos\3\data\slide5.js" />
+    <Content Include="videos\3\data\slide6.css" />
+    <Content Include="videos\3\data\slide6.js" />
+    <Content Include="videos\3\data\slide7.css" />
+    <Content Include="videos\3\data\slide7.js" />
+    <Content Include="videos\3\data\slide8.css" />
+    <Content Include="videos\3\data\slide8.js" />
+    <Content Include="videos\3\data\slide9.css" />
+    <Content Include="videos\3\data\slide9.js" />
+    <Content Include="videos\3\data\thmb1.png" />
+    <Content Include="videos\3\data\thmb2.png" />
+    <Content Include="videos\3\data\thmb3.png" />
+    <Content Include="videos\3\data\thmb4.png" />
+    <Content Include="videos\3\data\thmb5.png" />
+    <Content Include="videos\3\data\thmb6.png" />
+    <Content Include="videos\3\data\thmb7.png" />
+    <Content Include="videos\3\data\thmb8.png" />
+    <Content Include="videos\3\data\thmb9.png" />
+    <Content Include="videos\3\data\video1.mp4" />
+    <Content Include="videos\3\data\video2.mp4" />
+    <Content Include="videos\3\data\video3.mp4" />
+    <Content Include="videos\3\data\video4.mp4" />
+    <Content Include="videos\3\data\video5.mp4" />
+    <Content Include="videos\3\data\video6.mp4" />
+    <Content Include="videos\3\data\video7.mp4" />
+    <Content Include="videos\3\data\video8.mp4" />
+    <Content Include="videos\3\data\video9.mp4" />
+    <Content Include="videos\3\index.html" />
+    <Content Include="videos\3\ismplayer.html" />
+    <Content Include="videos\3\metainfo.xml" />
+    <Content Include="videos\4\data\apple-touch-icon.png" />
+    <Content Include="videos\4\data\browsersupport.js" />
+    <Content Include="videos\4\data\eraser.cur" />
+    <Content Include="videos\4\data\favicon.ico" />
+    <Content Include="videos\4\data\highlighter.cur" />
+    <Content Include="videos\4\data\html5-unsupported.html" />
+    <Content Include="videos\4\data\html5.png" />
+    <Content Include="videos\4\data\img0.png" />
+    <Content Include="videos\4\data\img1.png" />
+    <Content Include="videos\4\data\img10.png" />
+    <Content Include="videos\4\data\img11.png" />
+    <Content Include="videos\4\data\img12.png" />
+    <Content Include="videos\4\data\img13.png" />
+    <Content Include="videos\4\data\img14.png" />
+    <Content Include="videos\4\data\img15.png" />
+    <Content Include="videos\4\data\img16.png" />
+    <Content Include="videos\4\data\img17.png" />
+    <Content Include="videos\4\data\img18.png" />
+    <Content Include="videos\4\data\img19.png" />
+    <Content Include="videos\4\data\img2.png" />
+    <Content Include="videos\4\data\img20.png" />
+    <Content Include="videos\4\data\img21.png" />
+    <Content Include="videos\4\data\img22.png" />
+    <Content Include="videos\4\data\img23.png" />
+    <Content Include="videos\4\data\img24.jpg" />
+    <Content Include="videos\4\data\img25.jpg" />
+    <Content Include="videos\4\data\img26.jpg" />
+    <Content Include="videos\4\data\img27.jpg" />
+    <Content Include="videos\4\data\img28.jpg" />
+    <Content Include="videos\4\data\img29.jpg" />
+    <Content Include="videos\4\data\img3.png" />
+    <Content Include="videos\4\data\img30.jpg" />
+    <Content Include="videos\4\data\img31.jpg" />
+    <Content Include="videos\4\data\img32.jpg" />
+    <Content Include="videos\4\data\img33.jpg" />
+    <Content Include="videos\4\data\img34.jpg" />
+    <Content Include="videos\4\data\img4.png" />
+    <Content Include="videos\4\data\img5.png" />
+    <Content Include="videos\4\data\img6.png" />
+    <Content Include="videos\4\data\img7.png" />
+    <Content Include="videos\4\data\img8.png" />
+    <Content Include="videos\4\data\img9.png" />
+    <Content Include="videos\4\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\4\data\ismplayer\play.svg" />
+    <Content Include="videos\4\data\ismplayer\preview.png" />
+    <Content Include="videos\4\data\ismplayer\style.css" />
+    <Content Include="videos\4\data\ismplayer\style_mini.css" />
+    <Content Include="videos\4\data\lock.cur" />
+    <Content Include="videos\4\data\marker.cur" />
+    <Content Include="videos\4\data\player.js" />
+    <Content Include="videos\4\data\slide1.css" />
+    <Content Include="videos\4\data\slide1.js" />
+    <Content Include="videos\4\data\slide10.css" />
+    <Content Include="videos\4\data\slide10.js" />
+    <Content Include="videos\4\data\slide11.css" />
+    <Content Include="videos\4\data\slide11.js" />
+    <Content Include="videos\4\data\slide2.css" />
+    <Content Include="videos\4\data\slide2.js" />
+    <Content Include="videos\4\data\slide3.css" />
+    <Content Include="videos\4\data\slide3.js" />
+    <Content Include="videos\4\data\slide4.css" />
+    <Content Include="videos\4\data\slide4.js" />
+    <Content Include="videos\4\data\slide5.css" />
+    <Content Include="videos\4\data\slide5.js" />
+    <Content Include="videos\4\data\slide6.css" />
+    <Content Include="videos\4\data\slide6.js" />
+    <Content Include="videos\4\data\slide7.css" />
+    <Content Include="videos\4\data\slide7.js" />
+    <Content Include="videos\4\data\slide8.css" />
+    <Content Include="videos\4\data\slide8.js" />
+    <Content Include="videos\4\data\slide9.css" />
+    <Content Include="videos\4\data\slide9.js" />
+    <Content Include="videos\4\data\thmb1.png" />
+    <Content Include="videos\4\data\thmb10.png" />
+    <Content Include="videos\4\data\thmb11.png" />
+    <Content Include="videos\4\data\thmb2.png" />
+    <Content Include="videos\4\data\thmb3.png" />
+    <Content Include="videos\4\data\thmb4.png" />
+    <Content Include="videos\4\data\thmb5.png" />
+    <Content Include="videos\4\data\thmb6.png" />
+    <Content Include="videos\4\data\thmb7.png" />
+    <Content Include="videos\4\data\thmb8.png" />
+    <Content Include="videos\4\data\thmb9.png" />
+    <Content Include="videos\4\data\video1.mp4" />
+    <Content Include="videos\4\data\video10.mp4" />
+    <Content Include="videos\4\data\video11.mp4" />
+    <Content Include="videos\4\data\video2.mp4" />
+    <Content Include="videos\4\data\video3.mp4" />
+    <Content Include="videos\4\data\video4.mp4" />
+    <Content Include="videos\4\data\video5.mp4" />
+    <Content Include="videos\4\data\video6.mp4" />
+    <Content Include="videos\4\data\video7.mp4" />
+    <Content Include="videos\4\data\video8.mp4" />
+    <Content Include="videos\4\data\video9.mp4" />
+    <Content Include="videos\4\index.html" />
+    <Content Include="videos\4\ismplayer.html" />
+    <Content Include="videos\4\metainfo.xml" />
+    <Content Include="videos\5\data\apple-touch-icon.png" />
+    <Content Include="videos\5\data\browsersupport.js" />
+    <Content Include="videos\5\data\eraser.cur" />
+    <Content Include="videos\5\data\favicon.ico" />
+    <Content Include="videos\5\data\highlighter.cur" />
+    <Content Include="videos\5\data\html5-unsupported.html" />
+    <Content Include="videos\5\data\html5.png" />
+    <Content Include="videos\5\data\img0.png" />
+    <Content Include="videos\5\data\img1.png" />
+    <Content Include="videos\5\data\img10.png" />
+    <Content Include="videos\5\data\img11.png" />
+    <Content Include="videos\5\data\img12.png" />
+    <Content Include="videos\5\data\img13.png" />
+    <Content Include="videos\5\data\img14.png" />
+    <Content Include="videos\5\data\img15.png" />
+    <Content Include="videos\5\data\img16.png" />
+    <Content Include="videos\5\data\img17.png" />
+    <Content Include="videos\5\data\img18.png" />
+    <Content Include="videos\5\data\img19.png" />
+    <Content Include="videos\5\data\img2.png" />
+    <Content Include="videos\5\data\img20.jpg" />
+    <Content Include="videos\5\data\img21.jpg" />
+    <Content Include="videos\5\data\img22.jpg" />
+    <Content Include="videos\5\data\img23.jpg" />
+    <Content Include="videos\5\data\img24.jpg" />
+    <Content Include="videos\5\data\img25.jpg" />
+    <Content Include="videos\5\data\img26.jpg" />
+    <Content Include="videos\5\data\img3.png" />
+    <Content Include="videos\5\data\img4.png" />
+    <Content Include="videos\5\data\img5.png" />
+    <Content Include="videos\5\data\img6.png" />
+    <Content Include="videos\5\data\img7.png" />
+    <Content Include="videos\5\data\img8.png" />
+    <Content Include="videos\5\data\img9.png" />
+    <Content Include="videos\5\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\5\data\ismplayer\play.svg" />
+    <Content Include="videos\5\data\ismplayer\preview.png" />
+    <Content Include="videos\5\data\ismplayer\style.css" />
+    <Content Include="videos\5\data\ismplayer\style_mini.css" />
+    <Content Include="videos\5\data\lock.cur" />
+    <Content Include="videos\5\data\marker.cur" />
+    <Content Include="videos\5\data\player.js" />
+    <Content Include="videos\5\data\slide1.css" />
+    <Content Include="videos\5\data\slide1.js" />
+    <Content Include="videos\5\data\slide2.css" />
+    <Content Include="videos\5\data\slide2.js" />
+    <Content Include="videos\5\data\slide3.css" />
+    <Content Include="videos\5\data\slide3.js" />
+    <Content Include="videos\5\data\slide4.css" />
+    <Content Include="videos\5\data\slide4.js" />
+    <Content Include="videos\5\data\slide5.css" />
+    <Content Include="videos\5\data\slide5.js" />
+    <Content Include="videos\5\data\slide6.css" />
+    <Content Include="videos\5\data\slide6.js" />
+    <Content Include="videos\5\data\slide7.css" />
+    <Content Include="videos\5\data\slide7.js" />
+    <Content Include="videos\5\data\thmb1.png" />
+    <Content Include="videos\5\data\thmb2.png" />
+    <Content Include="videos\5\data\thmb3.png" />
+    <Content Include="videos\5\data\thmb4.png" />
+    <Content Include="videos\5\data\thmb5.png" />
+    <Content Include="videos\5\data\thmb6.png" />
+    <Content Include="videos\5\data\thmb7.png" />
+    <Content Include="videos\5\data\video1.mp4" />
+    <Content Include="videos\5\data\video2.mp4" />
+    <Content Include="videos\5\data\video3.mp4" />
+    <Content Include="videos\5\data\video4.mp4" />
+    <Content Include="videos\5\data\video5.mp4" />
+    <Content Include="videos\5\data\video6.mp4" />
+    <Content Include="videos\5\data\video7.mp4" />
+    <Content Include="videos\5\index.html" />
+    <Content Include="videos\5\ismplayer.html" />
+    <Content Include="videos\5\metainfo.xml" />
+    <Content Include="videos\6\data\apple-touch-icon.png" />
+    <Content Include="videos\6\data\browsersupport.js" />
+    <Content Include="videos\6\data\eraser.cur" />
+    <Content Include="videos\6\data\favicon.ico" />
+    <Content Include="videos\6\data\highlighter.cur" />
+    <Content Include="videos\6\data\html5-unsupported.html" />
+    <Content Include="videos\6\data\html5.png" />
+    <Content Include="videos\6\data\img0.png" />
+    <Content Include="videos\6\data\img1.png" />
+    <Content Include="videos\6\data\img10.png" />
+    <Content Include="videos\6\data\img11.png" />
+    <Content Include="videos\6\data\img12.png" />
+    <Content Include="videos\6\data\img13.png" />
+    <Content Include="videos\6\data\img14.png" />
+    <Content Include="videos\6\data\img15.png" />
+    <Content Include="videos\6\data\img16.png" />
+    <Content Include="videos\6\data\img17.png" />
+    <Content Include="videos\6\data\img18.png" />
+    <Content Include="videos\6\data\img19.png" />
+    <Content Include="videos\6\data\img2.png" />
+    <Content Include="videos\6\data\img20.png" />
+    <Content Include="videos\6\data\img21.png" />
+    <Content Include="videos\6\data\img22.png" />
+    <Content Include="videos\6\data\img23.png" />
+    <Content Include="videos\6\data\img24.png" />
+    <Content Include="videos\6\data\img25.png" />
+    <Content Include="videos\6\data\img26.png" />
+    <Content Include="videos\6\data\img27.png" />
+    <Content Include="videos\6\data\img28.png" />
+    <Content Include="videos\6\data\img29.png" />
+    <Content Include="videos\6\data\img3.png" />
+    <Content Include="videos\6\data\img30.png" />
+    <Content Include="videos\6\data\img31.png" />
+    <Content Include="videos\6\data\img32.png" />
+    <Content Include="videos\6\data\img33.png" />
+    <Content Include="videos\6\data\img34.png" />
+    <Content Include="videos\6\data\img35.png" />
+    <Content Include="videos\6\data\img36.jpg" />
+    <Content Include="videos\6\data\img37.jpg" />
+    <Content Include="videos\6\data\img38.jpg" />
+    <Content Include="videos\6\data\img39.jpg" />
+    <Content Include="videos\6\data\img4.png" />
+    <Content Include="videos\6\data\img40.jpg" />
+    <Content Include="videos\6\data\img41.jpg" />
+    <Content Include="videos\6\data\img42.jpg" />
+    <Content Include="videos\6\data\img43.jpg" />
+    <Content Include="videos\6\data\img44.jpg" />
+    <Content Include="videos\6\data\img45.jpg" />
+    <Content Include="videos\6\data\img46.jpg" />
+    <Content Include="videos\6\data\img47.jpg" />
+    <Content Include="videos\6\data\img48.jpg" />
+    <Content Include="videos\6\data\img49.jpg" />
+    <Content Include="videos\6\data\img5.png" />
+    <Content Include="videos\6\data\img50.jpg" />
+    <Content Include="videos\6\data\img51.jpg" />
+    <Content Include="videos\6\data\img52.jpg" />
+    <Content Include="videos\6\data\img53.jpg" />
+    <Content Include="videos\6\data\img54.jpg" />
+    <Content Include="videos\6\data\img55.jpg" />
+    <Content Include="videos\6\data\img56.jpg" />
+    <Content Include="videos\6\data\img57.jpg" />
+    <Content Include="videos\6\data\img58.jpg" />
+    <Content Include="videos\6\data\img59.jpg" />
+    <Content Include="videos\6\data\img6.png" />
+    <Content Include="videos\6\data\img60.jpg" />
+    <Content Include="videos\6\data\img61.jpg" />
+    <Content Include="videos\6\data\img7.png" />
+    <Content Include="videos\6\data\img8.png" />
+    <Content Include="videos\6\data\img9.png" />
+    <Content Include="videos\6\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\6\data\ismplayer\play.svg" />
+    <Content Include="videos\6\data\ismplayer\preview.png" />
+    <Content Include="videos\6\data\ismplayer\style.css" />
+    <Content Include="videos\6\data\ismplayer\style_mini.css" />
+    <Content Include="videos\6\data\lock.cur" />
+    <Content Include="videos\6\data\marker.cur" />
+    <Content Include="videos\6\data\player.js" />
+    <Content Include="videos\6\data\slide1.css" />
+    <Content Include="videos\6\data\slide1.js" />
+    <Content Include="videos\6\data\slide10.css" />
+    <Content Include="videos\6\data\slide10.js" />
+    <Content Include="videos\6\data\slide11.css" />
+    <Content Include="videos\6\data\slide11.js" />
+    <Content Include="videos\6\data\slide12.css" />
+    <Content Include="videos\6\data\slide12.js" />
+    <Content Include="videos\6\data\slide13.css" />
+    <Content Include="videos\6\data\slide13.js" />
+    <Content Include="videos\6\data\slide14.css" />
+    <Content Include="videos\6\data\slide14.js" />
+    <Content Include="videos\6\data\slide15.css" />
+    <Content Include="videos\6\data\slide15.js" />
+    <Content Include="videos\6\data\slide16.css" />
+    <Content Include="videos\6\data\slide16.js" />
+    <Content Include="videos\6\data\slide17.css" />
+    <Content Include="videos\6\data\slide17.js" />
+    <Content Include="videos\6\data\slide18.css" />
+    <Content Include="videos\6\data\slide18.js" />
+    <Content Include="videos\6\data\slide19.css" />
+    <Content Include="videos\6\data\slide19.js" />
+    <Content Include="videos\6\data\slide2.css" />
+    <Content Include="videos\6\data\slide2.js" />
+    <Content Include="videos\6\data\slide20.css" />
+    <Content Include="videos\6\data\slide20.js" />
+    <Content Include="videos\6\data\slide21.css" />
+    <Content Include="videos\6\data\slide21.js" />
+    <Content Include="videos\6\data\slide22.css" />
+    <Content Include="videos\6\data\slide22.js" />
+    <Content Include="videos\6\data\slide23.css" />
+    <Content Include="videos\6\data\slide23.js" />
+    <Content Include="videos\6\data\slide24.css" />
+    <Content Include="videos\6\data\slide24.js" />
+    <Content Include="videos\6\data\slide25.css" />
+    <Content Include="videos\6\data\slide25.js" />
+    <Content Include="videos\6\data\slide26.css" />
+    <Content Include="videos\6\data\slide26.js" />
+    <Content Include="videos\6\data\slide3.css" />
+    <Content Include="videos\6\data\slide3.js" />
+    <Content Include="videos\6\data\slide4.css" />
+    <Content Include="videos\6\data\slide4.js" />
+    <Content Include="videos\6\data\slide5.css" />
+    <Content Include="videos\6\data\slide5.js" />
+    <Content Include="videos\6\data\slide6.css" />
+    <Content Include="videos\6\data\slide6.js" />
+    <Content Include="videos\6\data\slide7.css" />
+    <Content Include="videos\6\data\slide7.js" />
+    <Content Include="videos\6\data\slide8.css" />
+    <Content Include="videos\6\data\slide8.js" />
+    <Content Include="videos\6\data\slide9.css" />
+    <Content Include="videos\6\data\slide9.js" />
+    <Content Include="videos\6\data\thmb1.png" />
+    <Content Include="videos\6\data\thmb10.png" />
+    <Content Include="videos\6\data\thmb11.png" />
+    <Content Include="videos\6\data\thmb12.png" />
+    <Content Include="videos\6\data\thmb13.png" />
+    <Content Include="videos\6\data\thmb14.png" />
+    <Content Include="videos\6\data\thmb15.png" />
+    <Content Include="videos\6\data\thmb16.png" />
+    <Content Include="videos\6\data\thmb17.png" />
+    <Content Include="videos\6\data\thmb18.png" />
+    <Content Include="videos\6\data\thmb19.png" />
+    <Content Include="videos\6\data\thmb2.png" />
+    <Content Include="videos\6\data\thmb20.png" />
+    <Content Include="videos\6\data\thmb21.png" />
+    <Content Include="videos\6\data\thmb22.png" />
+    <Content Include="videos\6\data\thmb23.png" />
+    <Content Include="videos\6\data\thmb24.png" />
+    <Content Include="videos\6\data\thmb25.png" />
+    <Content Include="videos\6\data\thmb26.png" />
+    <Content Include="videos\6\data\thmb3.png" />
+    <Content Include="videos\6\data\thmb4.png" />
+    <Content Include="videos\6\data\thmb5.png" />
+    <Content Include="videos\6\data\thmb6.png" />
+    <Content Include="videos\6\data\thmb7.png" />
+    <Content Include="videos\6\data\thmb8.png" />
+    <Content Include="videos\6\data\thmb9.png" />
+    <Content Include="videos\6\data\video1.mp4" />
+    <Content Include="videos\6\data\video10.mp4" />
+    <Content Include="videos\6\data\video11.mp4" />
+    <Content Include="videos\6\data\video12.mp4" />
+    <Content Include="videos\6\data\video13.mp4" />
+    <Content Include="videos\6\data\video14.mp4" />
+    <Content Include="videos\6\data\video15.mp4" />
+    <Content Include="videos\6\data\video16.mp4" />
+    <Content Include="videos\6\data\video17.mp4" />
+    <Content Include="videos\6\data\video18.mp4" />
+    <Content Include="videos\6\data\video19.mp4" />
+    <Content Include="videos\6\data\video2.mp4" />
+    <Content Include="videos\6\data\video20.mp4" />
+    <Content Include="videos\6\data\video21.mp4" />
+    <Content Include="videos\6\data\video22.mp4" />
+    <Content Include="videos\6\data\video23.mp4" />
+    <Content Include="videos\6\data\video24.mp4" />
+    <Content Include="videos\6\data\video25.mp4" />
+    <Content Include="videos\6\data\video26.mp4" />
+    <Content Include="videos\6\data\video3.mp4" />
+    <Content Include="videos\6\data\video4.mp4" />
+    <Content Include="videos\6\data\video5.mp4" />
+    <Content Include="videos\6\data\video6.mp4" />
+    <Content Include="videos\6\data\video7.mp4" />
+    <Content Include="videos\6\data\video8.mp4" />
+    <Content Include="videos\6\data\video9.mp4" />
+    <Content Include="videos\6\index.html" />
+    <Content Include="videos\6\ismplayer.html" />
+    <Content Include="videos\6\metainfo.xml" />
+    <Content Include="videos\7\data\apple-touch-icon.png" />
+    <Content Include="videos\7\data\browsersupport.js" />
+    <Content Include="videos\7\data\eraser.cur" />
+    <Content Include="videos\7\data\favicon.ico" />
+    <Content Include="videos\7\data\highlighter.cur" />
+    <Content Include="videos\7\data\html5-unsupported.html" />
+    <Content Include="videos\7\data\html5.png" />
+    <Content Include="videos\7\data\img0.png" />
+    <Content Include="videos\7\data\img1.png" />
+    <Content Include="videos\7\data\img10.png" />
+    <Content Include="videos\7\data\img11.png" />
+    <Content Include="videos\7\data\img12.png" />
+    <Content Include="videos\7\data\img13.png" />
+    <Content Include="videos\7\data\img14.png" />
+    <Content Include="videos\7\data\img15.png" />
+    <Content Include="videos\7\data\img16.png" />
+    <Content Include="videos\7\data\img17.png" />
+    <Content Include="videos\7\data\img18.png" />
+    <Content Include="videos\7\data\img19.png" />
+    <Content Include="videos\7\data\img2.png" />
+    <Content Include="videos\7\data\img20.png" />
+    <Content Include="videos\7\data\img21.png" />
+    <Content Include="videos\7\data\img22.png" />
+    <Content Include="videos\7\data\img23.png" />
+    <Content Include="videos\7\data\img24.jpg" />
+    <Content Include="videos\7\data\img25.jpg" />
+    <Content Include="videos\7\data\img26.jpg" />
+    <Content Include="videos\7\data\img27.jpg" />
+    <Content Include="videos\7\data\img28.jpg" />
+    <Content Include="videos\7\data\img29.jpg" />
+    <Content Include="videos\7\data\img3.png" />
+    <Content Include="videos\7\data\img30.jpg" />
+    <Content Include="videos\7\data\img31.jpg" />
+    <Content Include="videos\7\data\img32.jpg" />
+    <Content Include="videos\7\data\img4.png" />
+    <Content Include="videos\7\data\img5.png" />
+    <Content Include="videos\7\data\img6.png" />
+    <Content Include="videos\7\data\img7.png" />
+    <Content Include="videos\7\data\img8.png" />
+    <Content Include="videos\7\data\img9.png" />
+    <Content Include="videos\7\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\7\data\ismplayer\play.svg" />
+    <Content Include="videos\7\data\ismplayer\preview.png" />
+    <Content Include="videos\7\data\ismplayer\style.css" />
+    <Content Include="videos\7\data\ismplayer\style_mini.css" />
+    <Content Include="videos\7\data\lock.cur" />
+    <Content Include="videos\7\data\marker.cur" />
+    <Content Include="videos\7\data\player.js" />
+    <Content Include="videos\7\data\slide1.css" />
+    <Content Include="videos\7\data\slide1.js" />
+    <Content Include="videos\7\data\slide2.css" />
+    <Content Include="videos\7\data\slide2.js" />
+    <Content Include="videos\7\data\slide3.css" />
+    <Content Include="videos\7\data\slide3.js" />
+    <Content Include="videos\7\data\slide4.css" />
+    <Content Include="videos\7\data\slide4.js" />
+    <Content Include="videos\7\data\slide5.css" />
+    <Content Include="videos\7\data\slide5.js" />
+    <Content Include="videos\7\data\slide6.css" />
+    <Content Include="videos\7\data\slide6.js" />
+    <Content Include="videos\7\data\slide7.css" />
+    <Content Include="videos\7\data\slide7.js" />
+    <Content Include="videos\7\data\slide8.css" />
+    <Content Include="videos\7\data\slide8.js" />
+    <Content Include="videos\7\data\slide9.css" />
+    <Content Include="videos\7\data\slide9.js" />
+    <Content Include="videos\7\data\thmb1.png" />
+    <Content Include="videos\7\data\thmb2.png" />
+    <Content Include="videos\7\data\thmb3.png" />
+    <Content Include="videos\7\data\thmb4.png" />
+    <Content Include="videos\7\data\thmb5.png" />
+    <Content Include="videos\7\data\thmb6.png" />
+    <Content Include="videos\7\data\thmb7.png" />
+    <Content Include="videos\7\data\thmb8.png" />
+    <Content Include="videos\7\data\thmb9.png" />
+    <Content Include="videos\7\data\video1.mp4" />
+    <Content Include="videos\7\data\video2.mp4" />
+    <Content Include="videos\7\data\video3.mp4" />
+    <Content Include="videos\7\data\video4.mp4" />
+    <Content Include="videos\7\data\video5.mp4" />
+    <Content Include="videos\7\data\video6.mp4" />
+    <Content Include="videos\7\data\video7.mp4" />
+    <Content Include="videos\7\data\video8.mp4" />
+    <Content Include="videos\7\data\video9.mp4" />
+    <Content Include="videos\7\index.html" />
+    <Content Include="videos\7\ismplayer.html" />
+    <Content Include="videos\7\metainfo.xml" />
+    <Content Include="videos\8\data\apple-touch-icon.png" />
+    <Content Include="videos\8\data\browsersupport.js" />
+    <Content Include="videos\8\data\eraser.cur" />
+    <Content Include="videos\8\data\favicon.ico" />
+    <Content Include="videos\8\data\highlighter.cur" />
+    <Content Include="videos\8\data\html5-unsupported.html" />
+    <Content Include="videos\8\data\html5.png" />
+    <Content Include="videos\8\data\img0.png" />
+    <Content Include="videos\8\data\img1.png" />
+    <Content Include="videos\8\data\img10.png" />
+    <Content Include="videos\8\data\img11.jpg" />
+    <Content Include="videos\8\data\img12.jpg" />
+    <Content Include="videos\8\data\img13.jpg" />
+    <Content Include="videos\8\data\img14.jpg" />
+    <Content Include="videos\8\data\img15.jpg" />
+    <Content Include="videos\8\data\img2.png" />
+    <Content Include="videos\8\data\img3.png" />
+    <Content Include="videos\8\data\img4.png" />
+    <Content Include="videos\8\data\img5.png" />
+    <Content Include="videos\8\data\img6.png" />
+    <Content Include="videos\8\data\img7.png" />
+    <Content Include="videos\8\data\img8.png" />
+    <Content Include="videos\8\data\img9.png" />
+    <Content Include="videos\8\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\8\data\ismplayer\play.svg" />
+    <Content Include="videos\8\data\ismplayer\preview.png" />
+    <Content Include="videos\8\data\ismplayer\style.css" />
+    <Content Include="videos\8\data\ismplayer\style_mini.css" />
+    <Content Include="videos\8\data\lock.cur" />
+    <Content Include="videos\8\data\marker.cur" />
+    <Content Include="videos\8\data\player.js" />
+    <Content Include="videos\8\data\slide1.css" />
+    <Content Include="videos\8\data\slide1.js" />
+    <Content Include="videos\8\data\slide2.css" />
+    <Content Include="videos\8\data\slide2.js" />
+    <Content Include="videos\8\data\slide3.css" />
+    <Content Include="videos\8\data\slide3.js" />
+    <Content Include="videos\8\data\slide4.css" />
+    <Content Include="videos\8\data\slide4.js" />
+    <Content Include="videos\8\data\slide5.css" />
+    <Content Include="videos\8\data\slide5.js" />
+    <Content Include="videos\8\data\thmb1.png" />
+    <Content Include="videos\8\data\thmb2.png" />
+    <Content Include="videos\8\data\thmb3.png" />
+    <Content Include="videos\8\data\thmb4.png" />
+    <Content Include="videos\8\data\thmb5.png" />
+    <Content Include="videos\8\data\video1.mp4" />
+    <Content Include="videos\8\data\video2.mp4" />
+    <Content Include="videos\8\data\video3.mp4" />
+    <Content Include="videos\8\data\video4.mp4" />
+    <Content Include="videos\8\data\video5.mp4" />
+    <Content Include="videos\8\index.html" />
+    <Content Include="videos\8\ismplayer.html" />
+    <Content Include="videos\8\metainfo.xml" />
+    <Content Include="videos\9\data\apple-touch-icon.png" />
+    <Content Include="videos\9\data\browsersupport.js" />
+    <Content Include="videos\9\data\eraser.cur" />
+    <Content Include="videos\9\data\favicon.ico" />
+    <Content Include="videos\9\data\highlighter.cur" />
+    <Content Include="videos\9\data\html5-unsupported.html" />
+    <Content Include="videos\9\data\html5.png" />
+    <Content Include="videos\9\data\img0.png" />
+    <Content Include="videos\9\data\img1.png" />
+    <Content Include="videos\9\data\img10.png" />
+    <Content Include="videos\9\data\img11.png" />
+    <Content Include="videos\9\data\img12.png" />
+    <Content Include="videos\9\data\img13.jpg" />
+    <Content Include="videos\9\data\img14.jpg" />
+    <Content Include="videos\9\data\img15.jpg" />
+    <Content Include="videos\9\data\img16.jpg" />
+    <Content Include="videos\9\data\img17.jpg" />
+    <Content Include="videos\9\data\img18.jpg" />
+    <Content Include="videos\9\data\img19.jpg" />
+    <Content Include="videos\9\data\img2.png" />
+    <Content Include="videos\9\data\img20.jpg" />
+    <Content Include="videos\9\data\img21.jpg" />
+    <Content Include="videos\9\data\img3.png" />
+    <Content Include="videos\9\data\img4.png" />
+    <Content Include="videos\9\data\img5.png" />
+    <Content Include="videos\9\data\img6.png" />
+    <Content Include="videos\9\data\img7.png" />
+    <Content Include="videos\9\data\img8.png" />
+    <Content Include="videos\9\data\img9.png" />
+    <Content Include="videos\9\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\9\data\ismplayer\play.svg" />
+    <Content Include="videos\9\data\ismplayer\preview.png" />
+    <Content Include="videos\9\data\ismplayer\style.css" />
+    <Content Include="videos\9\data\ismplayer\style_mini.css" />
+    <Content Include="videos\9\data\lock.cur" />
+    <Content Include="videos\9\data\marker.cur" />
+    <Content Include="videos\9\data\player.js" />
+    <Content Include="videos\9\data\slide1.css" />
+    <Content Include="videos\9\data\slide1.js" />
+    <Content Include="videos\9\data\slide2.css" />
+    <Content Include="videos\9\data\slide2.js" />
+    <Content Include="videos\9\data\slide3.css" />
+    <Content Include="videos\9\data\slide3.js" />
+    <Content Include="videos\9\data\slide4.css" />
+    <Content Include="videos\9\data\slide4.js" />
+    <Content Include="videos\9\data\slide5.css" />
+    <Content Include="videos\9\data\slide5.js" />
+    <Content Include="videos\9\data\slide6.css" />
+    <Content Include="videos\9\data\slide6.js" />
+    <Content Include="videos\9\data\slide7.css" />
+    <Content Include="videos\9\data\slide7.js" />
+    <Content Include="videos\9\data\slide8.css" />
+    <Content Include="videos\9\data\slide8.js" />
+    <Content Include="videos\9\data\slide9.css" />
+    <Content Include="videos\9\data\slide9.js" />
+    <Content Include="videos\9\data\thmb1.png" />
+    <Content Include="videos\9\data\thmb2.png" />
+    <Content Include="videos\9\data\thmb3.png" />
+    <Content Include="videos\9\data\thmb4.png" />
+    <Content Include="videos\9\data\thmb5.png" />
+    <Content Include="videos\9\data\thmb6.png" />
+    <Content Include="videos\9\data\thmb7.png" />
+    <Content Include="videos\9\data\thmb8.png" />
+    <Content Include="videos\9\data\thmb9.png" />
+    <Content Include="videos\9\data\video1.mp4" />
+    <Content Include="videos\9\data\video2.mp4" />
+    <Content Include="videos\9\data\video3.mp4" />
+    <Content Include="videos\9\data\video4.mp4" />
+    <Content Include="videos\9\data\video5.mp4" />
+    <Content Include="videos\9\data\video6.mp4" />
+    <Content Include="videos\9\data\video7.mp4" />
+    <Content Include="videos\9\data\video8.mp4" />
+    <Content Include="videos\9\data\video9.mp4" />
+    <Content Include="videos\9\index.html" />
+    <Content Include="videos\9\ismplayer.html" />
+    <Content Include="videos\9\metainfo.xml" />
+    <Content Include="videos\Intro\data\apple-touch-icon.png" />
+    <Content Include="videos\Intro\data\browsersupport.js" />
+    <Content Include="videos\Intro\data\eraser.cur" />
+    <Content Include="videos\Intro\data\favicon.ico" />
+    <Content Include="videos\Intro\data\highlighter.cur" />
+    <Content Include="videos\Intro\data\html5-unsupported.html" />
+    <Content Include="videos\Intro\data\html5.png" />
+    <Content Include="videos\Intro\data\img0.png" />
+    <Content Include="videos\Intro\data\img1.png" />
+    <Content Include="videos\Intro\data\img10.jpg" />
+    <Content Include="videos\Intro\data\img11.jpg" />
+    <Content Include="videos\Intro\data\img12.jpg" />
+    <Content Include="videos\Intro\data\img13.jpg" />
+    <Content Include="videos\Intro\data\img2.png" />
+    <Content Include="videos\Intro\data\img3.png" />
+    <Content Include="videos\Intro\data\img4.png" />
+    <Content Include="videos\Intro\data\img5.png" />
+    <Content Include="videos\Intro\data\img6.png" />
+    <Content Include="videos\Intro\data\img7.png" />
+    <Content Include="videos\Intro\data\img8.jpg" />
+    <Content Include="videos\Intro\data\img9.jpg" />
+    <Content Include="videos\Intro\data\ismplayer\app_store2x.png" />
+    <Content Include="videos\Intro\data\ismplayer\play.svg" />
+    <Content Include="videos\Intro\data\ismplayer\preview.png" />
+    <Content Include="videos\Intro\data\ismplayer\style.css" />
+    <Content Include="videos\Intro\data\ismplayer\style_mini.css" />
+    <Content Include="videos\Intro\data\lock.cur" />
+    <Content Include="videos\Intro\data\marker.cur" />
+    <Content Include="videos\Intro\data\player.js" />
+    <Content Include="videos\Intro\data\slide1.css" />
+    <Content Include="videos\Intro\data\slide1.js" />
+    <Content Include="videos\Intro\data\slide2.css" />
+    <Content Include="videos\Intro\data\slide2.js" />
+    <Content Include="videos\Intro\data\slide3.css" />
+    <Content Include="videos\Intro\data\slide3.js" />
+    <Content Include="videos\Intro\data\slide4.css" />
+    <Content Include="videos\Intro\data\slide4.js" />
+    <Content Include="videos\Intro\data\slide5.css" />
+    <Content Include="videos\Intro\data\slide5.js" />
+    <Content Include="videos\Intro\data\slide6.css" />
+    <Content Include="videos\Intro\data\slide6.js" />
+    <Content Include="videos\Intro\data\thmb1.jpg" />
+    <Content Include="videos\Intro\data\thmb2.png" />
+    <Content Include="videos\Intro\data\thmb3.png" />
+    <Content Include="videos\Intro\data\thmb4.png" />
+    <Content Include="videos\Intro\data\thmb5.png" />
+    <Content Include="videos\Intro\data\thmb6.png" />
+    <Content Include="videos\Intro\data\video1.mp4" />
+    <Content Include="videos\Intro\data\video2.mp4" />
+    <Content Include="videos\Intro\data\video3.mp4" />
+    <Content Include="videos\Intro\data\video4.mp4" />
+    <Content Include="videos\Intro\data\video5.mp4" />
+    <Content Include="videos\Intro\data\video6.mp4" />
+    <Content Include="videos\Intro\index.html" />
+    <Content Include="videos\Intro\ismplayer.html" />
+    <Content Include="videos\Intro\metainfo.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LeftNav.cshtml" />
+    <Content Include="Views\Shared\_LoginMaster.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Activate\Account.cshtml" />
+    <Content Include="Views\Activate\Index.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\OptOut.cshtml" />
+    <Content Include="Views\Account\OptOutConfirmation.cshtml" />
+    <Content Include="Views\Payee\Index.cshtml" />
+    <Content Include="Views\Optout\Index.cshtml" />
+    <Content Include="Views\Optout\OptOutConfirmation.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_1.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_2.cshtml" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_1.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_1.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_2.cshtml" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_2.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_2.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_1.cshtml" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_3.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_3.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_3.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_3.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_5.cshtml" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_5.cshtml" />
+    <Content Include="Views\Home\SpeakerTraining_5.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_5.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_5.cshtml" />
+    <Content Include="videos\2\data\fnt0.woff" />
+    <Content Include="videos\2\data\fnt1.woff" />
+    <Content Include="videos\2\data\fnt2.woff" />
+    <Content Include="videos\2\data\fnt3.woff" />
+    <Content Include="videos\2\data\fnt4.woff" />
+    <Content Include="videos\2\data\fnt5.woff" />
+    <Content Include="videos\2\data\fnt6.woff" />
+    <Content Include="videos\3\data\fnt0.woff" />
+    <Content Include="videos\3\data\fnt1.woff" />
+    <Content Include="videos\3\data\fnt2.woff" />
+    <Content Include="videos\3\data\fnt3.woff" />
+    <Content Include="videos\3\data\fnt4.woff" />
+    <Content Include="videos\3\data\fnt5.woff" />
+    <Content Include="videos\3\data\fnt6.woff" />
+    <Content Include="videos\3\data\fnt7.woff" />
+    <Content Include="videos\4\data\fnt0.woff" />
+    <Content Include="videos\4\data\fnt1.woff" />
+    <Content Include="videos\4\data\fnt2.woff" />
+    <Content Include="videos\4\data\fnt3.woff" />
+    <Content Include="videos\4\data\fnt4.woff" />
+    <Content Include="videos\4\data\fnt5.woff" />
+    <Content Include="videos\4\data\fnt6.woff" />
+    <Content Include="videos\5\data\fnt0.woff" />
+    <Content Include="videos\5\data\fnt1.woff" />
+    <Content Include="videos\5\data\fnt2.woff" />
+    <Content Include="videos\5\data\fnt3.woff" />
+    <Content Include="videos\5\data\fnt4.woff" />
+    <Content Include="videos\5\data\fnt5.woff" />
+    <Content Include="videos\5\data\fnt6.woff" />
+    <Content Include="videos\5\data\fnt7.woff" />
+    <Content Include="videos\5\data\fnt8.woff" />
+    <Content Include="videos\6\data\fnt0.woff" />
+    <Content Include="videos\6\data\fnt1.woff" />
+    <Content Include="videos\6\data\fnt10.woff" />
+    <Content Include="videos\6\data\fnt2.woff" />
+    <Content Include="videos\6\data\fnt3.woff" />
+    <Content Include="videos\6\data\fnt4.woff" />
+    <Content Include="videos\6\data\fnt5.woff" />
+    <Content Include="videos\6\data\fnt6.woff" />
+    <Content Include="videos\6\data\fnt7.woff" />
+    <Content Include="videos\6\data\fnt8.woff" />
+    <Content Include="videos\6\data\fnt9.woff" />
+    <Content Include="videos\7\data\fnt0.woff" />
+    <Content Include="videos\7\data\fnt1.woff" />
+    <Content Include="videos\7\data\fnt2.woff" />
+    <Content Include="videos\7\data\fnt3.woff" />
+    <Content Include="videos\7\data\fnt4.woff" />
+    <Content Include="videos\7\data\fnt5.woff" />
+    <Content Include="videos\7\data\fnt6.woff" />
+    <Content Include="videos\8\data\fnt0.woff" />
+    <Content Include="videos\8\data\fnt1.woff" />
+    <Content Include="videos\8\data\fnt2.woff" />
+    <Content Include="videos\8\data\fnt3.woff" />
+    <Content Include="videos\8\data\fnt4.woff" />
+    <Content Include="videos\8\data\fnt5.woff" />
+    <Content Include="videos\8\data\fnt6.woff" />
+    <Content Include="videos\8\data\fnt7.woff" />
+    <Content Include="videos\9\data\fnt0.woff" />
+    <Content Include="videos\9\data\fnt1.woff" />
+    <Content Include="videos\9\data\fnt2.woff" />
+    <Content Include="videos\9\data\fnt3.woff" />
+    <Content Include="videos\9\data\fnt4.woff" />
+    <Content Include="videos\9\data\fnt5.woff" />
+    <Content Include="videos\9\data\fnt6.woff" />
+    <Content Include="videos\Intro\data\fnt0.woff" />
+    <Content Include="videos\Intro\data\fnt1.woff" />
+    <Content Include="videos\Intro\data\fnt2.woff" />
+    <Content Include="videos\Intro\data\fnt3.woff" />
+    <Content Include="videos\Intro\data\fnt4.woff" />
+    <Content Include="videos\Intro\data\fnt5.woff" />
+    <Content Include="videos\Intro\data\fnt6.woff" />
+    <Content Include="videos\Intro\data\fnt7.woff" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_7.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_7.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_7.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_7.cshtml" />
+    <Content Include="Views\ProgramDescription\ProgramDescription_8.cshtml" />
+    <Content Include="Views\SpeakerResp\SpeakerResp_8.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_8.cshtml" />
+    <Content Include="Views\ProgramMaterials\ProgramMaterials_8.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="COISlides\" />
+    <Folder Include="Images\3\photos\" />
+    <Folder Include="Images\5\photos\" />
+    <Folder Include="Images\slideimgs\" />
+    <Folder Include="Log\" />
+    <Folder Include="PDF\5\" />
+    <Folder Include="PDF\EvalForm\" />
+    <Folder Include="PPTX\5\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Culture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.fr-CA.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.fr-CA.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CPDPortal.Data\CPDPortal.Data.csproj">
+      <Project>{941ce405-34c4-420b-8fb5-3ae453b80db8}</Project>
+      <Name>CPDPortal.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62421</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62421/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

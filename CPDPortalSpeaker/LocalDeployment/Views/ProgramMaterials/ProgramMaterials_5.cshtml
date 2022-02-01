@@ -1,0 +1,179 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+                <div class="margin-top-24">
+                    <h3>Dyslipidemia in Primary Care: Addressing Barriers to Optimal Lipid Management                              </h3>
+                    <ul>
+                        <li> Please visit the <a class="link-blue" href="/Home/SpeakerTraining?ProgramID=5">On-Demand Speaker Training</a> section of the website to access on-demand videos facilitated by Dr. Lawrence Leiter </li>
+                        <li>The comprehensive recordings summarize the updated program content and highlight the key points for each section </li>
+                        <li>The program slides are available for download once you have confirmed your availability to present or moderate at least one regional event </li>
+                    </ul>
+                    <p>
+                        <strong>
+                            Important Reminder:<br>
+                        </strong>
+                    </p><ul>
+                        <li>
+                            <strong>Please note that you cannot not make any changes to the approved program (slides/materials).  The program must be delivered exactly as approved by the CFPC.</strong>
+                            <p></p>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="margin-top-24">
+
+                    <h3>
+                        Program Slides<br>
+                    </h3>
+                    <p>
+                        <a href="/PDF/Dyslipidemia in Primary Care_Addressing Barriers to Optimal Lipid Management_August 23rd.pptx"><img src="/Images/ProgramMaterialsSlide1.png" width="453" height="339" border="0"></a><br>
+                    </p>
+                    <p>
+                        <br>
+                    </p>
+                    <h3>PROGRAM SECTIONS:                           </h3>
+                    <ul>
+                        <li> 1 Mainpro+ - (60 minutes) – Core Deck </li>
+                        <li>
+                            Number of Slides: 73 slides (including intro, q&amp;a and discussion slides) <br>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div>
+
+
+                    <div class="col-sm-12" style="padding-bottom:40px">
+                        <table width="80%" border="1" cellpadding="5" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="58%" bgcolor="#003366" style="color:#FFF; padding-left:15px"><h4><strong>Section</strong></h4></td>
+                                    <td width="42%" align="center" bgcolor="#003366" style="color:#FFF"><h4><strong>Slides</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Introductions, Disclosure Slides and Learning Objectives</strong></h4></td>
+                                    <td align="center"><h4><strong>1 - 6</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Centrality of LDL Cholesterol</strong></h4></td>
+                                    <td align="center"><h4><strong>7-20</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Limitations of Current Therapies</strong></h4></td>
+                                    <td align="center"><h4><strong>21-31</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Non-Statin Strategies to Reduce LDL-C</strong></h4></td>
+                                    <td align="center"><h4><strong>32-38</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>PCSK9 Inhibitors: News and Pearls</strong></h4></td>
+                                    <td align="center"><h4><strong>39-64</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Improving Outcomes in Our Patients</strong></h4></td>
+                                    <td align="center"><h4><strong>65-72</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Summary</strong></h4></td>
+                                    <td align="center"><h4><strong>73</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:15px"><h4><strong>Back-up Slides</strong></h4></td>
+                                    <td align="center"><h4><strong>74-77</strong></h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <h3>Clinicians' Corner </h3>
+                    <ul>
+                        <li> 0.5 Mainpro+ - (30 minutes) – 1.5 Mainpro+ (90 minutes) when added to the core deck </li>
+                        <li>Number of Slides: 14 (including intro, q&amp;a and discussion slides) </li>
+                    </ul>
+
+                    <div>
+
+
+                        <div class="col-sm-12" style="padding-bottom:40px">
+                            <table width="80%" border="1" cellpadding="5" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="58%" bgcolor="#003366" style="color:#FFF; padding-left:15px"><h4><strong>Clinicians' Corner</strong></h4></td>
+                                        <td width="42%" align="center" bgcolor="#003366" style="color:#FFF"><h4><strong>Slides</strong></h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left:15px"><h4><strong>Additional benefit of PCSK9 inhibition in high-risk patients after myocardial infarction</strong></h4></td>
+                                        <td align="center"><h4><strong>78-82</strong></h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left:15px"><h4><strong>Diabetes &amp; ASCVD</strong></h4></td>
+                                        <td align="center"><h4><strong>83-91</strong></h4></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <div style="padding:20px">
+
+                <div id="circle1" class="circleChart" data-value=""></div>
+                <div id="circle2" class="circleChart" data-value=""></div>
+                <div id="circle3" class="circleChart" data-value=""></div>
+                <div id="circle4" class="circleChart" data-value=""></div>
+
+            </div>
+
+
+
+        </div>
+
+
+     </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+    

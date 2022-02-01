@@ -1,0 +1,290 @@
+﻿@using CPDPortalMVC.Models;
+@using MoreLinq;
+@model List<Program>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        height: 260px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 id="lblTitle"></h1>
+        <div onclick="window.history.back()" class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+        <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+    </div>
+</div>
+<div class="row">
+    @{
+        Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+    }
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        <div class="1">
+            <h1>Program Description</h1>
+            <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+            <div class="margin-top-24">
+                <h3>New Horizons in Dyslipidemia Management in Primary Care</h3>
+                <p></p><h3>
+                    ABOUT:
+                </h3>
+                <ul>
+                    <li>New Horizons in Dyslipidemia Management in Primary Care is an interactive and evidence-based program developed by leading Canadian experts to address the importance of strict management of low density lipoprotein cholesterol (LDL-C) for patients with atherosclerotic cardiovascular disease as well as provide a timely review of the results of recently completed clinical trials and their applicability to routine clinical practice.</li>
+                </ul>
+                <p></p><h3>
+                    FORMAT:
+                </h3>
+                <ul>
+                    <li>The New Horizons in Dyslipidemia Management in Primary Care program consists of a core didactic deck and 4 case-based modules.&nbsp; Each module includes interactive Q&amp;A.&nbsp; </li>
+                    <li>Please decide on the modules which will be presented prior to submitting the New Event Request Form </li>
+                </ul>
+                <p></p><h3>CERTIFICATION:</h3>
+                <ul>
+                    <li>This Group Learning activity has been certified for up to 3 MAINPRO+ one-credit-per-hour credits by the CFPC. &nbsp;</li>
+                    <li>You may offer the program to your customers as a 60-minute (1.0 Mainpro+ Credit) program and add 30-minute increments for up to a 3-hour (3.0 Mainpro+ credits) program. Please reference the Process Manual for a detailed description of the program modules and the applicable credit hours.</li>
+                </ul>
+                <p></p><h3>
+                    SPEAKERS:
+                </h3>
+                <ul>
+                    <li>Program speakers will have access to the program materials once they confirm availability for at least one of regional event dates</li>
+                    <li>A copy of their COI slides is available in their resource for download </li>
+                    <li>Please reference the Process Manual for important information and requirements </li>
+                    <li><strong>As per the CFPC guidelines for certified programs, speakers are required to use the presentation slides provided by the physician organization and are not permitted to make any changes to the program materials/slides.</strong></li>
+                </ul>
+                <p></p><h3>
+                    PROGRAM MODULES:<br>
+                    New Horizons in Dyslipidemia Management in Primary Care – Core Deck <p></p>
+                </h3>
+                <ul>
+                    <li>1 Mainpro+ Credit (60 minutes)</li>
+                    <li>Number of Slides: 56 (including intro slides) </li>
+                    <li>
+                        Content Synopsis:
+                        <ul>
+                            <li>Relationship between LDL-C and CV Event Rates</li>
+                            <li>Care-Gap in Dyslipidemia Management </li>
+                            <li>Why is Statin Treatment Not Enough?</li>
+                            <li>CCS 2016 Dyslipidemia Guidelines</li>
+                            <li>FOURIER &amp; ODYSSEY Outcomes Trials&nbsp; </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div>
+                <h3>
+                    Case 1: Diabetes &amp; Cardiovascular Disease
+                </h3>
+                <ul>
+                    <li>0.5 Mainpro+ Credits (30 minutes)</li>
+                    <li>
+                        Number of Slides: 31<br>
+                    </li>
+                </ul>
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" cellspacing="0" cellpadding="10" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case1-1.png" width="300" height="225"></td>
+                                <td width="50" align="center"><img src="/Images/slideimgs/case1-2.png" width="300" height="225"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <div style="padding-bottom:20px">
+                <h3>
+                    <p>
+                        Case 2: LDL-C: How Low Do You Go?
+                    </p>
+                </h3>
+                <ul>
+                    <li>0.5 Mainpro+ Credits (30 minutes)</li>
+                    <li>
+                        Number of Slides: 37<br>
+                    </li>
+                </ul>
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" cellspacing="0" cellpadding="10" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case2-1.png" width="300" height="225"></td>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case2-2.png" width="300" height="225"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <h3>
+                    <p>
+                        Case 3: ASCVD with Multiple CV Risk Factors
+                    </p>
+                </h3>
+                <ul>
+                    <li>0.5 Mainpro+ Credits (30 minutes)</li>
+                    <li>
+                        Number of Slides: 37<br>
+                    </li>
+                </ul>
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" cellspacing="0" cellpadding="10" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case3-1.png" width="300" height="225"></td>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case3-2.png" width="300" height="225"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <h3>
+                    <p>
+                        Case 4: Familial Hypercholesterolemia
+                    </p>
+                </h3>
+                <ul>
+                    <li>0.5 Mainpro+ Credits (30 minutes)</li>
+                    <li>
+                        Number of Slides: 26<br>
+                    </li>
+                </ul>
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" cellspacing="0" cellpadding="10" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case4-1.png" width="300" height="225"></td>
+                                <td width="50%" align="center"><img src="/Images/slideimgs/case4-2.png" width="300" height="225"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+        <!-- <div class="2 margin-top-24">
+            <h3>Program Description</h3>
+            <div style="border: 3px solid #fff; height: 100px; width: 95%"></div>
+        </div>-->
+        <!--<div class="3 margin-top-24">
+            <div style="border: 3px solid #fff; width: 95%">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="background: #333; color: #fff; padding: 2px 0px 2px 5px">PROVINCE</td>
+                        <td style="width: 220px; background: #24c878; color: #fff; padding: 2px 0px 2px 5px">ACTIVE</td>
+                        <td style="width: 220px; background: #3d7f9c; color: #fff; padding: 2px 0px 2px 5px">COMPLETED</td>
+                        <td style="width: 220px; background: #e60c41; color: #fff; padding: 2px 0px 2px 5px">CANCELLED</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">BC</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">AB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">SK</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">MB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">ON</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">QC</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NS</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NFLD</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">PEI</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>-->
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">&nbsp;</div>
+</div>
+
+

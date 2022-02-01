@@ -1,0 +1,77 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>On-Demand Speaker Training</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+
+
+
+                <div class="margin-top-24">
+                    <h3><strong>Dyslipidemia in Primary Care: Addressing Barriers to Optimal Lipid Management</strong><strong> </strong></h3>
+                    <ul>
+                        <li>Please access the on-demand videos facilitated by Dr. Lawrence Leiter </li>
+                        <li>The comprehensive recordings summarize the updated program content and highlight the key points for each section </li>
+                        <li>Should you have any questions about the program content, please do not hesitate to contact Lianne Goldin – <a class="link-blue" href="mailto:lgoldin@chrc.net">lgoldin@chrc.net</a></li>
+                        <li>Please note: The program slides are available for download once you have confirmed your availability to present or moderate at least one regional event </li>
+                    </ul>
+                    <h3>Program Sections on Demand: </h3>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/Intro/index.html" target="_new"><img src="/Images/ondemand/1.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+
+                    <p><a href="/videos/2/index.html" target="_new"><img src="/Images/ondemand/2.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/3/index.html" target="_new"><img src="/Images/ondemand/3.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/4/index.html" target="_new"><img src="/Images/ondemand/4.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/5/index.html" target="_new"><img src="/Images/ondemand/5.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/6/index.html" target="_new"><img src="/Images/ondemand/6.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/7/index.html" target="_new"><img src="/Images/ondemand/7.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/8/index.html" target="_new"><img src="/Images/ondemand/8.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+                    <p><a href="/videos/9/index.html" target="_new"><img src="/Images/ondemand/9.png" width="453" height="339" border="0"></a></p>
+                    <p>&nbsp;</p>
+
+
+                </div>
+                <div></div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

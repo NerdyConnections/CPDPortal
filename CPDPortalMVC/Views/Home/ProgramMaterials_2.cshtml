@@ -1,0 +1,368 @@
+﻿
+@model CPDPortalMVC.Models.EvalForm2Model
+@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+                <div class="margin-top-24">
+                    <h4>Please click on the section header below to expand and see the available materials.  All materials must be downloaded from this section.</h4>
+                </div>
+
+
+                <div class="margin-top-24">
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li><strong>Please note that you cannot not make any changes to the approved program (slides/materials).&nbsp; The program must be delivered exactly as approved by the CFPC.</strong></li>
+                    </ul>
+                </div>
+               <!--Program Slides and handouts is no longer required June 20,by Lianne-->
+                <!--div class="margin-top-24">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="panel1">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse1">Program Slides and Handouts </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <table width="90%" border="0" align="center" cellpadding="10" cellspacing="0" style="border: #999 thin solid">
+                                        <tr>
+                                            <td width="12%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Slides</td>
+                                            <td width="14%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Handouts</td>
+                                            <td width="28%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                                            <td width="46%" align="center" bgcolor="#339999" style="font-size: 16px; color: #FFF;">Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF; padding:10px"><a href="~/PDF/CoreDeck.pptx" target="_new"><img src="~/Images/ppt.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF; padding:10px"><a href="~/PDF/CoreDeck.pdf" target="_new"><img src="~/Images/pdf.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF">1.0 Mainpro+</td>
+                                            <td align="center" bgcolor="#FFFFFF">Core Presentation Deck</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" style="border: #999 thin solid">
+                                        <tr>
+                                            <td width="12%" height="29" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Slides</td>
+                                            <td width="14%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Handouts</td>
+                                            <td width="28%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                                            <td colspan="2" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Case 1: Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case1.pptx" target="_new"><img src="~/Images/ppt.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case1.pdf" target="_new"><img src="~/Images/pdf.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF">0.5 Mainpro+</td>
+                                            <td width="9%" align="center" bgcolor="#FFFFFF"><img src="~/Images/case1.png" alt="" width="40" height="53" /></td>
+                                            <td width="37%" align="center" bgcolor="#FFFFFF">Diabetes & Cardiovascular Disease</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+
+                                    <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" style="border: #999 thin solid">
+                                        <tr>
+                                            <td width="12%" height="29" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Slides</td>
+                                            <td width="14%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Handouts</td>
+                                            <td width="28%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                                            <td colspan="2" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Case 2: Raj</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case2.pptx" target="_new"><img src="~/Images/ppt.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case2.pdf" target="_new"><img src="~/Images/pdf.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF">0.5 Mainpro+</td>
+                                            <td width="9%" align="center" bgcolor="#FFFFFF"><img src="~/Images/case2.png" alt="" width="40" height="53" /></td>
+                                            <td width="37%" align="center" bgcolor="#FFFFFF">LDL-C: How Low Do You Go?</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+
+                                    <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" style="border: #999 thin solid">
+                                        <tr>
+                                            <td width="12%" height="29" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Slides</td>
+                                            <td width="14%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Handouts</td>
+                                            <td width="28%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                                            <td colspan="2" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Case 3: Frank</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case3.pptx" target="_new"><img src="~/Images/ppt.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case3.pdf" target="_new"><img src="~/Images/pdf.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF">0.5 Mainpro+</td>
+                                            <td width="9%" align="center" bgcolor="#FFFFFF"><img src="~/Images/case3.png" alt="" width="40" height="53" /></td>
+                                            <td width="37%" align="center" bgcolor="#FFFFFF">ASCVD with Multiple CV Risk Factors</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+
+                                    <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" style="border: #999 thin solid">
+                                        <tr>
+                                            <td width="12%" height="29" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Slides</td>
+                                            <td width="14%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Handouts</td>
+                                            <td width="28%" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Credit Designation</td>
+                                            <td colspan="2" align="center" bgcolor="#003366" style="font-size: 16px; color: #FFF;">Case 4: Jack</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case4.pptx" target="_new"><img src="~/Images/ppt.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF" style="font-size: 16px; color: #FFF;padding:10px"><a href="~/PDF/Case4.pdf" target="_new"><img src="~/Images/pdf.png" alt="" width="35" height="36" border="0" /></a></td>
+                                            <td align="center" bgcolor="#FFFFFF">0.5 Mainpro+</td>
+                                            <td width="9%" align="center" bgcolor="#FFFFFF"><img src="~/Images/case4.png" alt="" width="40" height="53" /></td>
+                                            <td width="37%" align="center" bgcolor="#FFFFFF">Familial Hypercholesterolemia</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </!--div-->
+            
+                    <div class="margin-top-24">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" id="panel2">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse2">Invitations </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="~/PDF/2/NationalInvitationTemplate.pdf" target="new" style="color:#333">Invitation Template (National Certification Statement)</a></strong><br>
+                                        To be used prior to Regional Ethics Review Submission
+                                        <br>
+                                        <br>
+
+                                        <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="~/PDF/2/RegionalInvitationTemplate.pdf" target="new" style="color:#333">Invitation Template (Regional Accreditation Statement)</a></strong><br>
+                                        To be used ONLY once the program has been approved by the regional provincial chapter
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+@using (Html.BeginForm("EvalForm2", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+                        <div class="margin-top-24">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="panel3">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapse3">Evaluation Form</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+
+                                            <table width="80%" border="0" cellspacing="0" cellpadding="5">
+                                                <tr>
+                                                    <td width="26%"><strong>Program Date:</strong></td>
+                                                    <td width="74%">
+                                                        @Html.TextBoxFor(m => m.ProgramDate, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Program Location:</strong></td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.ProgramLocation, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Speaker 1:</strong></td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Speaker1, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Speaker 2:</strong></td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Speaker2, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br>
+
+                                            <strong>Modules to be presented. Please select all that apply </strong><br>
+                                            The learning objectives for the corresponding slide deck and the speaker names will be auto-generated
+
+                                            <br>
+                                            <br>
+
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                                <tr>
+                                                    <td valign="middle"> @Html.CheckBoxFor(m => m.CoreDeck, new { id = "chkCoreDeck" })</td>
+                                                    <td valign="middle">The Clinical Exchange: Expert Perspectives on Treating and Managing Patients at High Risk for Fracture – Core Deck</td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle"> @Html.CheckBoxFor(m => m.Case1, new { id = "chkCase1" })</td>
+                                                    <td valign="middle">Case 1: Risk Assessment and Management of Treatment Naive PMO Patients</td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle">@Html.CheckBoxFor(m => m.Case2, new { id = "chkCase2" })</td>
+                                                    <td valign="middle">Case 2: Risk Assessment &Aacute; Management of Male OP Patients</td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle"> @Html.CheckBoxFor(m => m.Case3, new { id = "chkCase3" })</td>
+                                                    <td valign="middle">Case 3: Medications and Comorbidities Associated with Bone Loss</td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle"> @Html.CheckBoxFor(m => m.Case4, new { id = "chkCase4" })</td>
+                                                    <td valign="middle">Case 4: Benefits of Treatment Persistence and Adherence </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle">
+                                                        @Html.CheckBoxFor(m => m.Case5, new { id = "chkCase5" })
+                                                    </td>
+                                                    <td valign="middle">Case 5: Optimization of Long-Term Therapy</td>
+                                                </tr>
+                                            </table>
+                                            <div class="row">
+                                                <div class="form-group form-group-sm col-sm-2">
+                                                    <label class="" title="">&nbsp;</label>
+                                                    <input type="submit" class="form-control btn btn-default btn-sm" id="btnSubmit" value="SUBMIT" style="bottom:0px" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                            
+}
+
+                            <div class="margin-top-24">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" id="panel4">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse4">Certificate of Attendance </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse4" class="panel-collapse collapse">
+                                            <div class="panel-body"><strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="~/PDF/2/CertificateAttendance.pdf" target="new" style="color:#333">Certificate of Attendance</a></strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="margin-top-24">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" id="panel5">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse5">Sign-In Sheet </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse5" class="panel-collapse collapse">
+                                                <div class="panel-body"><strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="~/PDF/2/SignInSheet.pdf" target="new"  style="color:#333">Sign-In Sheet</a></strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">&nbsp;</div>
+                                </div>
+                            </div>
+                </div>
+         </div>
+    </div>   
+ </div>
+
+@if(Model.DisplayPDF)
+{
+
+    <script>
+
+        window.open('@Model.FileName','_blank');
+    </script>
+}
+                            <script src="/Scripts/jquery-3.1.0.min.js"></script>
+                            <script src="/Scripts/bootstrap.min.js"></script>
+                            <script src="/Scripts/jquery.easing.min.js"></script>
+                            <script src="/Scripts/circleCharts.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+                            <script>
+                                $('input#ProgramDate').datetimepicker({
+                                    format: 'YYYY/MM/DD'
+                                });
+                                $(document).ready(function () {
+                                    $('#panel1').click(function(){
+
+                                        $('#collapse1').toggle();
+                                    })
+                                 
+
+                                });
+
+                                $(document).ready(function () {
+                                    $('#panel2').click(function () {
+
+                                        $('#collapse2').toggle();
+                                    })
+
+                                });
+
+                                $(document).ready(function () {
+                                    $('#panel3').click(function () {
+
+                                        $('#collapse3').toggle();
+                                    })
+
+                                });
+
+                                $(document).ready(function () {
+                                    $('#panel4').click(function () {
+
+                                        $('#collapse4').toggle();
+                                    })
+
+                                });
+
+                                $(document).ready(function () {
+                                    $('#panel5').click(function () {
+
+                                        $('#collapse5').toggle();
+                                    })
+
+                                });
+
+                            </script>
+

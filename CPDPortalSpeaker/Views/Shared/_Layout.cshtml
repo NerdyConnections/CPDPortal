@@ -1,0 +1,111 @@
+﻿@using CPDPortalSpeaker.Util;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/Site.css?t=34535" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        $('.btn-back').on('click', function (e) {
+        window.history.back();
+        });
+    </script>
+
+
+</head>
+<body style="background-image:url('/Images/notebook1st.jpg');">
+    <div class="overlay"></div>
+    <header>
+
+        <div class="navbar navbar-inverse overlay-z2">
+            <!--navbar-fixed-top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <div id="logo">
+                                <div class="logo-img">
+                                    <object id="logo-svg" type="image/svg+xml" data="/Images/chrc-ccpdhm-logo.svg"></object>
+
+
+
+                                </div>
+                                <div style="margin-top:25px;clear:both" class="logo-txt-sub">@Resources.Resource.SpeakerResourcePortal</div>
+
+                                <div class="logo-txt-welcome">@Resources.Resource.Salute @ViewBag.FirstName @ViewBag.LastName</div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-xs-2  col-sm-2 col-md-2" style="font-size:12px; margin-top:9px;display:none;">
+                            <p>
+                                <a href="mailto:info@ccpdhm.com" title="info@ccpdhm.com" style="margin-right: 10px; color:#000">info@ccpdhm.com</a> <br class="r-break">
+                                259 Yorkland Road, Suite 200, <br class="r-break">
+                                North York, Ontario, <br class="r-break">
+                                Canada, M2J 5B2
+                            </p>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav float-right" style="float: right">
+                                <li><a href="/Culture/ToggleCulture?OriginalUrl=@Request.Url.AbsoluteUri">@(CPDPortalSpeaker.Util.Constants.GetCurrentLanguage())</a></li>
+                                <li><a href="mailto:info@ccpdhm.com">@Resources.Resource.ContactUs</a></li>
+                                <li>@Html.ActionLink(@Resources.Resource.LOGOUT, "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "ctrlLogOut" })</li>
+
+
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+
+        <div class="container  overlay-z2">
+            @RenderBody()
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container overlay-z2 footer">
+            <div class="row">
+
+                <div class="col-xs-12  col-sm-12 col-md-12" align="center" style="font-size:16px">
+                    @Html.Raw(@Resources.Resource.Footer)
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

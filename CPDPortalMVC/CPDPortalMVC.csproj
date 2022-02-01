@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65237929-1793-4696-9C4B-687FBA232054}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CPDPortalMVC</RootNamespace>
+    <AssemblyName>CPDPortalMVC</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MoreLinq, Version=2.9.21302.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.9.0\lib\net40\MoreLinq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Data\GenPdf.cs" />
+    <Compile Include="App_GlobalResources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resource.fr-CA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.fr-CA.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivateController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ArchivedController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DataTableController.cs" />
+    <Compile Include="Controllers\DynamicPDFController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EvalFormController.cs" />
+    <Compile Include="Controllers\FinanceController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\ProgramDetailController.cs" />
+    <Compile Include="Controllers\SpeakerController.cs" />
+    <Compile Include="CustomValidation\VadidateProgramAgendaUpload.cs" />
+    <Compile Include="CustomValidation\ValidateEventLocationDetails.cs" />
+    <Compile Include="CustomValidation\ValidateEventModule.cs" />
+    <Compile Include="CustomValidation\ValidateEventTypeQuestions.cs" />
+    <Compile Include="CustomValidation\ValidateFileSize.cs" />
+    <Compile Include="CustomValidation\ValidateLocationTypeOther.cs" />
+    <Compile Include="CustomValidation\ValidateMealStartTime.cs" />
+    <Compile Include="CustomValidation\ValidateAmgenRepName.cs" />
+    <Compile Include="CustomValidation\ValidateMealType.cs" />
+    <Compile Include="CustomValidation\ValidateProgamDate1.cs" />
+    <Compile Include="CustomValidation\ValidateProgramDate2.cs" />
+    <Compile Include="CustomValidation\ValidateProgramDate3.cs" />
+    <Compile Include="CustomValidation\ValidateProgramEndTime.cs" />
+    <Compile Include="CustomValidation\ValidateProgramModeratorID.cs" />
+    <Compile Include="CustomValidation\ValidateProvinces.cs" />
+    <Compile Include="CustomValidation\ValidateSessionCredits.cs" />
+    <Compile Include="CustomValidation\ValidateSufficientKnowledge.cs" />
+    <Compile Include="CustomValidation\ValidateTerritories.cs" />
+    <Compile Include="CustomValidation\ValidateVenueContacted.cs" />
+    <Compile Include="DAL\ActivateRepository.cs" />
+    <Compile Include="DAL\AdminRepository.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\DashboardRepository.cs" />
+    <Compile Include="DAL\FinanceRepository.cs" />
+    <Compile Include="DAL\PostSessionRepository.cs" />
+    <Compile Include="DAL\ProgramRepository.cs" />
+    <Compile Include="DAL\SpeakerRepository.cs" />
+    <Compile Include="DAL\TherapeuticRepository.cs" />
+    <Compile Include="DAL\UserRepository.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ChartController.cs" />
+    <Compile Include="Models\COISlide.cs" />
+    <Compile Include="Models\CompletedProgram.cs" />
+    <Compile Include="Models\DashboardItem.cs" />
+    <Compile Include="Models\EvalForm2Model.cs" />
+    <Compile Include="Models\EvalForm5Model.cs" />
+    <Compile Include="Models\EvalForm3Model.cs" />
+    <Compile Include="Models\EvalForm7Model.cs" />
+    <Compile Include="Models\EvalForm8Model.cs" />
+    <Compile Include="Models\EvalFormModel.cs" />
+    <Compile Include="Models\EventModule.cs" />
+    <Compile Include="Models\FinanceModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NationalInvitation7Model.cs" />
+    <Compile Include="Models\PayeeModel.cs" />
+    <Compile Include="Models\PresenterPayment.cs" />
+    <Compile Include="Models\Privilege.cs" />
+    <Compile Include="Models\Program.cs" />
+    <Compile Include="Models\ProgramRequestIIModel.cs" />
+    <Compile Include="Models\ProgramRequestReportItem.cs" />
+    <Compile Include="Models\ProgramRequest.cs" />
+    <Compile Include="Models\ProgramRequestSessionCredits.cs" />
+    <Compile Include="Models\ProgramRequestStatusCount.cs" />
+    <Compile Include="Models\ProgramRequestViewModel.cs" />
+    <Compile Include="Models\ProgramSessionPayment.cs" />
+    <Compile Include="Models\ProvinceModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SessionUpload.cs" />
+    <Compile Include="Models\SpeakerModel.cs" />
+    <Compile Include="Models\TerritoryModel.cs" />
+    <Compile Include="Models\TherapeuticArea.cs" />
+    <Compile Include="Models\UserActivationModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserRegistration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Util\AppData.cs" />
+    <Compile Include="Util\BusinessDaysCalc.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\Encryptor.cs" />
+    <Compile Include="Util\PDFResult.cs" />
+    <Compile Include="Util\ProvinceComparer.cs" />
+    <Compile Include="Util\ListHelper.cs" />
+    <Compile Include="Util\TerritoryComparer.cs" />
+    <Compile Include="Util\UserHelper.cs" />
+    <Compile Include="ViewModels\ActivationViewModel.cs" />
+    <Compile Include="ViewModels\ProgramListViewModel.cs" />
+    <Compile Include="ViewModels\WebCastViewModel.cs" />
+    <Compile Include="ViewModels\ProgramRequestCancellationVM.cs" />
+    <Compile Include="ViewModels\PostSessionViewModel.cs" />
+    <Compile Include="ViewModels\ProgramRequestModifyVM.cs" />
+    <Compile Include="ViewModels\SpeakerViewModel.cs" />
+    <Compile Include="ViewModels\StatusChangeEmailViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\programRequest.css" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\Speaker.css" />
+    <Content Include="DOC\AmgenTrainingRecording.mp4" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\1bk.jpg" />
+    <Content Include="Images\1px_grey.gif" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\2a.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\3\adachi.png" />
+    <Content Include="Images\3\belanger.png" />
+    <Content Include="Images\3\brown.png" />
+    <Content Include="Images\3\habert.png" />
+    <Content Include="Images\3\jovaisas.png" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\5\photos\bernucci.png" />
+    <Content Include="Images\5\photos\goodman.png" />
+    <Content Include="Images\5\photos\gregoire.png" />
+    <Content Include="Images\5\photos\habert.png" />
+    <Content Include="Images\5\photos\leiter.png" />
+    <Content Include="Images\5\photos\lin.png" />
+    <Content Include="Images\5\photos\Mancini.png" />
+    <Content Include="Images\5\photos\ngui.png" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7\adachi.png" />
+    <Content Include="Images\7\belanger.png" />
+    <Content Include="Images\7\brown.png" />
+    <Content Include="Images\7\habert.png" />
+    <Content Include="Images\7\jovaisas.png" />
+    <Content Include="Images\7\slide1.png" />
+    <Content Include="Images\7\slide10.png" />
+    <Content Include="Images\7\slide2.png" />
+    <Content Include="Images\7\slide3.png" />
+    <Content Include="Images\7\slide4.png" />
+    <Content Include="Images\7\slide5.png" />
+    <Content Include="Images\7\slide6.png" />
+    <Content Include="Images\7\slide7.png" />
+    <Content Include="Images\7\slide8.png" />
+    <Content Include="Images\7\slide9.png" />
+    <Content Include="Images\8\bernucci.png" />
+    <Content Include="Images\8\goodman.png" />
+    <Content Include="Images\8\gregoire.png" />
+    <Content Include="Images\8\habert.png" />
+    <Content Include="Images\8\leiter.png" />
+    <Content Include="Images\8\lin.png" />
+    <Content Include="Images\alpha.gif" />
+    <Content Include="Images\Amgen.svg" />
+    <Content Include="Images\belanger.png" />
+    <Content Include="Images\bell.png" />
+    <Content Include="Images\bg-opt.jpg" />
+    <Content Include="Images\bg-prog.jpg" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bg1-prog.jpg" />
+    <Content Include="Images\bg2-prog.jpg" />
+    <Content Include="Images\brown.png" />
+    <Content Include="Images\brown_j.png" />
+    <Content Include="Images\button_login.png" />
+    <Content Include="Images\case1.png" />
+    <Content Include="Images\case2.png" />
+    <Content Include="Images\case3.png" />
+    <Content Include="Images\case4.png" />
+    <Content Include="Images\CCPD.svg" />
+    <Content Include="Images\chooseFile_btn.png" />
+    <Content Include="Images\CHRC.svg" />
+    <Content Include="Images\CHRClogos_mer.png" />
+    <Content Include="Images\CHRClogos_mer.svg" />
+    <Content Include="Images\CHRClogos_mer_grey.svg" />
+    <Content Include="Images\CPDLOGO\amgen.png" />
+    <Content Include="Images\Delete.jpg" />
+    <Content Include="Images\dufour.png" />
+    <Content Include="Images\EvalForm2\Case1.jpg" />
+    <Content Include="Images\EvalForm2\Case2.jpg" />
+    <Content Include="Images\EvalForm2\Case3.jpg" />
+    <Content Include="Images\EvalForm2\Case4.jpg" />
+    <Content Include="Images\EvalForm2\Case5.jpg" />
+    <Content Include="Images\EvalForm2\CoreDeck.jpg" />
+    <Content Include="Images\EvalForm2\DateLabel.jpg" />
+    <Content Include="Images\EvalForm2\Demographics.jpg" />
+    <Content Include="Images\EvalForm2\LastPage.jpg" />
+    <Content Include="Images\EvalForm2\LearningObjectives.jpg" />
+    <Content Include="Images\EvalForm2\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm2\MainHeader.jpg" />
+    <Content Include="Images\EvalForm2\SpaceField.jpg" />
+    <Content Include="Images\EvalForm2\SpeakerEval1.jpg" />
+    <Content Include="Images\EvalForm2\SpeakerEval2.jpg" />
+    <Content Include="Images\EvalForm2\SpeakerLabel.jpg" />
+    <Content Include="Images\EvalForm2\ThisProgram.jpg" />
+    <Content Include="Images\EvalForm3\DateLabel.jpg" />
+    <Content Include="Images\EvalForm3\Demographics.jpg" />
+    <Content Include="Images\EvalForm3\LastPage.jpg" />
+    <Content Include="Images\EvalForm3\SpeakerEval3.jpg" />
+    <Content Include="Images\EvalForm3\LearningObjectives.jpg" />
+    <Content Include="Images\EvalForm3\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm3\MainHeader.jpg" />
+    <Content Include="Images\EvalForm3\SpeakerEval2.jpg" />
+    <Content Include="Images\EvalForm3\SpeakerEval1.jpg" />
+    <Content Include="Images\EvalForm3\SpeakerLabel.jpg" />
+    <Content Include="Images\EvalForm7\DateLabel.jpg" />
+    <Content Include="Images\EvalForm7\Demographics.jpg" />
+    <Content Include="Images\EvalForm7\LastPage.jpg" />
+    <Content Include="Images\EvalForm7\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm7\M1.jpg" />
+    <Content Include="Images\EvalForm7\M10.jpg" />
+    <Content Include="Images\EvalForm7\M2.jpg" />
+    <Content Include="Images\EvalForm7\M3.jpg" />
+    <Content Include="Images\EvalForm7\M4.jpg" />
+    <Content Include="Images\EvalForm7\M5.jpg" />
+    <Content Include="Images\EvalForm7\M6.jpg" />
+    <Content Include="Images\EvalForm7\M7.jpg" />
+    <Content Include="Images\EvalForm7\M8.jpg" />
+    <Content Include="Images\EvalForm7\M9.jpg" />
+    <Content Include="Images\EvalForm7\MainHeader.jpg" />
+    <Content Include="Images\EvalForm7\ModeratorForm.jpg" />
+    <Content Include="Images\EvalForm7\ModeratorTitle.jpg" />
+    <Content Include="Images\EvalForm7\SpeakerForm.jpg" />
+    <Content Include="Images\EvalForm7\SpeakerTitle.jpg" />
+    <Content Include="Images\EvalForm8\AfterDateLocation.jpg" />
+    <Content Include="Images\EvalForm8\DateLabel.jpg" />
+    <Content Include="Images\EvalForm8\LastPage.jpg" />
+    <Content Include="Images\EvalForm8\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm8\MainHeader.jpg" />
+    <Content Include="Images\EvalForm8\SpeakerForm.jpg" />
+    <Content Include="Images\EvalForm8\SpeakerTitle.jpg" />
+    <Content Include="Images\EvalForm\Case1.jpg" />
+    <Content Include="Images\EvalForm\Case2.jpg" />
+    <Content Include="Images\EvalForm\Case3.jpg" />
+    <Content Include="Images\EvalForm\Case4.jpg" />
+    <Content Include="Images\EvalForm\CaseNewHorizons.jpg" />
+    <Content Include="Images\EvalForm\DateLabel.jpg" />
+    <Content Include="Images\EvalForm\Demographics.jpg" />
+    <Content Include="Images\EvalForm\LastPage.jpg" />
+    <Content Include="Images\EvalForm\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm\MainHeader.jpg" />
+    <Content Include="Images\EvalForm\SpaceField.jpg" />
+    <Content Include="Images\EvalForm\SpeakerEval1.jpg" />
+    <Content Include="Images\EvalForm\SpeakerEval2.jpg" />
+    <Content Include="Images\EvalForm\SpeakerLabel.jpg" />
+    <Content Include="Images\EvalForm_FR\Case1.jpg" />
+    <Content Include="Images\EvalForm_FR\Case2.jpg" />
+    <Content Include="Images\EvalForm_FR\Case3.jpg" />
+    <Content Include="Images\EvalForm_FR\Case4.jpg" />
+    <Content Include="Images\EvalForm_FR\CaseNewHorizons.jpg" />
+    <Content Include="Images\EvalForm_FR\DateLabel.jpg" />
+    <Content Include="Images\EvalForm_FR\Demographics.jpg" />
+    <Content Include="Images\EvalForm_FR\LastPage.jpg" />
+    <Content Include="Images\EvalForm_FR\LocationLabel.jpg" />
+    <Content Include="Images\EvalForm_FR\MainHeader.jpg" />
+    <Content Include="Images\EvalForm_FR\SpaceField.jpg" />
+    <Content Include="Images\EvalForm_FR\SpeakerEval1.jpg" />
+    <Content Include="Images\EvalForm_FR\SpeakerEval2.jpg" />
+    <Content Include="Images\EvalForm_FR\SpeakerLabel.jpg" />
+    <Content Include="Images\excel.png" />
+    <Content Include="Images\goodman.png" />
+    <Content Include="Images\gregoire.png" />
+    <Content Include="Images\h.jpg" />
+    <Content Include="Images\h2.jpg" />
+    <Content Include="Images\habert.png" />
+    <Content Include="Images\health-521386_1920.png" />
+    <Content Include="Images\kendler.png" />
+    <Content Include="Images\khan.png" />
+    <Content Include="Images\leiter.png" />
+    <Content Include="Images\lin.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\Mancini.png" />
+    <Content Include="Images\mealExpenses.jpg" />
+    <Content Include="Images\NationalInvitation7\AfterDateLocation.jpg" />
+    <Content Include="Images\NationalInvitation7\AfterDateLocation2.jpg" />
+    <Content Include="Images\NationalInvitation7\DateLabel.jpg" />
+    <Content Include="Images\NationalInvitation7\FooterNational.jpg" />
+    <Content Include="Images\NationalInvitation7\FooterRegional.jpg" />
+    <Content Include="Images\NationalInvitation7\LocationLabel.jpg" />
+    <Content Include="Images\NationalInvitation7\m1.jpg" />
+    <Content Include="Images\NationalInvitation7\m10.jpg" />
+    <Content Include="Images\NationalInvitation7\m2.jpg" />
+    <Content Include="Images\NationalInvitation7\m3.jpg" />
+    <Content Include="Images\NationalInvitation7\m4.jpg" />
+    <Content Include="Images\NationalInvitation7\m5.jpg" />
+    <Content Include="Images\NationalInvitation7\m6.jpg" />
+    <Content Include="Images\NationalInvitation7\m7.jpg" />
+    <Content Include="Images\NationalInvitation7\m8.jpg" />
+    <Content Include="Images\NationalInvitation7\m9.jpg" />
+    <Content Include="Images\NationalInvitation7\MainHeader.jpg" />
+    <Content Include="Images\NationalInvitation7\ModeratorLabel.jpg" />
+    <Content Include="Images\NationalInvitation7\NationalFooterL1.jpg" />
+    <Content Include="Images\NationalInvitation7\NationalFooterL2.jpg" />
+    <Content Include="Images\NationalInvitation7\NationalFooterL3.jpg" />
+    <Content Include="Images\NationalInvitation7\NationalFooterR1.jpg" />
+    <Content Include="Images\NationalInvitation7\ProgramEndTime.jpg" />
+    <Content Include="Images\NationalInvitation7\ProgramStartTime.jpg" />
+    <Content Include="Images\NationalInvitation7\RSVPLabel.jpg" />
+    <Content Include="Images\NationalInvitation7\SpeakerLabel.jpg" />
+    <Content Include="Images\ngui.png" />
+    <Content Include="Images\notebook.jpg" />
+    <Content Include="Images\notebook.png" />
+    <Content Include="Images\notebook1st.jpg" />
+    <Content Include="Images\pdf-download.png" />
+    <Content Include="Images\pdf.png" />
+    <Content Include="Images\ph.jpg" />
+    <Content Include="Images\ph2.jpg" />
+    <Content Include="Images\play.png" />
+    <Content Include="Images\ppt.png" />
+    <Content Include="Images\prog1.jpg" />
+    <Content Include="Images\prog2.jpg" />
+    <Content Include="Images\slideimgs\1-b.png" />
+    <Content Include="Images\slideimgs\2-b.png" />
+    <Content Include="Images\slideimgs\3-b.png" />
+    <Content Include="Images\slideimgs\3\case0.png" />
+    <Content Include="Images\slideimgs\3\case1.png" />
+    <Content Include="Images\slideimgs\3\case2.png" />
+    <Content Include="Images\slideimgs\3\case3.png" />
+    <Content Include="Images\slideimgs\3\case4.png" />
+    <Content Include="Images\slideimgs\3\case5.png" />
+    <Content Include="Images\slideimgs\4-b.png" />
+    <Content Include="Images\slideimgs\5-b.png" />
+    <Content Include="Images\square.svg" />
+    <Content Include="Images\ViewFile.jpg" />
+    <Content Include="Scripts\bootstrap-datepicker.fr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EmbeddedResource Include="App_GlobalResources\Resource.fr-CA.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.fr-CA.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="PDF\Cookies.pdf" />
+    <Content Include="PDF\NationalInvitationTemplate.pdf" />
+    <Content Include="PDF\RegionalInvitationTemplate.pdf" />
+    <Content Include="PDF\ImplementationGuide.pdf" />
+    <Content Include="PDF\ProcessDocument.pdf" />
+    <Content Include="PDF\2\CertificateAttendance.pdf" />
+    <Content Include="PDF\2\NationalInvitationTemplate.pdf" />
+    <Content Include="PDF\2\RegionalInvitationTemplate.pdf" />
+    <Content Include="PDF\2\SignInSheet.pdf" />
+    <Content Include="PDF\CertificateAttendance.pdf" />
+    <Content Include="DOC\SpeakerAgreement.docx" />
+    <Content Include="DOC\CHEEvents.xlsx" />
+    <Content Include="DOC\MasterSpeakerList.xlsx" />
+    <Content Include="PDF\3\NationalInvitationTemplate.pdf" />
+    <Content Include="PDF\3\RegionalInvitationTemplate.pdf" />
+    <Content Include="PDF\3\CertificateAttendance.pdf" />
+    <Content Include="PDF\3\SignInSheet.pdf" />
+    <Content Include="PDF\CertificateAttendance_fr.pdf" />
+    <Content Include="PDF\NationalInvitationTemplate_fr.pdf" />
+    <Content Include="PDF\RegionalInvitationTemplate_fr.pdf" />
+    <Content Include="PDF\SignInSheet_fr.pdf" />
+    <Content Include="PDF\5\Dyslipidemia in Primary Care_Invitation_Pre Ethics Approval.pdf" />
+    <Content Include="PDF\5\Dyslipidemia in Primary Care_Invitation_Post Ethics Approval.pdf" />
+    <Content Include="PDF\5\COA.pdf" />
+    <Content Include="PDF\5\COISlides.pdf" />
+    <Content Include="PDF\5\NationalInvitation.pdf" />
+    <Content Include="PDF\5\RegionalInvitation.pdf" />
+    <Content Include="PDF\5\SignInShee2t.pdf" />
+    <Content Include="PDF\5\SignInSheet.pdf" />
+    <Content Include="PDF\5\PM\Certificate of Attendance Web Template.pdf" />
+    <Content Include="PDF\5\PM\Dyslipidemia in Primary Care_Invitation_Evaluation Form.pdf" />
+    <Content Include="PDF\5\PM\Dyslipidemia in Primary Care_Invitation_Post Ethics Approval.pdf" />
+    <Content Include="PDF\5\PM\Dyslipidemia in Primary Care_Invitation_Pre Ethics Approval.pdf" />
+    <Content Include="PDF\5\PM\Sign-In Sheet Web Template.pdf" />
+    <Content Include="PDF\7\KCQs 2020_Certificate of Attendance.pdf" />
+    <Content Include="PDF\7\Sign-In Sheet KQC 2020 Web Template.pdf" />
+    <Content Include="PDF\7\COAStatic.pdf" />
+    <Content Include="PDF\7\NationalInvitationStatic.pdf" />
+    <Content Include="PDF\7\RegionalInvitationStatic.pdf" />
+    <Content Include="PDF\7\SignInSheetStatic.pdf" />
+    <Content Include="PDF\Case1.pdf" />
+    <Content Include="PDF\Case1.pptx" />
+    <Content Include="PDF\Case2.pdf" />
+    <Content Include="PDF\Case2.pptx" />
+    <Content Include="PDF\Case3.pdf" />
+    <Content Include="PDF\Case3.pptx" />
+    <Content Include="PDF\Case4.pdf" />
+    <Content Include="PDF\Case4.pptx" />
+    <Content Include="PDF\CoreDeck.pdf" />
+    <Content Include="PDF\CoreDeck.pptx" />
+    <Content Include="PDF\EvalForm5\Evaluation2020_2_21_16_19_2_725.pdf" />
+    <Content Include="PDF\EvalForm7\Evaluation2020_2_21_16_14_0_457.pdf" />
+    <Content Include="PDF\EvalForm7\Evaluation2020_2_25_10_36_34_756.pdf" />
+    <Content Include="PDF\EvalForm7\Evaluation2020_2_25_11_15_58_94.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_12_55_7_879.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_13_40_10_749.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_13_48_33_855.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_13_55_27_358.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_13_59_49_439.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_14_7_9_124.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_15_12_12_760.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_15_20_20_858.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_15_45_49_193.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_17_30_43_518.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_17_3_8_220.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_17_50_55_307.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_17_55_18_663.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_18_15_17_680.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_18_21_30_383.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_18_26_54_451.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_18_30_40_79.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_20_18_6_7_836.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_10_1_50_595.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_12_29_16_774.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_12_35_38_647.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_12_38_3_30.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_12_46_57_936.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_12_53_13_790.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_13_1_31_31.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_13_5_43_270.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_25_20_301.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_26_30_671.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_26_55_583.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_35_54_598.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_37_18_164.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_41_43_849.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_42_32_30.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_14_51_31_702.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_15_11_4_428.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_15_22_20_13.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_21_16_12_7_389.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_25_10_35_30_230.pdf" />
+    <Content Include="PDF\NationalInvitation\NationalInvitation72020_2_25_14_32_36_726.pdf" />
+    <Content Include="PDF\PM1\New Horizons in Dyslipidemia Management Core Deck.pdf" />
+    <Content Include="PDF\RegionalInvitation\NationalInvitation72020_2_21_15_11_28_203.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_21_15_16_45_762.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_21_15_57_57_624.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_21_16_13_24_360.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_21_16_6_50_459.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_25_10_36_19_841.pdf" />
+    <Content Include="PDF\RegionalInvitation\RegionalInvitation72020_2_25_14_32_54_341.pdf" />
+    <Content Include="PDF\SignInSheet.pdf" />
+    <Content Include="PDF\5\PM\Dyslipidemia in Primary Care_Addressing Barriers to Optimal Lipid Management_Hand-Out 1.0 Credit Program.pdf" />
+    <Content Include="PDF\5\Dyslipidemia in Primary Care_Addressing Barriers to Optimal Lipid Management_Hand-Out 1.5 Credit Program.pdf" />
+    <Content Include="PDF\5\PM\Dyslipidemia in Primary Care_Addressing Barriers to Optimal Lipid Management_Hand-Out 1.5 Credit Program.pdf" />
+    <Content Include="PDF\7\Clinical Question 10_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 1_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 2_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 3_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 4_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 5_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 6_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 7_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 8_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\7\Clinical Question 9_ Participant Hand-Out.pdf" />
+    <Content Include="PDF\5\PM\ParticipantHandOutsFr.pdf" />
+    <Content Include="PDF\8\NationalInvitation.pdf" />
+    <Content Include="PDF\8\RegionalInvitation.pdf" />
+    <Content Include="PDF\8\InvitationNationalWeb.pdf" />
+    <Content Include="PDF\8\InvitationNationalLive.pdf" />
+    <Content Include="PDF\8\InvitationRegionalLive.pdf" />
+    <Content Include="PDF\8\InvitationRegionalWeb.pdf" />
+    <Content Include="PDF\8\COA.pdf" />
+    <Content Include="PDF\8\Evaluation Form.pdf" />
+    <Content Include="PDF\8\ParticipantHandOut.pdf" />
+    <Content Include="PDF\8\SignInSheet.pdf" />
+    <Content Include="PDF\8\COAFrench.pdf" />
+    <Content Include="PDF\8\Evaluation FormFrench.pdf" />
+    <Content Include="PDF\8\InvitationLivePostEthicsFrench.pdf" />
+    <Content Include="PDF\8\InvitationLivePreEthicsFrench.pdf" />
+    <Content Include="PDF\8\InvitationWebinarPostEthicsFrench.pdf" />
+    <Content Include="PDF\8\InvitationWebinarPreEthicsFrench.pdf" />
+    <Content Include="PDF\8\ParticipantHandOutFrench.pdf" />
+    <Content Include="PDF\8\SignInSheetFrench.pdf" />
+    <None Include="Properties\PublishProfiles\AliUAT.pubxml" />
+    <None Include="Properties\PublishProfiles\CPDPortalProduction.pubxml" />
+    <None Include="Properties\PublishProfiles\CPDPortalUAT.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalCPDPortal.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\New Production.pubxml" />
+    <None Include="Properties\PublishProfiles\Production2022.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\circleCharts.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\auth_examples.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginMaster.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Program\Index.cshtml" />
+    <Content Include="Views\ProgramDetail\Index.cshtml" />
+    <Content Include="Views\Home\_GridViewPartial.cshtml" />
+    <Content Include="Views\DataTable\Index.cshtml" />
+    <Content Include="Views\DataTable\AddOrEdit.cshtml" />
+    <Content Include="Views\Shared\_Register.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Speakers.cshtml" />
+    <Content Include="Views\Edit.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\EditSpeaker.cshtml" />
+    <Content Include="Views\Admin\AddSpeaker.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Shared\_ForgetPWMaster.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Activate\Index.cshtml" />
+    <Content Include="Views\Activate\Account.cshtml" />
+    <Content Include="Views\Speaker\Index.cshtml" />
+    <Content Include="Views\Shared\_LeftNav.cshtml" />
+    <Content Include="Views\Account\DateAlreadyConfirmed.cshtml" />
+    <Content Include="Views\Account\SpeakerProgramDateUpdate.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\DashBoard\FileUpload.cshtml" />
+    <Content Include="Views\Program\Cancel.cshtml" />
+    <Content Include="Views\Admin\PostSession.cshtml" />
+    <Content Include="Views\Speaker\Edit.cshtml" />
+    <Content Include="Views\Program\GetProgramSessionPayment.cshtml" />
+    <Content Include="Views\Speaker\GetPresenterPayments.cshtml" />
+    <Content Include="Views\Speaker\NewSpeaker.cshtml" />
+    <Content Include="Views\Admin\COIForm.cshtml" />
+    <Content Include="Views\Program\Modify.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_2.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_1.cshtml" />
+    <Content Include="Views\Admin\EditPayee.cshtml" />
+    <Content Include="Views\Finance\Index.cshtml" />
+    <Content Include="Views\Program\Description_1.cshtml" />
+    <Content Include="Views\Speaker\GetCOISlides.cshtml" />
+    <Content Include="Views\Chart\ProgramEvent.cshtml" />
+    <Content Include="Views\Shared\_ProgramEventChart.cshtml" />
+    <Content Include="Views\Shared\_ProgramEventChart - Copy.cshtml" />
+    <Content Include="Views\Program\Description_2.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_1.cshtml" />
+    <Content Include="Views\Program\WebCastRequest.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_2.cshtml" />
+    <Content Include="Views\Program\ProgramRequest.cshtml" />
+    <Content Include="Views\Admin\Reports.cshtml" />
+    <Content Include="Views\Home\ImplementationDocument.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_3.cshtml" />
+    <Content Include="Views\Program\Description_3.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_3.cshtml" />
+    <Content Include="Views\Home\Reports.cshtml" />
+    <Content Include="Views\Program\Description_5.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_5.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_5.cshtml" />
+    <Content Include="Views\Program\ProgramRequestII.cshtml" />
+    <Content Include="Template\5\COA.pdf" />
+    <Content Include="Template\5\EvalForm.pdf" />
+    <Content Include="Template\5\NationalInvitation.pdf" />
+    <Content Include="Template\5\RegionalInvitation.pdf" />
+    <Content Include="Template\5\SignInSheet.pdf" />
+    <Content Include="Views\Archived\Index.cshtml" />
+    <Content Include="Views\Admin\ManageModules.cshtml" />
+    <Content Include="Views\Shared\_AnonymousLayout.cshtml" />
+    <Content Include="Views\Program\Description_7.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_7.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_8.cshtml" />
+    <Content Include="Template\7\COA.pdf" />
+    <Content Include="Template\7\SignInSheet.pdf" />
+    <Content Include="Views\Program\Description_8.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_5 - Copy.cshtml" />
+    <Content Include="Views\Home\ProgramMaterials_8.cshtml" />
+    <Content Include="Template\8\COA.pdf" />
+    <Content Include="Template\8\SignInSheet.pdf" />
+    <Content Include="Template\8\NationalInvitationLive.pdf" />
+    <Content Include="Template\8\NationalInvitationWeb.pdf" />
+    <Content Include="Template\8\RegionalInvitationLive.pdf" />
+    <Content Include="Template\8\RegionalInvitationWeb.pdf" />
+    <Content Include="Views\Home\ProgramMaterials_9.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\EvalForm5\" />
+    <Folder Include="PDF\1\" />
+    <Folder Include="PDF\EvalForm2\" />
+    <Folder Include="PDF\EvalForm3\" />
+    <Folder Include="PDF\EvalForm8\" />
+    <Folder Include="PDF\EvalForm\" />
+    <Folder Include="PDF\EvalForm_FR\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\DynamicPDF\" />
+    <Folder Include="Views\EvalForm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CPDPortal.Data\CPDPortal.Data.csproj">
+      <Project>{941ce405-34c4-420b-8fb5-3ae453b80db8}</Project>
+      <Name>CPDPortal.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58669</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58669/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

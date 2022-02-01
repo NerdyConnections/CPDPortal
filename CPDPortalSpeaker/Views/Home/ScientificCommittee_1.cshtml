@@ -1,0 +1,155 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>SCIENTIFIC PLANNING COMMITTEE </h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/leiter.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>
+                                Lawrence A. Leiter, MD, FRCPC, FACP<br>
+                                Chair
+                            </strong>
+                        </h5>
+                        <h6>
+                            Division of Endocrinology and Metabolism<br>
+                            St. Michael’s Hospital<br>
+                            Professor of Medicine and Nutritional Sciences<br>
+                            University of Toronto
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/dufour.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>Robert Dufour, MD, MSc</strong>
+                        </h5>
+                        <h6>
+                            Associate Director, IRCM Clinic<br>
+                            Director, Nutrition, Metabolism and Atherosclerosis Clinic<br>
+                            Assistant Clinical Professor, Department of Nutrition<br>
+                            University of Montreal
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/goodman.png" width="190" height="190"><br>
+                        <h5><strong>Shaun Goodman, MD, MSc, FRCPC, FACC, FAHA, FESC, FCCS</strong></h5>
+                        <h6>
+                            Associate Head, Division of Cardiology
+                            <br>
+                            Professor and Heart & Stroke Foundation of Ontario (Polo) Chair <br>
+                            Department of Medicine, University of Toronto<br>
+                            Consultant, Canadian Heart Research Centre
+                            <br>
+                            Co-Director, Canadian VIGOUR Centre
+                            <br>
+                            Adjunct Professor, Department of Medicine, University of Alberta
+                        </h6>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/gregoire.png" width="190" height="190"><br></strong>
+                    <strong>
+                        <h5><strong>Jean C. Grégoire, MD, FRCPC, FACC</strong></h5>
+                        <h6>
+                            Interventional Cardiologist
+                            <br>
+                            Montreal Heart Institute
+                            <br>
+                            Associate Professor<br>
+                            University of Montreal
+                        </h6>
+                </div>
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/habert.png" width="190" height="190"><br>
+                    <h5><strong>Jeffrey Habert, MD</strong></h5>
+                    <h6>
+                        Family Physician<br>
+                        Assistant Professor<br>
+                        University of Toronto<br>
+                        Department of Family and Community Medicine<br>
+                    </h6>
+                </div>
+
+                <div class="col-sm-4">
+                    <strong><img class="img-responsive" src="/Images/lin.png" width="190" height="190"><br></strong>
+                    <h5><strong>Peter Lin, MD</strong></h5>
+                    <h6>
+                        Family Physician<br>
+                        Director Primary Care Initiatives<br>
+                        Canadian Heart Research Centre<br>
+                        University of Toronto
+                    </h6>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/Mancini.png" width="190" height="190"><br>
+                    <h5><strong>G. B. John Mancini, MD, FRCPC, FACP, FACC</strong></h5>
+                    <h6>
+                        Department of Medicine, Division of Cardiology<br>
+                        Research Director, Division of Cardiology<br>
+                        Director, Cardiovascular Imaging Research Core Laboratory (CIRCL)<br>
+                        Professor of Medicine<br>
+                        University of British Columbia
+                    </h6>
+                </div>
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/ngui.png" width="190" height="190"><br>
+                    <h5><strong>Daniel Ngui, MD</strong></h5>
+                    <h6>
+                        Family Physician<br>
+                        Clinical Lead, Fraser Street Medical<br>
+                        Clinical Associate Professor<br>
+                        University of British Columbia Department of Family Medicine<br>
+                    </h6>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+

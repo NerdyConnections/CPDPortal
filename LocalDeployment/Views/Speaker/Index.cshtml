@@ -1,0 +1,566 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    #SpeakerTable_length { /*hiding the show 10 entries*/
+        visibility: hidden;
+    }
+
+    #SpeakerTable_filter { /*hiding the search box*/
+        visibility: hidden;
+    }
+
+    #SpeakerTable_wrapper .buttons { /*hide export buttons*/
+        visibility: hidden;
+    }
+
+
+    .cellStyle, #SpeakerTable th { /*set table td color*/
+        background-color: #fcfcfd;
+        text-align: center;
+    }
+
+    .btnSpeakerDetails {
+        vertical-align: middle;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 id="lblTitle"></h1>
+        <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+        <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+    </div>
+</div>
+<div class="row">
+    @{
+        Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+    }
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        <div class="1">
+            <h1>Speaker &amp; Moderator Management: </h1>
+            <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+            <div style="margin: 0 auto;width:40%" class="margin-top-24">
+                <h3>
+                    <span data-toggle="modal" data-target="#NewSpeakerPopUp" style="color:#F00;font-size:16px;cursor:pointer;" class="glyphicon glyphicon-plus-sign speaker_moderator"></span>
+                    <span data-toggle="modal" data-target="#NewSpeakerPopUp">&nbsp;<strong style="cursor:pointer;" class="speaker_moderator">New Speaker / Moderator Request Form</strong></span>
+                </h3>
+            </div>
+
+            <div class="margin-top-24">
+                <p>
+                    <strong>Please Note: </strong><br>
+                    Prior to requesting a new speaker and/or moderator to be added, please search the database to ensure that the name is not already included in the master list.<br>
+                    You may search by entering the last name in the white bar in the last name column and pressing enter or you can sort the list alphabetically by clicking on the arrow in the column header.
+                </p>
+            </div>
+
+            <!--div class="margin-top-24">
+                <p>
+                    <strong>Speaker Agreement Form:</strong><br>
+                    <span lang="EN-CA">Please download the&nbsp;<strong><u><a style="color: #2b2b2b" href="/DOC/SpeakerAgreement.docx">Speaker Agreement Form</a></u></strong></span><strong>
+                        <span lang="EN-CA">
+                            &nbsp;<br>
+                        </span>
+                    </strong><span lang="EN-CA">
+                        Please note that you will be required to download the speaker agreement form prior to each event.&nbsp; The selected speaker is required to complete the form.&nbsp;&nbsp;<br>
+                    </span><span lang="EN-CA">Please upload the completed form for each event in your dashboard after the event date.</span>
+                </p>
+            </div-->
+            <div class="margin-top-4">
+
+                <table id="SpeakerTable" class="table table-bordered table-sm" style="font-size:12px;" align="center">
+                    <thead>
+                        <tr>
+                            <th colspan="11" class="h4" scope="col" style="color:#FFF !important;background-color:#000000">Speaker / Moderator List  </th>
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Speaker Info</th>
+
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Province</th>
+                            <th>Status</th>
+                            <th>COI Slides</th>
+                            <th>Phone</th>
+                            <th>Specialty</th>
+                            <th>Upcoming Programs</th>
+                            <th>
+                                Completed <br />
+                                Programs
+                            </th>
+                            <th>Payment</th>
+
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+
+
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </tfoot>
+
+
+
+
+                </table>
+                <!--end of speaker grid-->
+                <!--speaker details modal-->
+                <div class="modal fade bootstrapmodal" id="SpeakerDetailsPopUp">
+
+
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+
+                                <div class="modal-title">Speaker Information</div>
+
+                            </div>
+
+                            <div id="SpeakerData" class="modal-body">
+
+                                @*@{Html.RenderPartial("Edit"); }*@
+
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end of speaker detail modal-->
+                <!--Payment details modal-->
+                <div class="modal fade bootstrapmodal" id="PaymentDetailsPopUp">
+
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+
+                                <div class="modal-title">Payment Information</div>
+
+                            </div>
+
+                            <div id="PaymentDetailsData" class="modal-body">
+
+                                @*@{Html.RenderPartial("Edit"); }*@
+
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end of Payment detail modal-->
+                <!-- new speaker modal-->
+                <div class="modal fade bootstrapmodal" id="NewSpeakerPopUp">
+
+
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+
+                                <div class="modal-title">New Speaker / Moderator</div>
+
+                            </div>
+
+                            <div id="NewSpeakerData" class="modal-body">
+
+                            </div>
+
+
+                            <div class="modal-footer">
+                                @*<button style="width:160px;" class="btn btn-default btn-sm new-p-submit" >SUBMIT</button>*@
+                                <button style="width:60px;" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end of new speaker modal-->
+                <!-- Get COISlides modal-->
+                <div class="modal fade bootstrapmodal" id="COISlidesPopUp">
+
+
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+
+                                <div class="modal-title">COISlides Uploaded</div>
+
+                            </div>
+
+                            <div id="COISlidesData" class="modal-body">
+
+                            </div>
+
+
+                            <div class="modal-footer">
+                                @*<button style="width:160px;" class="btn btn-default btn-sm new-p-submit" >SUBMIT</button>*@
+                                <button style="width:60px;" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end of new speaker modal-->
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">&nbsp;</div>
+</div>
+
+
+
+@section scripts{
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <!--pdf/excell/copy buttons cdn scripts-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.js"></script>
+    <!--end of buttons cdn scripts-->
+    <!--cnd for search-->
+    https://code.jquery.com/jquery-1.12.4.js
+    https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.js"></script>
+
+
+    <!--end of search-->
+    <!--cdn for checkboxes-->
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+    <!--end of checkboxes-->
+
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+}
+
+
+<script>
+    var Popup, dataTable;
+    $(document).ready(function () {
+
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' }); //very important this enable the tooltip
+
+
+
+
+        //Search by individual column
+        // Setup - add a text input to each footer cell
+        $('#SpeakerTable tfoot th').not(":eq(0),:eq(3),:eq(4),:eq(5),:eq(6),:eq(7),:eq(8),:eq(9),:eq(10)").each(function () {//do not display a text box to search for columns 0,3
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+        });
+        //checkbox display if the data is true or false
+        var simple_checkbox = function (data, type, full, meta) {
+
+            var is_checked = data == true ? "checked" : "";
+            var id = full.user_id;
+            id = id.toString();
+
+            return '<input type="checkbox" onclick="ProcessCheckbox(this.parentElement)" class="checkbox1"  id= ' + id + " " +
+                is_checked + ' />';
+        }
+        //end of checkbox display
+        //admin program request dropdown
+
+        //checkbox display if the data is true or false
+        var ddlProgramRequestAdmin = function (data, type, full, meta) {
+
+            var is_checked = data == true ? "checked" : "";
+            var id = full.ProgramRequestID;
+            id = id.toString();
+
+            return "<select><option>Under Review</option><option>Active – Regional Ethics Review Pending</option><option>Active – Regional Ethics Approved</option><option>Completed – Items Pending</option><option>Completed – Session Closed </option>>option>Cancelled</option><option>Speaker Not Available</option><option>Speaker Declines</option><option></option></select> ";
+        }
+        //datatable definitions Begins Here
+        dataTable = $("#SpeakerTable").DataTable({
+            dom: '<"buttons"B><"clear"><lf<t>ip>',//put a div tag with class=buttons around the buttons //put a div tag with class=clear immediately after the buttons
+            /*  buttons: [
+                 {
+                      extend: 'copy',
+                      text: 'Copy to clipboard'
+
+                  }, {
+                      extend: 'excel',
+                      text: 'Download to Excel'
+
+                  }, 'pdf'
+              ],*/
+            bFilter: true,  //search box  for individual column search it must be true, otherwise does not work, you can hide search box using css and column search still works
+            bJQueryUI: true,
+            bInfo: true,  //showing 1 of x entries in x entries
+            sPaginationType: "full_numbers",//how pages button appears
+            bLengthChange: true,//show 10/20/30 entries dropdown
+            "bSort": true,//whether the columns are sortable or not
+            "bAutoWidth": false,
+            "asStripClasses": null,
+            "ajax": {
+                "url": "/Speaker/GetAllApprovedSpeakers?ProgramID=@ViewBag.ProgramID",
+                "type": "GET",
+                "datatype": "json"
+            },
+            columnDefs: [
+         { targets: [0, 3,4,5,6,7,8,9,10], orderable: false}
+         
+            ],
+            "columns": [
+                {
+
+                    "data": "user_id", "render": function (data) {
+                        return "<span class='glyphicon glyphicon-pencil btnSpeakerDetails' style='font-size: 13px;'  data-toggle='modal' data-target='#SpeakerDetailsPopUp'  onclick=javascript:PopupForm('@Url.Action("Edit","Speaker")?user_id=" + data + "','#SpeakerData')></span>";
+                        //  return "<a class='btn btn-default' data-toggle='modal' data-target='.bootstrapmodal' onclick=PopupForm('@Url.Action("Edit","Admin")/" + data + "')><i class='fa fa-pencil'></i> </a>";
+
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "25px"
+                },
+
+
+
+                { "data": "FirstName", "title": "First Name" },
+                { "data": "LastName", "title": "Last Name" },
+
+
+
+                { "data": "Province", "title": "Province" },
+               { "data": "StatusString", "title": "Status" },
+
+                  {//download coislides
+
+                      "data": "UserID", "render": function (data) {
+                          return "<span class='glyphicon glyphicon-download-alt btnDownloadCOISlides' style='font-size: 13px;'  data-toggle='modal' data-target='#COISlidesPopUp'  onclick=javascript:PopupForm('@Url.Action("GetCOISlides", "Speaker")?UserID=" + data + "','#COISlidesData')></span>";
+                          //  return "<a class='btn btn-default' data-toggle='modal' data-target='.bootstrapmodal' onclick=PopupForm('@Url.Action("Edit","Admin")/" + data + "')><i class='fa fa-pencil'></i> </a>";
+
+                      },
+                      "orderable": false,
+                      "searchable": false,
+                      "width": "25px"
+                  },
+
+
+                { "data": "Phone", "title": "Phone Number" },
+                { "data": "Specialty", "title": "Specialty" },
+
+             { "data": "UpcomingPrograms", "title": "Upcoming Programs" },
+                { "data": "CompletedPrograms", "title": "Completed Programs" },
+
+                    {//payment info here
+
+                        "data": "user_id", "render": function (data) {
+                            return "<span class='glyphicon glyphicon-zoom-in btnPaymentDetails' style='font-size: 13px;'  data-toggle='modal' data-target='#PaymentDetailsPopUp'  onclick=javascript:PopupForm('@Url.Action("GetPresenterPayments", "Speaker")?userid=" + data + "','#PaymentDetailsData')></span>";
+                            //  return "<a class='btn btn-default' data-toggle='modal' data-target='.bootstrapmodal' onclick=PopupForm('@Url.Action("Edit","Admin")/" + data + "')><i class='fa fa-pencil'></i> </a>";
+
+                        },
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "25px"
+                    },
+
+
+            ],
+            "createdRow": function (row, data, index) {
+
+                $('td', row).addClass('cellStyle');//add a class to each td so we can change background color
+
+            },
+
+            "language": {
+
+                "UserTable": "No data found, Please click on <b>Add New</b> Button"
+            }
+        });//end of datatable definitions
+
+        //move search input textboxes to the second thead, the first thead is a band column, the second is  column names, search textboxes should be placed below that
+        $('#SpeakerTable tfoot tr').appendTo('#SpeakerTable thead:eq(0)');
+        // $('tr', '.table').find('td').css('background', 'transparent')
+
+
+        var table = $('#SpeakerTable').DataTable();
+        //search code
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+        //end of search
+
+        //when new speaker is clicked display the New speaker modal
+        $("body").on("click", ".speaker_moderator", function () {
+            var url_ = '@Url.Action("NewSpeaker", "Speaker")';
+            var div_id = '#NewSpeakerData';
+            PopupForm(url_, div_id);
+        });
+
+
+
+    });//end document.ready()
+
+    var Popup1;
+    function PopupForm(url, div_id) {//get the contents of the modal box, the modal must reside in the same page as the calling function
+
+        var formDiv = $(div_id);
+        //  var formDiv = $('#editSpeaker');
+        $.get(url)
+        .done(function (response) {
+
+            formDiv.html(response);
+
+
+        });
+    }
+    function SubmitForm(form) {
+
+        $.validator.unobtrusive.parse(form);
+
+        if ($(form).valid()) {
+            $.ajax({
+                type: "POST",
+                url: form.action,
+                data: $(form).serialize(),
+
+                success: function (result) {
+                    debugger;
+                    if (result) {
+
+                        $('#myModal').modal('hide');
+                        dataTable.ajax.reload();
+
+                    }
+                    else {
+
+                        console.log("Error while process aprove checkbox")
+                    }
+                }
+            });
+        }
+        return false;
+    }
+    function SubmitNewSpeakerForm(form) {
+        debugger;
+        $.validator.unobtrusive.parse(form);
+        //  e.preventDefault();
+        //e.stopImmediatePropagation();
+        if ($(form).valid()) {
+            $.ajax({
+                type: "POST",
+                url: form.action,
+                data: $(form).serialize(),
+
+                success: function (data) {
+                    debugger;
+                    if (data.success) {
+                        // console.log("result: " + data.result)
+                        // alert('success: result' + result.d)
+                        window.location = "/Speaker/Index";
+                        $('#NewSpeakerPopUp').modal('hide');
+                        dataTable.ajax.reload();
+
+                    }
+                    else {
+                        document.getElementById("SystemMsg").innerHTML = data.error;
+                        //$('#SystemMsg').html(data.error);
+                    }
+
+                },
+
+            });
+        }
+        return false;//very important stop form submission from doing it again.
+
+    }
+    var DownloadCOISlides = function (data, type, full, meta) {
+        return "<a class=\"DownloadLink\" href=\"@ViewBag.SpeakerCOIURL" + "OpenFile?UserID=" + UserID + "&FileType=COISlides&COISlidesExt=" + COISlidesExt + "\"><span class=\"glyphicon glyphicon-download-alt \" style=\"font-size: 13px\"></span></a>";
+        @*debugger;
+        var UserID = full.UserID;
+        var ProgramID = full.ProgramID;
+        var COISlidesExt=full.COISlidesExt;
+        var COISlides=full.COISlides;
+        if (COISlides==true)
+        {
+            return "<a class=\"DownloadLink\" href=\"@ViewBag.SpeakerBaseURL" + "COISlides/" + UserID + "/" + ProgramID +  "/COISlides." + COISlidesExt + "\"><span class=\"glyphicon glyphicon-download-alt \" style=\"font-size: 13px\"></span></a>";
+            //return "<a class=\"DownloadLink\" href=\"@ViewBag.SpeakerCOIURL" + "OpenFile?UserID=" + UserID + "&FileType=COISlides&COISlidesExt=" + COISlidesExt + "\"><span class=\"glyphicon glyphicon-download-alt \" style=\"font-size: 13px\"></span></a>";
+            }
+            else
+            {
+                return "";
+            }*@
+    }
+
+</script>

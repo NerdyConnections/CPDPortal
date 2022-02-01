@@ -1,0 +1,45 @@
+﻿<div class="col-md-3 left-panel" style="margin-bottom: 2px; background-color: #e6e6e6">
+    <div style="margin-top: 25px;">
+        ACTION ITEMS
+        <ul class="item">
+            <li id="NewProgramRequest" class="links"><span class="glyphicon  glyphicon glyphicon glyphicon-file" style="font-size: 13px"></span>New Session Request</li>
+            <li class="links"><span class="glyphicon  glyphicon glyphicon-dashboard " style="font-size: 13px"></span>My Dashboard</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 30px">
+        PROGRAM MATERIALS &amp; RESOURCES
+        <ul class="item">
+            <li class="links"><span class="glyphicon glyphicon-download-alt " style="font-size: 13px"></span>Process Document</li>
+            <li class="links"><span class="glyphicon glyphicon-download-alt " style="font-size: 13px"></span>Internal Implementation Guide</li>
+            <li class="links"><span class="glyphicon glyphicon glyphicon-education " style="font-size: 13px"></span>Scientific Planning Committee</li>
+            <li class="links"><span class="glyphicon glyphicon-folder-open" style="font-size: 13px"></span>Program Materials</li>
+            <!-- <li>Hard-copy Program Materials Request Form</li>-->
+            <li id="SpeakerManage" class="links"><span class="glyphicon  glyphicon glyphicon-briefcase" style="font-size: 13px"></span>Speaker &amp; Moderator Management</li>
+            <!-- <li>Reports</li>-->
+        </ul>
+    </div>
+
+    <div style="margin-top: 30px">
+        PROGRAM DESCRIPTION
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.links').hover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+    });
+    //parse the parameter
+    function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    }
+    $('#NewProgramRequest').click(function () {
+        window.location = '/Program/ProgramRequest?ProgramID=' + getURLParameter('ProgramID');
+    });
+    $('#SpeakerManage').click(function () {
+        window.location = '/Speaker/Index';
+    });
+</script>

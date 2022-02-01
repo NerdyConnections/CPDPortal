@@ -1,0 +1,94 @@
+﻿@using CPDPortalSpeaker.Util
+
+@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink(Resources.Resource.Back, "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+         @Html.Raw(@Resources.Resource.ProgramMaterials8)
+        </div>
+    </div>
+
+
+</div>
+
+    <script src="/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery.easing.min.js"></script>
+    <script src="/Scripts/circleCharts.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <script>
+            $('input#ProgramDate').datetimepicker({
+                format: 'YYYY/MM/DD'
+            });
+            $(document).ready(function () {
+                $('#panel1').click(function () {
+
+                    $('#collapse1').toggle();
+                })
+
+
+            });
+
+            $(document).ready(function () {
+                $('#panel2').click(function () {
+
+                    $('#collapse2').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel3').click(function () {
+
+                    $('#collapse3').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel4').click(function () {
+
+                    $('#collapse4').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel5').click(function () {
+
+                    $('#collapse5').toggle();
+                })
+
+            });
+
+    </script>
+
+
+

@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@using CPDPortalMVC.Util
+@model CPDPortalMVC.Models.EventModule
+@{
+    Layout = "~/Views/Shared/_AnonymousLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Manage Event Modules</title>
+</head>
+<body>
+
+    <!--don't these files, they are required at this location (not at head) for client side javascript to work-->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <!--end of client side javascript-->
+
+    <div>
+        <h2>The program duration is set for @Model.SessionCreditValue hour(s). Please select @Model.ModuleLimit  topics from the clinical question list below. You will present these modules during your session.  The program content is available in your speaker resource centre</h2>
+
+        <h3><u>Please select @Model.ModuleLimit from the modules listed below:</u></h3>
+        @using (Html.BeginForm("ManageModules", "Admin", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+        {
+
+            @Html.HiddenFor(x => x.ProgramRequestID)
+            @Html.HiddenFor(x => x.SessionCreditID)
+            @Html.HiddenFor(x => x.SessionCredit)
+            <table width="80%" class="table table-hover border="0" align="left" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule1)</td>
+                    <td width="88%">What parameters indicate a diagnosis of osteoporosis? & How does this differ from assessment of fracture risk? </td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule2)</td>
+                    <td width="88%">How can we best explain the impact of osteoporosis to our patients?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule3)</td>
+                    <td width="88%">How do we evaluate fracture risk in postmenopausal women with a view to identifying women who would benefit from osteoporosis pharmacotherapy?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule4)</td>
+                    <td width="88%">How do we evaluate fracture risk in older men, and what are the therapeutic options?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule5)</td>
+                    <td width="88%">Do patients on glucocorticoid require osteoporosis pharmacotherapy?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule6)</td>
+                    <td width="88%">What is the risk of fracture in patients on aromatase inhibitor therapy?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule7)</td>
+                    <td width="88%">Do patients on androgen deprivation therapy require osteoporosis pharmacotherapy?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule8)</td>
+                    <td width="88%">Do proton pump inhibitors cause bone loss?</td>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule9)</td>
+                    <td width="88%">When patients are treated with SSRI, do they have an increase in the risk of fracture?</td>
+                </tr>
+                <tr>
+                    <td width="12%">@Html.EditorFor(x => x.ProgramModule10)</td>
+                    <td width="88%">How long do osteoporosis patients need to be treated?</td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-group">
+                            <input type="submit" value="Submit" id="btnSubmit" class="btn btn-default" />
+                            <div id="SystemMsg"></div>
+                        </div>
+                    </td>
+
+                </tr>
+                
+            </table>
+        }
+    </div>
+    <!--Thank you PopUp-->
+    <div class="modal fade bootstrapmodal" id="ThankYouPopUp">
+
+
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+
+                    <div class="modal-title">Thank you for your selection</div>
+
+                </div>
+
+                <div id="ThankYouData" class="modal-body">
+                    <p>Please access your personal speaker portal at https://speaker.ccpdhm.com
+Should you have any questions, please do not hesitate to contact us <a href='mailto:info@ccpdhm.com'>info@ccpdhm.com</a>
+</p>
+                </div>
+
+
+                <div class="modal-footer">
+                    @*<button style="width:160px;" class="btn btn-default btn-sm new-p-submit" >SUBMIT</button>*@
+                    <button style="width:60px;" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--end of thank you pop up-->
+    <script language="javascript">
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+
+            //event.preventDefault();  //prevent form become invalid
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    datatype: 'json',
+                }).done(function (data) {
+                    debugger;
+                    if (data.success == "true") {
+                        $("#SystemMsg").html("<b>Program Modules Added Successfully!</b>");
+                        $('#ThankYouPopUp').modal('show');
+                        addedSuccess = true;
+                    } else {
+                        $('#ThankYouPopUp').modal('hide');
+                        $("#SystemMsg").html("<b><font color=\"red\">Problems adding program modules. </b></font>" + "<b><font color=\"red\">" + data.msg + "</b></font>");
+                        addedSuccess = false;
+                    }
+
+
+                });
+            }
+            return false;
+        }
+        $(document).ready(function(){
+
+            var readOnly = 'False';
+            ///debugger;  works with developer tool f12 to stop the flow of the program and allow you to step through the code
+            if (readOnly === 'True') {
+
+                $('input[type=text], textarea').attr('readonly', true);
+
+                $(':input[type="submit"]').prop('disabled', true);
+
+
+            }
+        });
+    </script>
+</body>
+</html>
+

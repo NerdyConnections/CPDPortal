@@ -1,0 +1,230 @@
+﻿@model CPDPortalMVC.Models.SpeakerModel
+@using CPDPortalMVC.Util
+@{
+    Layout = null;
+}
+<style>
+    .rem_pad_left_right {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .rem_pad_left {
+        padding-left: 0px;
+    }
+    #div1 select {
+    width:100%;
+    height:30px;
+    }
+    .errorMssg {
+    color:red;
+    }
+    .font_ {
+    font-size:x-small;
+    }
+</style>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+
+<script src="~/Scripts/jquery.validate.js"></script>
+
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@using (Html.BeginForm("NewSpeaker", "Speaker",  FormMethod.Post, new { @id = "frm-new-speaker"  , onsubmit = "return SubmitNewSpeakerForm(this)" }))
+{
+<section>
+    <div role="main" class="container overlay-z2" style="background-image: url('img/notebook1st.jpg');">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="lead1">Please complete the fields below</div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="First Name">First Name: </label>
+                        <input class="form-control " id="FirstName" type="text" value="">*@
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="Last Name">Last Name:</label>
+                    <input class="form-control " id="LastName" type="text" value="">*@
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Specialty, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.Specialty, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Specialty, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="Phone Number">Specialty:</label>
+                    <input class="form-control " id="PhoneNumber" type="text" value="">*@
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ClinicName, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.ClinicName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ClinicName, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="Additional Phone Number (optional)">Clinic Name:  </label>
+                    <input class="form-control " id="additionalPhone" type="text" value="">*@
+                </div>
+
+
+                <div class="form-group form-group-sm col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="Username">Address:</label>
+                    <input class="form-control " id="username" type="text" value="">*@
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.City, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="password">City:</label>
+                    <input class="form-control " id="password" type="text" value="">*@
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="div1" class="form-group form-group-sm col-sm-2">
+                    @Html.LabelFor(model => model.Province, new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.Province, new SelectList(AppData.GetProvinceList(), "Value", "Text"), "Please select a province")
+                    @Html.ValidationMessageFor(model => model.Province, "", new { @class = new { @class = "errorMssg font_" } })
+                </div>
+
+                <div id="div1" class="form-group form-group-sm col-sm-2">
+                    @Html.LabelFor(model => model.AssignedRole, new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.AssignedRole, new SelectList(AppData.GetSpeakerRoleList(), "Value", "Text"), "Select Role ")
+                    @Html.ValidationMessageFor(model => model.AssignedRole, "", new { @class = new { @class = "errorMssg font_" } })
+                </div>
+
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="re-enter password">Postal Code:</label>
+                    <input class="form-control " id="reenterpassword" type="text" value="">*@
+                </div>
+                <div id="div1" class="form-group form-group-sm col-sm-2">
+                    @Html.LabelFor(model => model.TherapeuticID, new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.TherapeuticID, new SelectList(AppData.GetTherapeuticArea(), "Value", "Text"), "Select Therapeutic Area ")
+                    @Html.ValidationMessageFor(model => model.TherapeuticID, "", new { @class = new { @class = "errorMssg font_" } })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="re-enter password">Phone:</label>
+                    <input class="form-control " id="reenterpassword" type="text" value="">*@
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Fax, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.Fax, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @*<label class="" title="re-enter password">Fax:</label>
+                    <input class="form-control " id="reenterpassword" type="text" value="">*@
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmailAddress, new { @class = "col-md-12 control-label rem_pad_left" })
+                        <div class="col-md-12 rem_pad_left_right">
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "errorMssg font_" })
+                        </div>
+                    </div>
+                    @*<label class="" title="re-enter password">Email:</label>
+                    <input class="form-control " id="reenterpassword" type="text" value="">*@
+                </div>
+                <div class="form-group form-group-sm col-sm-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Language, new { @class = "col-md-12 control-label rem_pad_left" })<br/>
+                        @Html.RadioButtonFor(model => model.Language, "en", new { @id = "LanguageEnglish" }) English
+                        @Html.RadioButtonFor(model => model.Language, "fr", new { @id = "LanguageFrench" }) French
+                       <br/>
+                            @Html.ValidationMessageFor(m => m.Language, "", new { @class = "errorMssg font_" })
+                        
+                    </div>
+                    @*<label class="" title="re-enter password">Email:</label>
+            <input class="form-control " id="reenterpassword" type="text" value="">*@
+                </div>
+              
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-4">
+                    <label class="" title="re-enter password">Comments:</label>
+                    @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", @rows = 3 })
+                </div>
+                <div class="col-sm-4" style="text-align:right;margin-top:60px;">
+                    <button type="submit" style="width:160px;" class="btn btn-default btn-sm new-p-submit">SUBMIT</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-group-sm col-md-9">
+                    <div style="margin-bottom:6px;"><label>@Html.CheckBoxFor(model => model.SufficientKnowledge) &nbsp;I attest this speaker/moderator has sufficient knowledge to participate in the specified program(s) and I have received approval from my manager to utilize this speaker/moderator.</label></div>
+                    @Html.ValidationMessageFor(m => m.SufficientKnowledge, "", new { @class = "errorMssg font_" })
+                    </div>
+                </div>
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-4">
+                    <span class="text-danger" id="SystemMsg"></span>               
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

@@ -1,0 +1,351 @@
+﻿
+@model CPDPortalMVC.Models.EvalForm5Model
+@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Template Program Materials</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+                <div class="margin-top-24">
+
+                    <ul>
+                        <li>                                  Please click on the section header below to expand and see the available template materials.</li>
+                        <li>                                  To retain the form formatting, please save the pdf. file to your desktop after you download it</li>
+                        <li>
+                            These materials are for reference only. <strong>You can access the dynamic, auto-generated program materials specific to each event in your Dashboard</strong>
+                        </li>
+                    </ul>
+                    <br>
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li><strong>                                  Please note that you cannot not make any changes to the approved program (slides/materials). The program must be delivered exactly as approved by the CFPC.</strong></li>
+                    </ul>
+                </div>
+
+
+               
+
+                <div class="margin-top-24">
+                    <div class="margin-top-24">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse2">Invitations </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/NationalInvitationStatic.pdf" target="new" style="color:#333">Invitation Template (National Certification Statement)</a></strong><br>
+                                        To be used prior to Regional Ethics Review Submission
+                                        <br>
+                                        <br>
+
+                                        <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/RegionalInvitationStatic.pdf" target="new" style="color:#333">Invitation Template (Regional Accreditation Statement)</a></strong><br>
+                                        To be used ONLY once the program has been approved by the regional provincial chapter
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin-top-24">
+
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapse5">Participant Hand-Outs</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 1_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 1</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 2_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 2</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 3_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 3</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 4_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 4</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 5_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 5</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 6_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 6</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 7_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 7</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 8_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 8</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 9_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 9</a></strong>
+                                            <br>
+                                            <br>
+
+                                            <strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/Clinical Question 10_ Participant Hand-Out.pdf" target="new" style="color:#333">Clinical Question 10</a></strong>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin-top-24">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapse3">Evaluation Form</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Please access the evaluation form in your dashboard.
+
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="margin-top-24">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse4">Certificate of Attendance </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse4" class="panel-collapse collapse">
+                                            <div class="panel-body"><strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/COAStatic.pdf" style="color:#333" target="_new">Certificate of Attendance</a></strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="margin-top-24">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse5">Sign-In Sheet </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse5" class="panel-collapse collapse">
+                                                <div class="panel-body"><strong><span class="glyphicon  glyphicon glyphicon glyphicon-download-alt" style="font-size: 15px"></span>&nbsp;&nbsp;<a href="/PDF/7/SignInSheetStatic.pdf" style="color:#333" target="_new">Sign-In Sheet</a></strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+                            <!-- <div class="2 margin-top-24">
+                            <h3>Program Description</h3>
+                            <div style="border: 3px solid #fff; height: 100px; width: 95%"></div>
+                        </div>-->
+                            <!--<div class="3 margin-top-24">
+                            <div style="border: 3px solid #fff; width: 95%">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="background: #333; color: #fff; padding: 2px 0px 2px 5px">PROVINCE</td>
+                                        <td style="width: 220px; background: #24c878; color: #fff; padding: 2px 0px 2px 5px">ACTIVE</td>
+                                        <td style="width: 220px; background: #3d7f9c; color: #fff; padding: 2px 0px 2px 5px">COMPLETED</td>
+                                        <td style="width: 220px; background: #e60c41; color: #fff; padding: 2px 0px 2px 5px">CANCELLED</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">BC</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">AB</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">SK</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">MB</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">ON</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">QC</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">NS</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">NB</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">NFLD</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 2px 0px 2px 5px">PEI</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>-->
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <script src="/Scripts/jquery-3.1.0.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <script src="/Scripts/jquery.easing.min.js"></script>
+        <script src="/Scripts/circleCharts.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+        <script>
+            $('input#ProgramDate').datetimepicker({
+                format: 'YYYY/MM/DD'
+            });
+            $(document).ready(function () {
+                $('#panel1').click(function () {
+
+                    $('#collapse1').toggle();
+                })
+
+
+            });
+
+            $(document).ready(function () {
+                $('#panel2').click(function () {
+
+                    $('#collapse2').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel3').click(function () {
+
+                    $('#collapse3').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel4').click(function () {
+
+                    $('#collapse4').toggle();
+                })
+
+            });
+
+            $(document).ready(function () {
+                $('#panel5').click(function () {
+
+                    $('#collapse5').toggle();
+                })
+
+            });
+
+        </script>
+
+
+

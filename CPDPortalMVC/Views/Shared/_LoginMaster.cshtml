@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CPD Portal</title>
+    <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+ 
+    <link href="/Content/Login.css" rel="stylesheet" />
+
+</head>
+<body style="background-image: url(/Images/notebook1st.jpg);">
+    <div class="overlay"></div>
+
+    <!-- nav bar-->
+    <header>
+        <div class="navbar navbar-inverse overlay-z2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+
+                            <div id="logo">
+                                <div style="" class="logo-img">
+                                    <img src="@TempData["ImageUrl"].ToString()" width="137" height="35" />
+                                </div>
+                                <div class="logo-txt">
+                                    <!--div>COMPANY LOGO</div-->
+                                </div>
+                                <div class="logo-txt-sub">CPD Portal</div>
+                                <div class="logo-txt-welcome">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav float-right">
+                                <!--li><a href="#">Help Centre</a></!--li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li<a href="#">Log Out</a></li-->
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+        <!--end of nav bar-->
+
+        <section>
+
+            <div role="main" class="container overlay-z2">
+
+                @RenderBody()
+            </div>
+        </section>
+        <!--footer-->
+        <footer>
+
+            <div class="container overlay-z2 footer">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="logo-img-ftr">
+                            <object class="logo-img-ftr-svg" type="image/svg+xml" data="/Images/CHRClogos_mer.svg"></object>
+                        </div>
+                    </div>
+
+                    <div class="hidden-xs  col-sm-12 col-md-2">&nbsp;</div>
+                    <div class="col-xs-12  col-sm-12 col-md-4">
+                        <span style="margin-right: 20px">https://amgen.ccpdhm.com</span>
+                        <br class="r-break" />
+                        <a href="mailto:info@ccpdhm.com" title="info@ccpdhm.com" style="margin-right: 20px">info@ccpdhm.com</a>
+                        <br class="" />
+                        110 Sheppard Avenue East, Suite 309,
+                        <br class="r-break" />
+                        North York, Ontario,
+                        <br class="r-break" />
+                        Canada, M2N 6Y8
+                        <br class="r-break" />
+                        <br />
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+        <!-- end of footer-->
+        @RenderSection("Scripts", required: false)
+
+</body>
+</html>

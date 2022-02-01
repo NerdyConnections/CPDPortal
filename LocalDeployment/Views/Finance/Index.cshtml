@@ -1,0 +1,203 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 id="lblTitle"></h1>
+        <div onclick="window.history.back()" class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+        <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+    </div>
+</div>
+<div class="row">
+    @{
+        Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+    }
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        <div class="1">
+            <h1>Finance</h1>
+            <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+            <div class="margin-top-4">
+
+                <table id="FinanceTable" class="table table-bordered table-sm" style="font-size:12px;    border: 1px solid #ddd;" align="center">
+                    <thead class="thead-dark">
+                        <tr >
+                            <th colspan="7" bgcolor="#CCCCCC" class="h6" style="text-align: center; font-weight: bold;background-color:#CCCCCC" scope="col">&nbsp;</th>
+                            <th id="col1"class="h6" style="text-align: center; font-weight: bold; color: black; background-color:#CCCCCC;">$</th>
+                            <th id="col2"class="h6" style="text-align: center; font-weight: bold; color: black; background-color:#CCCCCC;" scope="col">$</th>
+                            <th id="col3" width="110" class="h6" style="text-align: center; font-weight: bold; color: black; background-color:#CCCCCC; " scope="col">$</th>
+                        </tr>
+                    </thead>
+                    <thead>
+
+                        <tr >
+                        <tr style="background-color: rgb(198, 230, 234);">
+                            <th>
+                                Event Info At-a-Glance
+                            </th>
+                            <th>CFPC</th>
+                            <th>Venue Fees</th>
+                            <th>AV Fees</th>
+                            <th>Speaker Fees</th>
+                            <th>Moderator Fees</th>
+                            <th>Other Fees</th>
+                            <th>Sub-Total</th>
+                            <th>Taxes (Combined)</th>
+                            <th>Event Total</th>
+
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+
+
+
+
+
+                </table>
+                <!--end of finance grid-->
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">&nbsp;</div>
+</div>
+
+
+
+@section scripts{
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <!--pdf/excell/copy buttons cdn scripts-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.js"></script>
+    <!--end of buttons cdn scripts-->
+    <!--cnd for search-->
+    https://code.jquery.com/jquery-1.12.4.js
+    https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.js"></script>
+
+
+    <!--end of search-->
+    <!--cdn for checkboxes-->
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+    <!--end of checkboxes-->
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        var Popup, dataTable;
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip(); //activate the tooltip for cancellation
+
+            //datatable definitions Begins Here
+            dataTable = $("#FinanceTable").DataTable({
+                //dom: '<"buttons"B><"clear"><lf<t>ip>',//put a div tag with class=buttons around the buttons //put a div tag with class=clear immediately after the buttons
+                /*  buttons: [
+                     {
+                          extend: 'copy',
+                          text: 'Copy to clipboard'
+
+                      }, {
+                          extend: 'excel',
+                          text: 'Download to Excel'
+
+                      }, 'pdf'
+                  ],*/
+                bFilter: false,  //search box  for individual column search it must be true, otherwise does not work, you can hide search box using css and column search still works
+                bJQueryUI: false,
+                bInfo: false,  //showing 1 of x entries in x entries
+                sPaginationType: "full_numbers",//how pages button appears
+                bLengthChange: false,//show 10/20/30 entries dropdown
+                "bSort": false,//whether the columns are sortable or not
+                "bAutoWidth": false,
+                "asStripClasses": null,
+                "ajax": {
+                    "url": "/Finance/GetFinanceInfo?UserID=" + @ViewBag.UserID + "&ProgramID=" + @ViewBag.ProgramID,
+                    // "url": "/Finance/GetEventData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+
+
+                    { "data": "EventInfo", "title": "Event Name", "width": "15px" },
+                    { "data": "CFPC", "title": "CFPC" },
+                    { "data": "VenueFee", "title": "VenueFee" },
+                    { "data": "AVFees", "title": "AVFees" },
+                    { "data": "SpeakerFees", "title": "SpeakerFees" },
+                    { "data": "ModeratorFees", "title": "ModeratorFees" },
+                    { "data": "OtherFees", "title": "OtherFees" },
+                    { "data": "SubTotal", "title": "SubTotal" , "width": "50px"},
+                    { "data": "TaxesCombined", "title": "TaxesCombined" ,"width": "50px" },
+                    { "data": "EventTotal", "title": "EventTotal" ,"width": "50px" }
+
+
+                ],
+
+                "createdRow": function (row, data, index) {
+
+                    $('td', row).addClass('cellStyle');//add a class to each td so we can change background color
+
+                },
+
+                "language": {
+
+                    "UserTable": "No Session Requests are found for the selected Program"
+                }
+            });//end of datatable definitions
+
+            //move search input textboxes to the second thead, the first thead is a band column, the second is  column names, search textboxes should be placed below that
+            //  $('#DashboardTable tfoot tr').appendTo('#DashboardTable thead:eq(1)');
+            // $('tr', '.table').find('td').css('background', 'transparent')
+
+
+            var table = $('#FinanceTable').DataTable();
+            ////search code
+            //table.columns().every(function () {
+            //    var that = this;
+
+            //    $('input', this.footer()).on('keyup change', function () {
+            //        if (that.search() !== this.value) {
+            //            that
+            //                .search(this.value)
+            //                .draw();
+            //        }
+            //    });
+            //});
+            //end of search
+          
+
+            $('#col1').html("$ " + '@ViewBag.SumSubtotal' );
+            $('#col2').html("$ " + '@ViewBag.SumTaxes');
+            $('#col3').html("$ " + '@ViewBag.SumEventTotal');
+
+
+
+        });//end document.ready()
+
+    </script>
+}

@@ -1,0 +1,277 @@
+﻿@model CPDPortalMVC.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Register.cshtml";
+}
+<style>
+    .error {
+
+        color:crimson;
+    }
+    
+    input[type=text], input[type=email]{
+    width: 200px;
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+    -webkit-transition: unset;
+    color: #fff;
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+
+    input[type=password]{
+         width:  180px;
+   
+    }
+
+    input[type=email]
+    {
+
+        background : none;
+    }
+        
+
+</style>
+<form id="registerForm">
+    <div class="pnl-regsiter">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Register for new account</h1>
+                <div class="lead1">To register for new account, please enter your 'Email' and confirm your 'Password'.</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm float-left margin-right-4">
+                    <label class="control-label">EMAIL </label>
+                    <input id="ctrlEmail_regsiter" type="email" name="email"required class="form-control ctrl-login" placeholder="" />
+                    <div id="lblEmail" class="error">  </div>
+
+
+
+                </div>
+                <div class="form-group form-group-sm float-left margin-right-4">
+                    <label class="control-label">CURRENT PASSWORD </label>
+                    <input id="CurrentPassword" type="password" name="currentPassword" required value="" class="form-control ctrl-login" placeholder="" />
+                    <div id="lblCurrentPassword" class="error">  </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 45px;">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm float-left margin-right-4">
+                    <label class="control-label">NEW PASSWORD </label>
+                    <input id="NewPassword" type="password" required="required" name ="newPassword"value="" class="form-control ctrl-login" placeholder="" />
+                    <div id="lblNewPassword" class="error">  </div>
+                </div>
+                <div class="form-group form-group-sm float-left">
+                    <label class="control-label">CONFIRM NEW PASSWORD </label>
+                    <input id="ConfirmNewPassword" type="password" name="confirmPassword" required value="" class="form-control ctrl-login" placeholder="" />
+                    <div id="lblConfirmNewPassword" class="error">  </div>
+                </div>
+
+
+            </div>
+            
+           
+        </div>
+      
+        <div id="ErrPassNotMatch" class="error"></div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="form-control float-left margin-right-4"  id="ctrlSubmit_regsiter" value="SUBMIT" />&nbsp;
+                <input type="button" class="form-control float-left" id="ctrlCancel_regsiter" value="CANCEL" />
+            </div>
+            <br />
+            <div>
+                <p id="lblError" class="col-md-12 error" >
+                    &nbsp;
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<script>
+
+
+    $('#ctrlCancel_regsiter').click(function (e) {
+        location.href = '@Url.Content("~/Account/Login")';
+    });
+
+    $(document).on('click', '#ctrlSubmit_regsiter', function (e) {
+        e.preventDefault();
+
+        $('#lblError').empty();
+              
+        if (RequiredAll() === false){
+            return;
+        }
+           
+        else {
+            $('#lblCurrentPassword').empty();
+            $('#lblNewPassword').empty()
+            $('#lblConfirmNewPassword').empty();
+        }
+
+
+        if (!(isEmail($("#ctrlEmail_regsiter").val()))) {
+            debugger;
+            $('#lblEmail').html("Incorrect Email Format");
+            clearvaluesBesideEmail();        
+            return;
+        }
+
+        else {
+            $('#lblEmail').empty();
+
+        }
+        //validate pass match 
+
+        if (comparePasswords() === false)        {
+
+            return;
+        }
+        else {
+
+            $('#ErrPassNotMatch').empty();
+        }
+
+        clearErrorMessages();       
+
+
+        var RegModel = {
+
+            Email: $("#ctrlEmail_regsiter").val(),
+            CurrentPassword: $("#CurrentPassword").val(),
+            NewPassword: $("#NewPassword").val(),
+            ConfirmNewPassword: $("#ConfirmNewPassword").val()           
+
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Register", "Account")',
+            data: RegModel,
+            dataType: "json",
+            success: function (result) {                
+               
+                if (result.Url) {
+                    // The operation was a success on the server as it returned
+                    // a JSON objet with an url property pointing to the location
+                    // you would like to redirect to => now use the window.location.href
+                    // property to redirect the client to this location
+                    window.location.href = result.Url;
+                } else {
+                    // The server returned a partial view => let's refresh
+                    // the corresponding section of our DOM with it
+                    $('#lblError').html(result.Error);
+                }
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+
+    function RequiredAll() {
+
+        val = true;
+
+        Email = $("#ctrlEmail_regsiter").val(),
+        CurrentPassword =  $("#CurrentPassword").val(),
+        NewPassword = $("#NewPassword").val(),
+        ConfirmNewPassword = $("#ConfirmNewPassword").val()
+
+        if (Email.length === 0) {
+            $('#lblEmail').html("Required");
+            val = false;
+        }
+        else {
+            if (!(isEmail($("#ctrlEmail_regsiter").val()))) {
+                $('#lblEmail').html("Incorrect Email Format");
+                val = true;
+
+            }
+        }
+
+        if (CurrentPassword.length === 0) {
+            $('#lblCurrentPassword').html("Required");
+            val = false;
+        }
+
+        if (NewPassword.length === 0) {
+            $('#lblNewPassword').html("Required");
+            retval = false;
+        }
+
+        if (ConfirmNewPassword.length === 0) {
+            $('#lblConfirmNewPassword').html("Required");
+            val = false;
+        }
+
+        return val;
+
+    }
+
+    function clearErrorMessages() {
+
+        $('#lblEmail').empty();
+        $('#lblCurrentPassword').empty();
+        $('#lblNewPassword').empty()
+        $('#lblConfirmNewPassword').empty();
+    }
+
+    function comparePasswords(){
+       val = false
+
+       newPass = $('#NewPassword').val();
+       confirmPass = $('#ConfirmNewPassword').val();
+
+      if (newPass === confirmPass) {
+          val = true
+      }
+      else {
+
+          $('#ErrPassNotMatch').html("New Password and Confirm New Password do not match");
+      }
+
+      return val;
+    }
+
+    function clearvaluesBesideEmail()
+    {
+       CurrentPassword = $("#CurrentPassword").val(),
+       NewPassword = $("#NewPassword").val(),
+       ConfirmNewPassword = $("#ConfirmNewPassword").val()              
+        
+        if (CurrentPassword.length > 0) {
+            $('#lblCurrentPassword').empty();         
+        }
+
+        if (NewPassword.length > 0) {
+            $('#lblNewPassword').empty()            
+        }
+
+        if (ConfirmNewPassword.length > 0) {
+            $('#lblConfirmNewPassword').empty();
+         
+        }
+    }
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+</script>
+

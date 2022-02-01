@@ -1,0 +1,82 @@
+﻿@using CPDPortalMVC.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    #DashboardTable_length { /*hiding the show 10 entries*/
+        visibility: hidden;
+    }
+
+    #DashboardTable_filter { /*hiding the search box*/
+        visibility: hidden;
+    }
+
+    #DashboardTable_wrapper .buttons { /*hide export buttons*/
+        visibility: hidden;
+    }
+
+
+    .cellStyle { /*set table td color*/
+        background-color: #fcfcfd;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+        vertical-align: middle;
+    }
+
+    th {
+        background-color: #C6E6EA;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+    }
+
+    .btnCancelSession {
+        vertical-align: middle;
+    }
+
+    ul {
+        list-style: decimal;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        padding-left: 5px;
+    }
+
+    .tooltip-inner {
+        max-width: 550px;
+        width: 550px;
+        text-align: left;
+        padding-left: 30px;
+    }
+
+        .tooltip-inner p {
+            text-align: left;
+        }
+
+            .tooltip-inner p.centerText {
+                text-align: center;
+            }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 id="lblTitle"></h1>
+        <div onclick="window.history.back()" class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+    </div>
+</div>
+
+<div class="row">
+    @{
+        Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+    }
+
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        @Html.ActionLink("Generate Program Requests Report", "ExportToExcel", "Admin", null, new { @class = "btn btn-primary btn-large" })       
+   </div>
+
+

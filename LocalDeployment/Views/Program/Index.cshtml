@@ -1,0 +1,271 @@
+﻿@using CPDPortalMVC.Models;
+@using MoreLinq;
+@model List<Program>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        height: 340px;
+    }
+    .archived{
+        height:250px;
+    }
+</style>
+<div class="pnl-portal">
+
+    @if (Model.Count > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1><div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+                <div class="lead1">Please Select Your Program.</div>
+            </div>
+
+        </div>
+        foreach (var batch in @Model.Batch(2))
+        {
+
+
+            <div class="row">
+                @foreach (var item in batch)
+                {
+                    <div class="col-md-6" style="margin-bottom: 2px;padding-bottom:5px">
+                        <div class="card" style="padding: 10px 20px;" title="@item.ProgramName" data-id="@item.ProgramID">
+                            @if (item.ProgramID == 1)
+                            {
+                                <div style="margin-bottom: 12px; font-size: 22px; text-transform: uppercase;" class="title-item">
+                                    <span style='color:#808080'>NEW HORIZONS IN DYSLIPIDEMIA MANAGEMENT IN PRIMARY CARE (EXPIRED)</span> / NOUVEAUX HORIZONS DANS LA PRISE EN CHARGE DE LA DYSLIPIDÉMIE EN SOINS PRIMAIRES
+                                </div>
+                            }
+                            else if (item.ProgramID == 8)
+                            {
+                                <div style="margin-bottom: 12px; font-size: 22px; text-transform: uppercase;" class="title-item">
+                                    <span  class="title-item">DYSLIPIDEMIA IN PRIMARY CARE: IMPLICATIONS OF THE 2021 CCS DYSLIPIDEMIA GUIDELINES</span> / Dyslipidémie en soins primaires : Implications des lignes directrices 2021 de la SCC sur la dyslipidémie
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="margin-bottom: 12px; font-size: 22px; text-transform: uppercase;" class="title-item">@Html.Raw(item.ProgramName)</div>
+                            }
+                            <div>
+
+                                <table style="font-size: 13px; width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 170px">Developed by: @item.DevelopedBy</td>
+                                            <td>Target Audience: @item.TargetAudience</td>
+                                        </tr>
+                                        @if (item.ProgramID == 8)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Certified by: @item.CertifiedBy / Collège québécois des médecins de famille</td>
+                                                <td>Credit Hours: @item.CreditHours</td>
+                                            </tr>
+
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Certified by: @item.CertifiedBy</td>
+                                                <td>Credit Hours: @item.CreditHours</td>
+                                            </tr>
+                                        }
+
+                                        @if (item.ProgramID == 1)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px;color:#808080">Program ID: @item.ProgramID_CHRC</td>
+                                                <td>Events Completed: @item.EventsCompleted</td>
+                                            </tr>
+                                        }
+                                        else if (item.ProgramID == 8)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px;">Program ID: @item.ProgramID_CHRC ENG/ 193061 FR</td>
+                                                <td>Events Completed: @item.EventsCompleted</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Program ID: @item.ProgramID_CHRC</td>
+                                                <td>Events Completed: @item.EventsCompleted</td>
+                                            </tr>
+
+                                        }
+                                        @if (item.ProgramID == 1)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px;color:#808080">Expired: (July 13, 2019)</td>
+                                                <td>&nbsp;</td>
+
+                                            </tr>
+                                        }
+                                        @if (item.ProgramID == 1)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Program ID (QC): 188618</td>
+                                                <td>&nbsp;</td>
+
+                                            </tr>
+                                        }
+                                        @if (item.ProgramID == 8)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Expiration Date: @item.ExpirationDate ENG/ December 16, 2022 FR</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Expiration Date: @item.ExpirationDate</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        }
+                                        @if (item.ProgramID == 1)
+                                        {
+                                            <tr>
+                                                <td style="width: 170px">Expiration Date (QC): January 17, 2020</td>
+                                                <td>&nbsp;</td>
+
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="2" style="text-align: right">
+                                                <button type="button" data-id="1" class="btn btn-default btn-sm program-detail" style="width: 102px; align-items: center; margin-top: 30px;">
+                                                    Enter
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card archived" style="padding: 10px 20px;" title="@ViewBag.TherapeuticArea" data-id="@ViewBag.TherapeuticID">
+
+                        <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea - Archived / Expired Programs</h1>
+
+                        <table style="font-size: 13px; width: 100%">
+                            <tr>
+                                <td colspan="2" style="text-align: right">
+                                    <button type="button" data-id="1" class="btn btn-default btn-sm archivedbutton" style="width: 102px; align-items: center; margin-top: 30px;">
+                                        Enter
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1><div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+            </div>
+
+        </div>
+        <b style="color:#000000;font-size:larger">There is no program available for the selected Therapeutic Area</b><br /><br /><br /><br />
+
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card archived" style="padding: 10px 20px;" title="@ViewBag.TherapeuticArea" data-id="@ViewBag.TherapeuticID">
+
+                        <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea - Archived / Expired Programs</h1>
+
+                        <table style="font-size: 13px; width: 100%">
+                            <tr>
+                                <td colspan="2" style="text-align: right">
+                                    <button type="button" data-id="1" class="btn btn-default btn-sm archivedbutton" style="width: 102px; align-items: center; margin-top: 30px;">
+                                        Enter
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+    }
+
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+
+
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+        document.title = 'Programs';
+
+
+
+
+        $('a').each(function () {
+            $(this).attr('title', $(this).html());
+        });
+
+        // $('body').css('background', ' #d8d7d6');
+
+
+
+        $('.program-detail').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = '/ProgramDetail/?TherapeuticID=' + @ViewBag.TherapeuticID + '&ProgramID=' + $(this).closest('.card').attr('data-id');
+        });
+
+        $('.archivedbutton').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = '/Archived/?TherapeuticID=' +  @ViewBag.TherapeuticID;
+        });
+
+        $('.btn-back').on('click', function (e) {
+            window.history.back();
+        });
+
+    });
+</script>
+    }

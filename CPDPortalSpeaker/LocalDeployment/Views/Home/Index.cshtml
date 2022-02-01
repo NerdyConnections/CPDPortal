@@ -1,0 +1,251 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+       
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <div style="background-color: #E6E6E6; padding: 1px 0px 10px 10px">
+                    <h1 style="color: #F00">@Resources.Resource.HPNextSteps</h1>
+                    <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+                    <div class="margin-top-24">
+                        <h3>@Resources.Resource.HPCOIForm</h3>
+                        <ol>
+                           @Html.Raw(@Resources.Resource.HPUploadCOIFormPart1)
+                            <ul>
+                                <li>
+                                    @Html.Raw(@Resources.Resource.HPUploadForm)
+
+
+
+                                    <div style="display:inline;position:relative;">
+                                        <a class="link-blue" style="width:30px;cursor: pointer; display: inline-block;font-weight:400">
+                                            &nbsp;<strong><u>@Resources.Resource.HPHere</u></strong>
+                                            <input id="COIForm_Uploader" data-val="" type="file"
+                                                   style="cursor: pointer; position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="COIForm_Uploader"
+                                                   accept=".pdf,.doc,.docx" size="40" class="form-group-sm form-control" />
+                                        </a>
+                                    </div>
+
+
+
+
+
+                                    <em>@Resources.Resource.HPOR</em><strong></strong>
+                                </li>
+                                @Html.Raw(@Resources.Resource.HPUploadCOIFormPart2)
+                            </ul>
+                        </ol>
+                    </div>
+                    <div class="margin-top-24">
+                        @Html.Raw(@Resources.Resource.HPCompletePayeeForm)
+                    </div>
+                    <br>
+                </div>
+            @Html.Raw(@Resources.Resource.HPLetter)
+
+
+                <div class="margin-top-24">                            </div>
+
+                <div class="margin-top-24"></div>
+
+
+            </div>
+
+
+
+            <div style="padding:20px">
+
+                <div id="circle1" class="circleChart" data-value=""></div>
+                <div id="circle2" class="circleChart" data-value=""></div>
+                <div id="circle3" class="circleChart" data-value=""></div>
+                <div id="circle4" class="circleChart" data-value=""></div>
+
+            </div>
+
+
+
+
+
+            <!-- <div class="2 margin-top-24">
+            <h3>Program Description</h3>
+            <div style="border: 3px solid #fff; height: 100px; width: 95%"></div>
+        </div>-->
+            <!--<div class="3 margin-top-24">
+            <div style="border: 3px solid #fff; width: 95%">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="background: #333; color: #fff; padding: 2px 0px 2px 5px">PROVINCE</td>
+                        <td style="width: 220px; background: #24c878; color: #fff; padding: 2px 0px 2px 5px">ACTIVE</td>
+                        <td style="width: 220px; background: #3d7f9c; color: #fff; padding: 2px 0px 2px 5px">COMPLETED</td>
+                        <td style="width: 220px; background: #e60c41; color: #fff; padding: 2px 0px 2px 5px">CANCELLED</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">BC</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">AB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">SK</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">MB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">ON</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">QC</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NS</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">NFLD</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 2px 0px 2px 5px">PEI</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>-->
+
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+    });
+
+    $('#COIForm_Uploader').on('change', function (e) {
+
+        var files = e.target.files;
+       
+        var UserID = '@ViewBag.UserID';
+
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {//making sure it support html 5 control
+                var fileSize = files[0].size / 1024 / 1024;
+                var filename = files[0].name;
+                var extension = filename.substr((filename.lastIndexOf('.') + 1));
+                if (fileSize < 20.00) {
+                  
+                    $("#COIForm_Uploader").attr("data-val", "true");
+                   
+                    //upload file to server
+                    var data = new FormData();
+                    data.append(files[0].name, files[0])
+                    $.ajax({
+                        type: "POST",
+                        url: '/FileUpload/COIForm?UserID=' + UserID,
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            if (result.success) {
+                                debugger;
+                                console.log(result.success.msg);
+                                $('#upload-file-info').html(result.success.uploadedFilename + " Uploaded");
+                                $('#upload-file-info').removeClass("text-danger");
+                                $('#upload-file-info').addClass("text-sucess");
+                                $('#SessionFileName').val(result.success.returnFileName);
+                                $('#IsFileUploaded').val(true);
+                                console.log($('#SessionFileName').val());
+                                $("#Evaluation_Uploader").attr("data-val", true);
+                                window.location = '/Home/Index';
+
+                            } else {
+                                console.log(result.error);
+                                debugger;
+                                $('#upload-file-info').html(result.error);
+                                $('#upload-file-info').addClass("text-danger");
+                            }
+                        }
+                    });
+
+                }
+                else {
+                    $('#upload-file-info').html("File Size is too big. Please upload another file");
+                    $("#UploadEvaluationForm").attr("data-val", "false");
+
+                }
+
+            }
+        }
+
+
+    });
+
+</script>

@@ -1,0 +1,197 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .link-blue {
+
+        text-decoration:none;
+            cursor:pointer;
+    }
+    a:hover{
+
+        text-decoration:none;
+    }
+</style>
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Session["ProgramName"] != null)
+            {
+                <h1 style="padding:0px;margin:0px">@Session["ProgramName"]</h1>
+            }
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+           
+        </div>
+    </div>
+
+    <div class="row">
+       @{ 
+
+           Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount) @ViewBag.ProgramRequestStatusCounts);
+       }
+
+
+@if (Convert.ToInt32(Session["ProgramID"]) == 7)
+{
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        <div class="1">
+            <h1>STEP BY STEP - REGIONAL EVENTS: </h1>
+            <div class="margin-top-24">
+                <h3>Four to Six Weeks Prior to Event Date:</h3>
+                <ol>
+                    <li>Submit the <a href="/Program/ProgramRequestII">New Event Request Form</a> - "My Dashboard" includes all session specific details and action items </li>
+                    <li>
+                        Receive Approval - 24-48 hours after submission request (once the speaker / moderator have accepted the invitation and confirm the date)
+                    </li>
+                    <li>The speaker will select the Clinical Question modules which will be presented at the event based on the duration of the program you selected in the Event Request Form </li>
+                    <li>Initiate Logistics Support (Menu / AV) </li>
+                    <li>Initiate Recruitment (the dynamic, auto-generated <a href="/Dashboard/Index">National Invitation</a> specific to each event will be available for download in your <a href="/Dashboard/Index">dashboard</a> once the speaker / moderator has confirmed the date and the Clinical Question modules have been selected) </li>
+                    <li>
+                        Receive Regional Accreditation Approval (the dynamic, auto-generated <a href="/Dashboard/Index">Regional Invitation</a> specific to each event will be available for download in your <a href="/Dashboard/Index">dashboard</a> once approval is received from the regional CFPC chapter)
+                    </li>
+                    <li>
+                        Continue Recruitment
+                    </li>
+                </ol>
+            </div>
+
+
+            <div class="margin-top-24">
+                <h3>One Week Prior to Event Date:</h3>
+                <ol>
+                    <li>
+                        Visit your <a href="/Dashboard/Index">dashboard</a> to download the dynamic, auto-generated program materials specific to the event. - <a href="/Dashboard/Index">Sign-In Sheet, Evaluation Forms, Certificate of Attendance</a>
+                    </li>
+
+                    <li>
+                        Finalize any outstanding logistics items
+                    </li>
+
+                </ol>
+            </div>
+
+            <div class="margin-top-24">
+                <h3>Post Event:</h3>
+                <ol>
+
+                    <li>
+                        Upload Completed Program Materials
+                        -<a href="/Dashboard/Index"> Sign-In Sheet, Evaluation Forms</a>
+                    </li>
+                    <li>Physician Organization will issue honoraria and 3rd party payments </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+
+
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>STEP BY STEP - REGIONAL EVENTS: </h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+                <div class="margin-top-24">
+                    <h3>Four to Six Weeks Prior to Event Date:</h3>
+                    <ol>
+@if (Convert.ToInt32(Session["ProgramID"]) == 5 || Convert.ToInt32(Session["ProgramID"]) == 8 || Convert.ToInt32(Session["ProgramID"]) == 9)
+{
+                        <li><a class="link-blue" href="/Program/ProgramRequestII" title="Submit the New Event Request Form">Submit the New Event Request Form</a><br/>- "My Dashboard" includes all session specific details and action items</li>
+}
+
+else
+{
+    <li><a class="link-blue" href="/Program/ProgramRequest" title="Submit the New Event Request Form">Submit the New Event Request Form</a><br />- "My Dashboard" includes all session specific details and action items</li>
+
+}
+                        <li>Receive Approval - 24-48 hours after submission request</li>
+                        <li>Initiate Logistics Support (Menu / AV)</li>
+                        <li>
+                            Initiate Recruitment (the dynamic, auto-generated invitation specific to each event will be available for download in your <a href="/Dashboard/Index">dashboard</a> once the speaker / moderator has confirmed the date)<br>
+                            @if (Convert.ToInt32(Session["ProgramID"]) == 8 || Convert.ToInt32(Session["ProgramID"]) == 9)
+                            {
+                            <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/InvitationNationalWeb.pdf" title="- Download Invitation Template (National) Webinar">- Download Invitation Template (National) - Webinar</a><br/>
+                            <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/InvitationNationalLive.pdf" title="- Download Invitation Template (National) Live">- Download Invitation Template (National) - Live</a>
+                            }
+                            else
+                            {
+                                 <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/NationalInvitation.pdf" title="- Download Invitation Template (National)">- Download Invitation Template (National)</a>
+                            }
+                        </li>
+                        <li>
+                            Receive Regional Accreditation Approval (the dynamic, auto-generated invitation specific to each event will be available for download in your <a href="/Dashboard/Index">dashboard</a> once approval is received from the regional CFPC chapter)<br>
+    @if (Convert.ToInt32(Session["ProgramID"]) == 8 || Convert.ToInt32(Session["ProgramID"]) == 9)
+    {
+        <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/InvitationRegionalWeb.pdf" title="- Download Invitation Template (Regional) Webinar">- Download Invitation Template (Regional) - Webinar</a><br />
+                            <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/InvitationRegionalLive.pdf" title="- Download Invitation Template (Regional) Live">- Download Invitation Template (NationalRegional) - Live</a>
+    }
+    else
+    {
+        <a class="link-blue" target="_blank" href="~/PDF/@Session["ProgramID"]/RegionalInvitation.pdf" title="- Download Invitation Template (Regional)">- Download Invitation Template (Regional)</a>
+    }
+</li>
+                        <li>Continue Recruitment </li>
+                    </ol>
+                </div>
+
+
+                <div class="margin-top-24">
+                    <h3>One Week Prior to Event Date:</h3>
+                    <ol>
+                        <li>
+                            Visit your <a href="/Dashboard/Index">dashboard</a> to download the dynamic, auto-generated program materials specific to the events. - <a class="link-blue" href="/Home/ProgramMaterials" title="Download Meeting Materials">Download Program Materials</a>
+                            <br>
+                            - Sign-In Sheet, Presentation Slides, Evaluation Forms, Certificate of Attendance
+                        </li>
+                        <li>Finalize any outstanding logistics items </li>
+
+                    </ol>
+                </div>
+
+                <div class="margin-top-24">
+                    <h3>Post Event:</h3>
+                    <ol>
+
+                        <li>
+                            <a class="link-blue" href="/Dashboard/Index" title="Upload Completed Meeting Materials">Upload Completed Meeting Materials</a>
+                            <br>
+                            - Sign-In Sheet, Evaluation Forms
+                        </li>
+                        <li>Physician Organization will issue honoraria and 3rd party payments </li>
+                    </ol>
+                </div>
+            </div>          
+        </div>
+}
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+
+<script src="/Scripts/jquery-3.1.0.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/jquery.easing.min.js"></script>
+<script src="/Scripts/circleCharts.js"></script>
+
+
+<script>
+      
+        $(document).ready(function () {
+            $('.btn-back').on('click', function (e) {
+                window.history.back();
+            });
+
+        });
+</script>

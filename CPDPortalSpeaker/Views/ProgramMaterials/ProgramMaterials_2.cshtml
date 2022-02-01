@@ -1,0 +1,178 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Materials</h1>
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+                <div class="margin-top-24">
+                    <h3>CLINICAL EXCHANGE: Expert Perspectives on Treating and Managing Patients at High Risk for Fracture</h3>
+                       
+                    <p><strong>Important Reminder:</strong></p>
+                    <ul>
+                        <li>Please note that you cannot not make any changes to the approved program (slides/materials).&nbsp; The program must be delivered exactly as approved by the CFPC.                          </li>
+                    </ul>
+               
+                </div>
+
+                <div class="margin-top-24">
+                    <h3>
+                        Program Slides<br>
+                    </h3>
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="10" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="13%" bgcolor="#339999" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="37%" bgcolor="#339999" align="center">Credit Designation</td>
+                                <td style="font-size: 16px; color: #FFF;" width="50%" bgcolor="#339999" align="center">Description</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF; padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/The Clinical Exchange Core Program Core Deck.pptx" target="_new"><img src="/Images/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">1.0 Mainpro+</td>
+                                <td bgcolor="#FFFFFF" align="center">Core Presentation Deck</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table style="border: #999 thin solid" width="90%" cellspacing="0" cellpadding="5" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;" width="13%" height="29" bgcolor="#003366" align="center">Slides</td>
+                                <td style="font-size: 16px; color: #FFF;" width="30%" bgcolor="#003366" align="center">Credit Designation</td>
+                                <td colspan="2" style="font-size: 16px; color: #FFF;" bgcolor="#003366" align="center">Case-Based Learning</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; color: #FFF;padding:10px" bgcolor="#FFFFFF" align="center"><a href="/PDF/The Clinical Exchange Case-Based Learning Modules.pptx" target="_new"><img src="/Images/ppt.png" alt="" width="35" height="36" border="0"></a></td>
+                                <td bgcolor="#FFFFFF" align="center">1.0 Mainpro+ per module with introduction slides</td>
+                                <td colspan="2" bgcolor="#FFFFFF" align="center">
+                                    <br>
+                                    Includes introductory slides &amp; 5 case-based modules.  The case title and navigation menu (hyperlinked to the start of each case) may be found on slides 23, 60, 92, 129, 166 &amp; 207<br>                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    1- 23
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td colspan="2" bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Introduction Slides<br>
+                                        </strong>Disclosure Slides,  Overall Learning Objectives, Global &amp; Canadian Perspectives on OP Management, Program Overview
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    24-60
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td width="11%" bgcolor="#FFFFFF" align="center"><img src="/Images/2/case1-b.png" width="50" height="85"></td>
+                                <td width="46%" bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Case 1: Joy<br>
+                                        </strong>Risk Assessment and Management of Treatment Naïve PMO Patients
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    61-92
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td bgcolor="#FFFFFF" align="center"><img src="/Images/2/case2-b.png" width="50" height="65"></td>
+                                <td bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Case 2: James<br>
+                                        </strong>Risk Assessment &amp; Management of Male OP Patients
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    93-129
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td bgcolor="#FFFFFF" align="center"><img src="/Images/2/case3-b.png" width="50" height="62"></td>
+                                <td bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Case 3: Ken<br>
+                                        </strong>Medications and Comorbidities Associated with Bone Loss
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    130-166
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td bgcolor="#FFFFFF" align="center"><img src="/Images/2/case4-b.png" width="50" height="74"></td>
+                                <td bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Case 4: Angela<br>
+                                        </strong>Benefits of Treatment Persistence and Adherence
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 16px; padding:10px" bgcolor="#FFFFFF" align="center">
+                                    Slide Range<br>
+                                    167-207
+                                </td>
+                                <td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+                                <td bgcolor="#FFFFFF" align="center"><img src="/Images/2/case5-b.png" width="50" height="75"></td>
+                                <td bgcolor="#FFFFFF" align="center">
+                                    <p>
+                                        <strong>
+                                            Case 5: Kate<br>
+                                        </strong>Optimization of Long-Term Therapy
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/><br/><br /><br/>
+
+                </div>
+
+               
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

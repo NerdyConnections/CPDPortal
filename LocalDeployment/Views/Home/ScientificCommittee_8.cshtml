@@ -1,0 +1,138 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Scientific Planning Committee</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/8/leiter.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>
+                                Lawrence A. Leiter, MD, FRCPC, FACP<br>
+                                Chair
+                            </strong>
+                        </h5>
+                        <h6>
+                            Division of Endocrinology and Metabolism<br>
+                            St. Michael’s Hospital<br>
+                            Professor of Medicine and Nutritional Sciences<br>
+                            University of Toronto
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/8/bernucci.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>Bruno Bernucci, MD</strong>
+                        </h5>
+                        <h6>
+                            Polyclinique Levasseur<br>
+                            Montréal, QC
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/8/goodman.png" width="190" height="190"><br>
+                        <h5><strong>Shaun Goodman, MD, MSc, FRCPC, FACC, FAHA, FESC, FCCS</strong></h5>
+                        <h6>
+                            Associate Head, Division of Cardiology
+                            <br>
+                            Professor and Heart &amp; Stroke Foundation of Ontario (Polo) Chair <br>
+                            Department of Medicine, University of Toronto<br>
+                            Consultant, Canadian Heart Research Centre
+                            <br>
+                            Co-Director, Canadian VIGOUR Centre
+                            <br>
+                            Adjunct Professor, Department of Medicine, University of Alberta
+                        </h6>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/8/gregoire.png" width="190" height="190"><br>
+                    <strong>
+                        <h5><strong>Jean C. Grégoire, MD, FRCPC, FACC</strong></h5>
+                        <h6>
+                            Interventional Cardiologist
+                            <br>
+                            Montreal Heart Institute
+                            <br>
+                            Associate Professor<br>
+                            University of Montreal
+                        </h6>
+                    </strong>
+                </div><strong>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/8/habert.png" width="190" height="190"><br>
+                        <h5><strong>Jeffrey Habert, MD</strong></h5>
+                        <h6>
+                            Family Physician<br>
+                            Assistant Professor<br>
+                            University of Toronto<br>
+                            Department of Family and Community Medicine<br>
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <strong><img class="img-responsive" src="/Images/8/lin.png" width="190" height="190"><br></strong>
+                        <h5><strong>Peter Lin, MD</strong></h5>
+                        <h6>
+                            Family Physician<br>
+                            Director Primary Care Initiatives<br>
+                            Canadian Heart Research Centre<br>
+                            University of Toronto
+                        </h6>
+                    </div>
+
+                </strong>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+<script src="/Scripts/jquery-3.1.0.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/jquery.easing.min.js"></script>
+<script src="/Scripts/circleCharts.js"></script>
+
+
+<script>
+
+        $(document).ready(function () {
+            /**/
+
+        });
+</script>

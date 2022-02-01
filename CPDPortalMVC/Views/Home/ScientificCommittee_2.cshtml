@@ -1,0 +1,122 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>SCIENTIFIC PLANNING COMMITTEE </h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/2/bell.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>Alan Bell, MD, FCFP</strong><br>
+                            <strong>Chair</strong>
+                        </h5>
+                        <h6>
+                            Assistant Professor
+                            <br>
+                            Department of Family and Community Medicine
+                            <br>
+                            University of Toronto
+                        </h6>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/2/adachi.png" width="190" height="190"><br>
+                        <h5>
+                            <strong>Jonathan Adachi, BSc, MD, FRCP(C)</strong>
+                        </h5>
+                        <h6>
+                            Professor of Medicine
+                            <br>
+                            Department of Medicine
+                            <br>
+                            McMaster University
+                        </h6>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/2/belanger.png" width="190" height="190"><br>
+                        <h5><strong>André Bélanger, MD, CFPC</strong></h5>
+                        <h6>
+                            Clinique medicale Valcartier
+                            <br>
+                            Clinique antidouleur de HD de Lévis <br>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/2/brown_j.png" width="190" height="190"><br>
+                    <h5><strong>Jacques Brown, MD, FRCPC</strong></h5>
+                    <h6>
+                        Clinical Professor
+                        <br>
+                        Department of Medicine
+                        <br>
+                        Laval University <br>
+                    </h6>
+                </div>
+                <div class="col-sm-4">
+                    <strong><img class="img-responsive" src="/Images/2/brown.png" width="190" height="190"><br></strong>
+                    <h5><strong>Vivien Brown, MDCM, CCFP, FCFP, NCMP </strong></h5>
+                    <h6>
+                        Assistant Professor
+                        <br>
+                        Department of Family and Community Medicine<br>
+                        University of Toronto
+                    </h6>
+                </div>
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="/Images/2/kendler.png" width="190" height="190"><br>
+                    <h5><strong>David Kendler, MD, FRCPC</strong></h5>
+                    <h6>
+                        Professor of Medicine (Endocrinology)
+                        <br>
+                        University of British Columbia
+                    </h6>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+<script src="/Scripts/jquery-3.1.0.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/jquery.easing.min.js"></script>
+<script src="/Scripts/circleCharts.js"></script>
+
+
+<script>
+
+        $(document).ready(function () {
+            /**/
+
+        });
+</script>

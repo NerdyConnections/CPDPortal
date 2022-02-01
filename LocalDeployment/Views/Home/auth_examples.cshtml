@@ -1,0 +1,56 @@
+﻿@using CPDPortalMVC.Util
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+
+    <h3>@ViewBag.Message</h3>
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="jumbotron">
+    @if (Request.IsAuthenticated)
+
+    {
+
+        if (User.IsInRole(Constants.SalesRep))
+        {
+        <div class="row" id="SR">
+            <p class="lead">Row to be seen by  Sales Representative</p>
+        </div>
+        }
+        if (User.IsInRole(Constants.RegionalManager))
+        {
+        <div class="row" id="RM">
+            <p class="lead">Row to be seen by  Regional Manager</p>
+        </div>
+        }
+        if (User.IsInRole(Constants.HeadOffice))
+        {
+        <div class="row" id="HO">
+            <p class="lead">Row to be seen by  Head Office</p>
+        </div>
+        }
+        if (User.IsInRole(Constants.Speaker))
+        {
+        <div class="row" id="Speaker">
+            <p class="lead"> Row to be seen by  Speaker<p>
+        </div>
+        }
+        if (User.IsInRole(Constants.Admin))
+        {
+        <div class="row" id="Admin">
+            <p class="lead"> Row to be seen by  Admin</p>
+        </div>
+        }
+    }
+    else
+
+    {
+        <div class="row">
+            Intruder alert
+        </div>
+    }
+    </div>

@@ -1,0 +1,300 @@
+﻿@using CPDPortalMVC.Models;
+@using MoreLinq;
+@model List<Program>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        height: 260px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 id="lblTitle"></h1>
+        <div onclick="window.history.back()" class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+        <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+    </div>
+</div>
+<div class="row">
+    @{
+        Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+    }
+   
+
+    <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+        <div class="1">
+            <h1>Program Description</h1>
+
+            <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+            <div class="margin-top-24">
+                <h3>
+                    A PRIMARY CARE GUIDE TO
+                    KEY CLINICAL QUESTIONS IN OSTEOPOROSIS MANAGEMENT
+                </h3>
+                <p></p><h3>
+                    ABOUT:
+                </h3>
+                <ul>
+                    <li>This interactive program has been specifically designed to address the most frequently encountered clinical challenges in the management of patients with osteoporosis or at risk for osteoporotic fracture in the primary care setting. This activity was developed by leading Canadian Experts to provide clinicians with answers to frequently asked questions and key take-away messages that can be applied to real-world practice.</li>
+                </ul>
+                <p></p><h3>
+                    FORMAT:
+                </h3>
+                <ul>
+                    <li>
+                        <div>This program consists of ten (10) modules. &nbsp;Each module addresses a key clinical question in osteoporosis management in the primary care setting.&nbsp;Each module requires approximately 15 minutes of presentation time. Additionally, 15 minutes have been&nbsp;welcome, introductions and Q&amp;A.</div>
+                        <div></div>
+                        <ul>
+                            <li>
+                                1-hour program: 3 modules&nbsp;
+                            </li>
+                            <li>1 hour 30-minute program: 5 modules</li>
+                            <li>2-hour program: 7 modules</li>
+                            <li>
+                                2 hour and 45-minute program: 10 modules&nbsp;
+                                <div></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Please select the program duration when submitting the new Event Request Form. &nbsp;The speaker will select the applicable modules based on the requested duration once the New Event Request Form is submitted.<br>
+                    </li>
+                </ul>
+                <h3>
+                    <br>
+                    CERTIFICATION:
+                </h3>
+                <ul>
+                    <li>This Group Learning activity has been certified for up to 2.75 MAINPRO+ one-credit-per-hour credits by the CFPC.</li>
+                </ul>
+                <p></p><h3>
+                    SPEAKERS:
+                </h3>
+                <ul>
+                    <li>Program speakers will have      access to the program materials once they confirm availability for at      least one of regional event dates</li>
+                    <li>Registered speakers will be required to complete an updated COI form</li>
+                    <li>
+                        A copy of their COI slides is available in their resource centre for download
+                    </li>
+                    <li>
+                        Please reference the Process Manual for important information and requirements
+                    </li>
+                    <li><strong>As per the CFPC guidelines for certified programs, speakers are required to use the presentation slides provided by the physician organization and are not permitted to make any changes to the program materials/slides.</strong></li>
+                </ul>
+                <p>
+                </p>
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    CLINICAL QUESTIONS: <br>
+                </h3>
+
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <img src="/Images/7/slide1.png" width="375" height="281">
+                    <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <div style="padding-bottom:20px">
+                <h3>
+                    <p></p>
+                </h3>
+
+                <h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </h3>
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/7/slide2.png" width="375" height="281"></td>
+                                <td width="50%" align="center">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <h3>
+                    <p></p>
+                </h3>
+
+
+                <h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </h3> <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/7/slide3.png" width="375" height="281"></td>
+                                <td width="50%" align="center">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </h3>
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/7/slide4.png" width="375" height="281"></td>
+                                <td width="50%" align="center">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div>
+                <h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </h3>
+
+                <div class="col-sm-12" style="padding-bottom:40px">
+                    <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td width="50%" align="center"><img src="/Images/7/slide5.png" width="375" height="281"></td>
+                                <td width="50%" align="center">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h3>
+            <p>
+                &nbsp;
+            </p>
+        </h3>
+
+        <div class="col-sm-12" style="padding-bottom:40px">
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="center"><img src="/Images/7/slide6.png" width="375" height="281"></td>
+                        <td width="50%" align="center">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>
+            <p>
+                &nbsp;
+            </p>
+        </h3>
+
+        <div class="col-sm-12" style="padding-bottom:40px">
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="center"><img src="/Images/7/slide7.png" width="375" height="281"></td>
+                        <td width="50%" align="center">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>
+            <p>
+                &nbsp;
+            </p>
+        </h3>
+
+        <div class="col-sm-12" style="padding-bottom:40px">
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="center"><img src="/Images/7/slide8.png" width="375" height="281"></td>
+                        <td width="50%" align="center">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <h3>
+            <p>
+                &nbsp;
+            </p>
+        </h3>
+
+        <div class="col-sm-12" style="padding-bottom:40px">
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="center"><img src="/Images/7/slide9.png" width="375" height="281"></td>
+                        <td width="50%" align="center">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>
+            <p>
+                &nbsp;
+            </p>
+        </h3>
+
+        <div class="col-sm-12" style="padding-bottom:40px">
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td width="50%" align="center"><img src="/Images/7/slide10.png" width="375" height="281"></td>
+                        <td width="50%" align="center">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+        
+</div>
+<div class="row">
+    <div class="col-md-12">&nbsp;</div>
+</div>
+
+

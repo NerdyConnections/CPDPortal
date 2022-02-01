@@ -1,0 +1,140 @@
+﻿@using CPDPortalMVC.Models;
+@using MoreLinq;
+@model List<Program>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        height: 260px;
+    }
+    .archived{
+        height:250px;
+    }
+</style>
+<div class="pnl-portal">
+
+    @if (Model.Count > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1><div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+                <div class="lead1">Please Select Your Program.</div>
+            </div>
+
+        </div>
+        foreach (var batch in @Model.Batch(2))
+        {
+
+
+            <div class="row">
+                @foreach (var item in batch)
+                {
+                    <div class="col-md-6" style="margin-bottom: 2px;padding-bottom:5px">
+                        <div class="card" style="padding: 10px 20px;" title="@item.ProgramName" data-id="@item.ProgramID">
+                           
+                                <!--div style="margin-bottom: 12px; font-size: 22px; text-transform: uppercase;" class="title-item">&nbsp;</!--div-->
+                            
+                            <div>
+
+                                <table style="font-size: 13px; width: 100%">
+                                    <tbody>
+                                       
+                                        
+                                        <tr>
+                                            <td colspan="2"><h3>@item.ProgramName</h3></td>
+                                          
+                                        </tr>
+                                      <tr>
+                                          <td><h4>(Expired @item.ExpirationDate)</h4></td>
+                                      </tr>
+                                       
+                                      
+                                        <tr>
+                                            <td colspan="2" style="text-align: right">
+                                                <button type="button" data-id="1" class="btn btn-default btn-sm program-detail" style="width: 102px; align-items: center; margin-top: 30px;">
+                                                    Enter
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+          
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1><div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+            </div>
+
+        </div>
+        <b style="color:#000000;font-size:larger">There is no program available for the selected Therapeutic Area</b><br /><br /><br /><br />
+    }
+
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+
+
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+        document.title = 'Programs';
+
+
+
+
+        $('a').each(function () {
+            $(this).attr('title', $(this).html());
+        });
+
+        // $('body').css('background', ' #d8d7d6');
+
+
+
+        $('.program-detail').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = '/ProgramDetail/?TherapeuticID=' + @ViewBag.TherapeuticID + '&ProgramID=' + $(this).closest('.card').attr('data-id');
+        });
+
+        $('.archivedbutton').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = '/Archived/?TherapeuticID=' + @ViewBag.TherapeuticID + '&ProgramID=' + $(this).closest('.card').attr('data-id');
+        });
+
+        $('.btn-back').on('click', function (e) {
+            window.history.back();
+        });
+
+    });
+</script>
+    }

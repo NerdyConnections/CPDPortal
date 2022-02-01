@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--margin-top-160-->
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Select a Therapeutic Area</h1>
+            <!--  <div class="lead1">Please Select Your Program.</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" style="margin-bottom: 2px">
+            <div class="card" style="padding: 10px 20px;" title="Cardiovascular & Metabolic" data-id="1">
+                <div>
+                    <img src="/Images/1.jpg" width="222" height="124" />
+                </div>
+               
+                <div style="font-size: 22px; text-transform: uppercase; color: #ff4b4b" class="title-item">Cardiovascular & Metabolic</div>
+                <div style="color: #2b2b2b">Active Programs: N</div>
+            </div>
+        </div>
+
+        <div class="col-md-6" style="margin-bottom: 2px">
+            <div class="card" style="padding: 10px 20px;" title="BONE HEALTH" data-id="2">
+
+                <div>
+                    <img src="/Images/2a.jpg" width="222" height="124" />
+                </div>
+                <div style="font-size: 22px; text-transform: uppercase; color: #ce118b" class="title-item">BONE HEALTH</div>
+                <div style="color: #2b2b2b">Active Programs: N</div>
+            </div>
+        </div>
+    </div>
+
+   
+
+   
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+
+
+
+    $(document).ready(function () {
+        document.title = 'Therapeutic Areas';
+
+       
+
+        $('a').each(function () {
+            $(this).attr('title', $(this).html());
+        });
+
+       
+        // $('body').css('background', ' #d8d7d6');
+        // $('body').css('background', 'rgb(187, 191, 173)');
+
+
+
+
+       
+
+        $('.card').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = '/Program?TherapeuticID=' + $(this).attr('data-id');
+        });
+
+    });
+
+
+</script>
+<!--end of pnl-portal-->
+
+

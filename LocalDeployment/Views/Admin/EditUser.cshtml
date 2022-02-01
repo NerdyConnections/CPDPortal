@@ -1,0 +1,99 @@
+﻿@model CPDPortalMVC.ViewModels.UserViewModel
+@using CPDPortalMVC.Util
+@{
+    Layout = null;
+}
+
+
+
+<style>
+    input[type=text].form-control, input[type=password].form-control {
+        background: transparent;
+        border: 1px solid #808080;
+    }
+
+
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background: none;
+        border-radius: 4px;
+    }
+
+    label {
+        color: black;
+    }
+
+    .field-validation-error {
+        color: crimson;
+    }
+</style>
+
+<!--don't these files, they are required at this location (not at head) for client side javascript to work-->
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+
+<script src="~/Scripts/jquery.validate.js"></script>
+
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<!--end of client side javascript-->
+
+@using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+  
+    <div class="form-group">
+       <h1>Post Session - Amgen</h1>
+        <h3>Evaluation Forms</h3>
+        <ul>
+            <li>doc 1</li>
+            <li>doc 2</li>
+            <li>doc 3</li>
+
+        </ul>
+        <h3>Sign in Sheet</h3>
+        <ul>
+            <li>doc 1</li>
+            <li>doc 2</li>
+            <li>doc 3</li>
+
+        </ul>
+        <h3>Other</h3>
+        <ul>
+            <li>doc 1</li>
+            <li>doc 2</li>
+            <li>doc 3</li>
+
+        </ul>
+    </div>
+    <div class="form-group">
+       Post Session - Provider
+
+        Honoraria<br/>
+
+        <input type="file"/>
+
+        3rd Party Payments<br/>
+
+        <input type="file"/>
+
+        Final Attendance<br/>
+
+        <input type="text" />
+    </div>
+                   
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" id="btnAddUser" class="btn btn-default" />
+                    </div>
+}

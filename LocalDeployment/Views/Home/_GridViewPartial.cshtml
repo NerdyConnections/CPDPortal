@@ -1,0 +1,74 @@
+
+@Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+    )
+
+
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "Home", Action = "GridViewPartial" };
+
+
+        settings.KeyFieldName = "UserID";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        //customizations
+        settings.Settings.ShowHeaderFilterButton = true;
+        settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "FirstName");
+
+        //start excel export
+        settings.SettingsExport.EnableClientSideExportAPI = true;
+        settings.Columns.Add("FirstName");
+        settings.Columns.Add("LastName");
+        settings.Columns.Add("EmailAddress");
+        settings.Columns.Add("Address");
+        settings.Columns.Add("Address2");
+
+        settings.Toolbars.Add(t =>
+        {
+            t.EnableAdaptivity = true;
+            t.Items.Add(GridViewToolbarCommand.ExportToPdf);
+            t.Items.Add(GridViewToolbarCommand.ExportToXls);
+            t.Items.Add(GridViewToolbarCommand.ExportToXlsx);
+            t.Items.Add(GridViewToolbarCommand.ExportToDocx);
+            t.Items.Add(GridViewToolbarCommand.ExportToRtf);
+            t.Items.Add(GridViewToolbarCommand.ExportToCsv);
+        });
+        //end excel export
+        //end of customizations
+
+
+        settings.Columns.Add("FirstName");
+        settings.Columns.Add("LastName");
+        settings.Columns.Add("EmailAddress");
+        settings.Columns.Add("ClinicName");
+        settings.Columns.Add("Address");
+        settings.Columns.Add("Address2");
+        settings.Columns.Add("City");
+        settings.Columns.Add("Province");
+        settings.Columns.Add("PostalCode");
+        settings.Columns.Add("Phone");
+        settings.Columns.Add("Fax");
+        settings.Columns.Add("Specialty",MVCxGridViewColumnType.CheckBox);
+        settings.Columns.Add("HonariumRange").PropertiesEdit.DisplayFormatString = "c" ;
+    });
+}
+@grid.Bind(Model).GetHtml()

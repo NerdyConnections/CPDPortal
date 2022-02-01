@@ -1,0 +1,970 @@
+﻿@using CPDPortalMVC.Util
+@model CPDPortalMVC.Models.ProgramRequestIIModel
+@{
+    ViewBag.Title = "Program Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string fullName = Model.ContactFirstName + " " + Model.ContactLastName;
+    Model.ContactName = fullName;
+}
+
+
+<style>
+    
+    .popover {
+        max-width: none;
+    }
+</style>
+
+    
+
+<div class="pnl-portal frmProgramRequest">
+    @using (@Html.BeginForm("SaveProgramRequestII", "Program", FormMethod.Post, new { @id = "formEventRequest", @enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.ContactName)
+        @Html.HiddenFor(model => model.ContactFirstName)
+        @Html.HiddenFor(model => model.ContactLastName)
+        @Html.HiddenFor(model => model.ContactPhone)
+        @Html.HiddenFor(model => model.ContactEmail)
+        @Html.HiddenFor(model => model.ProgramID)
+        @Html.HiddenFor(model => model.UserID)
+        @Html.HiddenFor(model => model.ProgramRequestID)
+        @Html.HiddenFor(model => model.SponsorID)
+        @Html.HiddenFor(model => model.IsAdmin)
+
+
+        if (Model.Speakers != null)
+        {
+            for (int i = 0; i < Model.Speakers.Count(); i++)
+            {
+                @Html.HiddenFor(model => Model.Speakers[i].Value);
+                @Html.HiddenFor(model => Model.Speakers[i].Text);
+            }
+        }
+        if (Model.Moderators != null)
+        {
+            for (int i = 0; i < Model.Moderators.Count(); i++)
+            {
+                @Html.HiddenFor(model => Model.Moderators[i].Value);
+                @Html.HiddenFor(model => Model.Moderators[i].Text);
+            }
+        }
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>
+                    @Html.Raw(ViewBag.ProgramName)
+                </h1> <label>Note: All fields, except those marked as optional are required. </label>
+                <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row"> <h3 class="col-sm-12 hdr">EVENT CONTACT INFORMATION</h3></div>
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session Contact">Event Contact</label>
+                <div>@fullName</div>
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Contact Phone Number">Contact Phone Number</label>
+                <div>@Html.DisplayFor(model => model.ContactPhone)</div>
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Contact Email Address">Contact Email Address</label>
+                <div>@Html.DisplayFor(model => model.ContactEmail)</div>
+            </div>
+
+        </div>
+
+
+        <div class="row"> <h3 class="col-sm-12 hdr">EVENT TYPE</h3></div>
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-4">
+                <div>
+                    @Html.RadioButtonFor(model => model.EventType, "InPerson", new { id = "InPerson" }) <label>Live In-Person Meeting</label>&nbsp;&nbsp;&nbsp;@Html.RadioButtonFor(model => model.EventType, "Webcast", new { id = "Webcast" })  <label>Webcast</label> <br />
+                    @Html.ValidationMessageFor(m => m.EventType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div id="divEventTypeDetails">
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">How is the interactivity component being achieved?</label>
+                    @Html.TextAreaFor(m => m.EventTypeQuestion1, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EventTypeQuestion1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">Will other participants be able to hear/view questions being asked by other participants to encourage discussion?</label>
+                    @Html.TextAreaFor(m => m.EventTypeQuestion2, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EventTypeQuestion2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">How is the attendance being recorded?</label>
+                    @Html.TextAreaFor(m => m.EventTypeQuestion3, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EventTypeQuestion3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">How will the evaluation be done?</label>
+                    @Html.TextAreaFor(m => m.EventTypeQuestion4, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EventTypeQuestion4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-8">
+                    <label class="" title="Additional Information / Comments">How will participants receive the Certificate of Attendance?</label>
+                    @Html.TextAreaFor(m => m.EventTypeQuestion5, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EventTypeQuestion5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row"> <h3 class="col-sm-12 hdr">EVENT DETAILS</h3></div>
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session Date">Event Date </label>&nbsp;<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-placement="top" title="" data-original-title="The Session date must be a minimum of four (4) weeks from today’s date "></span>
+                @Html.TextBoxFor(m => m.ProgramDate1, new { @class = "form-control", @id = "dpProgramDate" })
+                @Html.ValidationMessageFor(m => m.ProgramDate1, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session Date 2 (optional)">Presentation Start Time:</label>
+                @Html.TextBoxFor(m => m.ProgramStartTime, new { @class = "form-control", @id = "dpProgramStartTime" })
+                @Html.ValidationMessageFor(x => x.ProgramStartTime, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session Date 3 (optional)">Presentation End Time:</label>
+                @Html.TextBoxFor(m => m.ProgramEndTime, new { @class = "form-control", @id = "dpProgramEndTime" })
+                @Html.ValidationMessageFor(x => x.ProgramEndTime, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session Date 3 (optional)">
+                    REGISTRATION / ARRIVAL TIME: if applicable
+                </label>
+                @Html.TextBoxFor(m => m.RegistrationArrivalTime, new { @class = "form-control", @id = "dpRegistrationArrivalTime" })
+                @Html.ValidationMessageFor(x => x.RegistrationArrivalTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Meal Start Time">
+                    MEAL: Please enter the meal start time<br>
+                    Meal Start Time:
+                </label>
+                @Html.TextBoxFor(m => m.MealStartTime, new { @class = "form-control", @id = "dpMealStartTime" })
+                @Html.ValidationMessageFor(x => x.MealStartTime, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-1" style="text-align:center; vertical-align: text-bottom">
+                AND
+            </div>
+
+            <div class="form-group form-group-sm col-sm-4">
+                <label class="" title=""> highlight on the following below</label>
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.MealOption, "before", new { @id = "MealOptionBefore" })
+                        Meal will be served before the presentation<br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.MealOption, "during", new { @id = "MealOptionDuring" })
+                        Meal will be served during the presentation<br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.MealOption, "after", new { @id = "MealOptionAfter" })
+                        Meal will be served after the presentation<br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.MealOption, "no", new { @id = "MealOptionNo" })
+                        No meal will be served<br>
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(x => x.MealOption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        if (Model.ProgramID == 5)
+        {
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-5">
+                    <label class="" title="Session Credits">Event Credits (Please select either one or the other)</label>&nbsp;<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Please select the module that will be presented during this session"></span>
+                    <span id="showErrorMsg" class="text-danger"></span>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit14, new { @class = "credit" })
+                            1 Mainpro + Credits (1 hour) <br>
+                            Core Deck: <br>
+                            Dyslipidemia in Primary Care: Addressing Barriers to Optimal Lipid Management
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-sm col-sm-4">
+                    <label class="" title="">&nbsp; </label>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit15, new { @class = "credit" })
+                            1.5 Mainpro+ Credits (1.5 hours) <br>
+                            Core Deck + Clinicians' Corner: <br>
+                            Dyslipidemia in Primary Care: Addressing Barriers to Optimal Lipid Management
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.ProgramID == 7)
+        {
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-3">
+                    <label class="" title="Session Credits">Event Credits (Please select one only)</label>&nbsp;<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Please select the duration of the program. Please note that each module is 15 minutes with 15 minutes allotted per program for welcome, introductions and Q&amp;A. The presenter will select the applicable module topics once the New Event Request Form is submitted."></span>
+                    <span id="showErrorMsg" class="text-danger"></span>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit16, new { @class = "credit" })
+                            &nbsp; 1.0 Mainpro + Credits (1 hour)<br>
+                            <span style="padding-left:17px">3 Modules</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-sm col-sm-3">
+                    <label class="" title="">&nbsp; </label>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit17, new { @class = "credit" })
+                            &nbsp; 1.5 Mainpro+ Credits (1hour and 30 minutes) <br>
+                            <span style="padding-left:17px">5 Modules</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm col-sm-3">
+                    <label class="" title="">&nbsp; </label>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit18, new { @class = "credit" })
+                            &nbsp; 2.0 Mainpro+ Credits (2 hours) <br>
+                            <span style="padding-left:17px"> 7 Modules</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm col-sm-3">
+                    <label class="" title="">&nbsp; </label>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit19, new { @class = "credit" })
+                            &nbsp; 2.75 Mainpro + Credits (2 hours and 45 minutes) <br>
+                            <span style="padding-left:17px">10 Modules</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.ProgramID == 8)
+        {
+            <div class="row">
+                <div class="form-group form-group-sm col-sm-5">
+                    <label class="" title="Session Credits">Event Credits (Please select either one or the other)</label>&nbsp;<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Please select the module that will be presented during this session"></span>
+                    <span id="showErrorMsg" class="text-danger"></span>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit20, new { @class = "credit" })
+                            1 Mainpro + Credits (1 hour) <br>
+                            Core Deck: <br>
+                           
+                            Dyslipidemia in Primary Care: Implications of the 2021 CCS Dyslipidemia Guidelines
+
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-sm col-sm-4">
+                    <label class="" title="">&nbsp; </label>
+                    <div>
+                        <label>
+                            @Html.CheckBoxFor(model => model.SessionCredit21, new { @class = "credit" })
+                            1.5 Mainpro+ Credits (1.5 hours) <br>
+                            Core Deck with additional Q&A and discussion with participants:<br/>
+                            Dyslipidemia in Primary Care: Implications of the 2021 CCS Dyslipidemia Guidelines
+
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-4">
+                <label class="" title="Is this session being offered as part of a larger, multi-session event?">Is this event being offered as part of a larger, multi-session event?</label>
+                <div>
+                    <label>@Html.RadioButtonFor(model => model.MultiSession, "Y", new { id = "MultiSessionOptionYes" }) Yes&nbsp;&nbsp;&nbsp;</label> <label>@Html.RadioButtonFor(model => model.MultiSession, "N", new { id = "MultiSessionNo" }) No</label>
+                    &nbsp;
+                    @Html.ValidationMessageFor(m => m.MultiSession, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group form-group-sm col-sm-4" id="Divfileupload">
+                <label class="" title="Please upload a copy of the Full Agenda">Please upload a copy of the Full Agenda</label>
+                <div style="position:relative;">
+                    <div class="form-control" style="width:160px; cursor: pointer; display: inline-block">
+                        Choose File
+                        <input id="UploadFile" data-val="" type="file"
+                               style="cursor: pointer; position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="sessionagenda_Uploader"
+                               accept=".pdf,.doc,.docx" size="40" class="form-group-sm form-control">
+                    </div> <span class="small-text" id="upload-file-info"></span>
+                    @Html.HiddenFor(m => m.SessionAgendaFileName, new { id = "SessionFileName" })
+                    @Html.HiddenFor(m => m.SessionAgendaUploaded, new { id = "IsFileUploaded" })
+                    <input id="uploadSucceess" value="" type="hidden" />
+                    @Html.ValidationMessageFor(m => m.SessionAgendaFileName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Costs incurred by the participants (i.e. Registration Fees)">Costs incurred by the participants</label>
+                @Html.TextBoxFor(m => m.CostPerparticipants, new { @class = "form-control", @id = "txtRegistrationFees" })
+                @Html.ValidationMessageFor(x => x.CostPerparticipants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row"> <h3 class="col-sm-12 hdr">EVENT SPEAKERS &amp; MODERATORS</h3></div>
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-12">
+                If the speaker or moderator name(s) do not appear in the drop-down menu, please go to the <b>Master Speaker List</b> tab and complete the “New Speaker Request” Form.  A new session request cannot be made if the speaker does not appear in this drop-down menu.
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session  Speaker">Event  Speaker</label>
+                @Html.DropDownListFor(x => Model.ProgramSpeakerID, new SelectList(Model.Speakers, "Value", "Text"), "Please select a speaker", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ProgramSpeakerID, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Session  Moderator Name (optional)">Event Moderator Name (optional)</label>
+                @Html.DropDownListFor(x => Model.ProgramModeratorID, new SelectList(Model.Moderators, "Value", "Text"), "Please select a moderator", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ProgramModeratorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="row"> <h3 class="col-sm-12 hdr">EVENT LOCATION &amp; LOGISTICS</h3></div>
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-4">
+                <label class="" title="Has the venue been contacted to hold the dates?r">Has the venue been contacted to hold the dates?</label>
+                <div>
+                    @Html.RadioButtonFor(model => model.VenueContacted, "Y", new { id = "VenueContactedY" }) <label>Yes</label>&nbsp;&nbsp;&nbsp;@Html.RadioButtonFor(model => model.VenueContacted, "N", new { id = "VenueContactedN" }) <label>No</label> @Html.RadioButtonFor(model => model.VenueContacted, "NA", new { id = "VenueContactedNA" }) <label>N/A (webcast)</label>
+                    &nbsp; <label> &nbsp; </label>
+                    @Html.ValidationMessageFor(m => m.VenueContacted, "", new { @class = "text-danger" })
+                </div>
+                <div id="adminVenu">
+                    <label>Is Venue Available by CHRC?</label>
+                    <label>@Html.RadioButtonFor(model => model.AdminVenueConfirmed, "Y") Yes @Html.RadioButtonFor(model => model.AdminVenueConfirmed, "N") No @Html.RadioButtonFor(model => model.AdminVenueConfirmed, "NA") N/A (webcast)</label>
+                    &nbsp; <label> &nbsp; </label>
+                    @Html.ValidationMessageFor(m => m.AdminVenueConfirmed, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="divEventLocation">
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Location Type">Location Type</label>
+                    @Html.DropDownListFor(model => model.LocationType, new SelectList(AppData.GetLocationTypeForProgramRequestII(), "Value", "Text"), "Please select location type", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LocationType, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2" id="divLocationTypeOther">
+                    <label class="" title="LocationTypeOther">If Other, Please Specify</label>
+                    @Html.TextBoxFor(m => m.LocationTypeOther, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LocationTypeOther, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Location Name">Location Name</label>
+                    @Html.TextBoxFor(m => m.LocationName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LocationName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group form-group-sm col-sm-2">
+                    <label class="" title="Location Address">Location Address</label>
+                    @Html.TextBoxFor(m => m.LocationAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LocationAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row divEventLocation">
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="City">City</label>
+                @Html.TextBoxFor(m => m.LocationCity, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LocationCity, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Province">Province</label>
+                @Html.DropDownListFor(model => model.LocationProvince, new SelectList(AppData.GetProvinceList(), "Value", "Text"), "Please select a province", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LocationProvince, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Phone Number">Phone Number (optional)</label>
+                @Html.TextBoxFor(m => m.LocationPhoneNumber, new { @maxlength = "14", @class = "form-control" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Website">Website (optional)</label>
+                @Html.TextBoxFor(m => m.LocationWebsite, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2" id="mealTypeDiv">
+                <label class="" title="Meal Type">Meal Type</label>
+                @Html.DropDownListFor(model => model.MealType, new SelectList(AppData.GetMealTypeList(), "Value", "Text"), "Please select one", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.MealType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="Approximate Cost per Person">Approximate Cost per Person</label> &nbsp;<span class="glyphicon glyphicon-exclamation-sign imgSpan"></span>&nbsp;
+                @Html.TextBoxFor(m => m.CostPerPerson, new { @class = "form-control", @id = "personCost" })
+                @Html.ValidationMessageFor(x => x.CostPerPerson, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="form-group form-group-sm col-sm-4 divEventLocation">
+                <label class="" title="Audio-Visual Equipment and Arrangements">Audio-Visual Equipment and Arrangements</label>
+                @Html.DropDownListFor(model => model.AVEquipment, new SelectList(AppData.GetAVEquipmentList(), "Value", "Text"), "Please select one", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AVEquipment, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group form-group-sm col-sm-8">
+                <label class="" title="Additional Information / Comments">Additional Information / Comments</label>
+                @Html.TextAreaFor(m => m.Comments, new { @class = "form-control" })
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-4">
+                <label class="" title="Are the program costs to be split with another Amgen representative?">Are the program costs to be split with another Amgen representative?</label>
+                <div>
+                    <label>@Html.RadioButtonFor(model => model.ProgramCostsSplit, "Y", new { id = "ProgramCostsSplitYes" }) Yes&nbsp;&nbsp;&nbsp;</label> <label>@Html.RadioButtonFor(model => model.ProgramCostsSplit, "N", new { id = "ProgramCostsSplitNo" }) No</label>
+                    &nbsp;
+                    @Html.ValidationMessageFor(m => m.ProgramCostsSplit, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group form-group-sm col-sm-2">
+                <label class="" title="If yes, please enter Amgen representative name:">If yes, please enter Amgen representative name:</label>
+                @Html.TextBoxFor(m => m.AmgenRepName, new { @class = "form-control", @id = "txtAmgenRepName" })
+                @Html.ValidationMessageFor(x => x.AmgenRepName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group form-group-sm col-sm-2 pull-right">
+                <label class="" title="">&nbsp;</label>
+                @if (Model.Archive != true)
+                {
+                    <input type="submit" class="form-control btn btn-default btn-sm" id="btnSubmit" value="SUBMIT" style="bottom:0px">
+                }
+            </div>
+        </div>
+
+
+    }
+</div>
+
+
+<div id="cb-modal-container">
+    <div id="myModal" tabindex="-1" class="modal fade in">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div id="TY-ct">
+                    <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title">Thank you!</h4></div><div class="modal-body">
+                        <div id="successful_modal">
+                            Your new session request has been successfully submitted and will be reviewed within 24-48 business hours.<br>
+                            <br>
+                            You will be notified as following:<br>
+                            <br>
+                            <ul class="ul-noInd">
+                                <li>Session Request Approved: Once approved, you may proceed to inviting the session participants utilizing the “National” Invitation template located in the Program Materials section of the website </li>
+                                <li>Changes Required: The applicable “Action Item” will be listed in your dashboard (e.g. Session Speaker not available on selected date). </li>
+                            </ul>
+                        </div>
+                        <div id="failed_modal" style="color:red">
+                            Submission failed.
+                        </div>
+                    </div><div class="modal-footer"><button class="btn btn-default btn-sm" data-dismiss="modal">Close</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="/Scripts/moment-with-locales.min.js"></script>
+<script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        var programID = @Model.ProgramID;
+
+        var readOnly = '@Model.ReadOnly';
+        //var isAdmin = '@ViewBag.IsAdmin';
+        var isAdmin = '@Model.IsAdmin';
+        var IsSalesRep = '@Model.FromQueryStringBySalesRep';
+        //var showSelectCreditMsg = '@ViewBag.ShowSelectCreditMsg'.toLowerCase();
+/*
+        if (showSelectCreditMsg == "true") {
+            $("#showErrorMsg").html("Please select either one or the other");
+        }*/
+
+
+        $('#adminVenu').hide();
+
+
+        var fileuploaded = false;
+
+        var Isfileuploaded = '@Model.SessionAgendaUploaded';
+
+        if (Isfileuploaded === 'True') {
+            console.log("logging true");
+
+            $('#upload-file-info').html("Agenda uploaded");
+
+        }
+
+        if ((readOnly === 'True') && (isAdmin !== '1')) {
+            $('input', 'form').attr('readonly', true);
+            $('select', 'form').attr('disabled', true).attr('readonly', true);
+            $('input[type=text], textarea').attr('readonly', true);
+            $(":radio").attr('disabled', true).attr('readonly', true);
+            $(":checkbox").attr('disabled', true).attr('readonly', true);
+            $(':input[type="submit"]').prop('disabled', true);
+            //$(':input[type="file"]').prop('disabled', true);
+            //$('#adminVenu').hide();
+        }
+
+
+        function compareDates(d1, d2) {
+
+            var day1 = d1.getDay();
+            var month1 = d1.getMonth();
+            var Year1 = d1.getFullYear();
+
+            var day2 = d2.getDay();
+            var month2 = d2.getMonth();
+            var Year2 = d2.getFullYear();
+
+            if ((day1 === day2) && (month1 === month2) && (Year1 === Year2)) {
+
+                return true
+            }
+
+            else {
+
+                return false;
+            }
+
+
+
+
+        }
+
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#dpProgramDate, #dpProgramDate2, #dpProgramDate3').datetimepicker({
+            format: 'YYYY/MM/DD'
+           
+        });
+
+        $('#dpMealStartTime, #dpProgramStartTime, #dpProgramEndTime, #dpRegistrationArrivalTime').datetimepicker({
+            format: 'HH:mm'
+        });
+
+        
+
+        $('#btnSubmit').on('click', function (e) {
+
+            if ((isAdmin !== '1')) {
+
+                if ($('#MultiSessionOption').is(':checked')) {
+
+
+                    var value = $('#Divfileupload').attr("data-val");
+                    fileuploaded = $('#IsFileUploaded').val();
+                    //var attr =  $('##UploadFile')[0].hasAttribute('data-val');
+
+                    if (fileuploaded === false) {
+                        console.log(fileuploaded)
+                        $('#upload-file-info').html("Please upload file");
+                        $('#upload-file-info').addClass('text-danger');
+                        event.preventDefault();
+                    }
+                }
+            }
+
+
+        });
+
+
+
+        $('a').each(function () {
+            $(this).attr('title', $(this).html());
+        });
+
+
+        $('.program-detail').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'programDetail.html?id=' + $(this).closest('.card').attr('data-id');;
+        });
+
+        $('.btn-back').on('click', function (e) {
+            window.history.back();
+        });
+
+
+
+
+        $('.DeleteFile').on('click', function (e) {
+            e.preventDefault();
+            var filename = $(this).attr('data-file');
+            var id = $(this).attr('data-id');
+            alert("filename is:" + filename);
+            alert("id is:" + id);
+            // window.location.href = '/Program?TherapeuticID=' + $(this).attr('data-id');
+            $.ajax({
+
+                type: "post",
+                url: "/Program/RemoveUploadFile?fileName=" + filename + "&ProgramRequestID=" + id,
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    alert('File Deleted');
+                    if (data > 0) {
+                        window.location.href = '/Program/GetProgramRequest?ProgramRequestID=' + data;
+                        // $('#FileList').remove();
+
+                    }
+                }
+
+            });
+        });
+
+        $('#UploadFile').on('change', function (e) {
+            var files = e.target.files;
+
+
+            var ProgramRequestID = '@Model.ProgramRequestID';
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var fileSize = files[0].size / 1024 / 1024;
+                    if (fileSize < 20.00) {
+                        var data = new FormData();
+                        data.append(files[0].name, files[0])
+                        $.ajax({
+                            type: "POST",
+                            url: '/Program/UploadFile?ProgramRequestID=' + ProgramRequestID,
+                            contentType: false,
+                            processData: false,
+                            data: data,
+                            success: function (result) {
+                                if (result.success) {
+
+                                    console.log(result.success.msg);
+                                    $('#upload-file-info').html(result.success.uploadedFilename + " Uploaded");
+                                    $('#SessionFileName').val(result.success.returnFileName);
+                                    $('#IsFileUploaded').val(true);
+                                    console.log($('#SessionFileName').val());
+                                    $("#Divfileupload").attr("data-val", "01");
+
+                                } else {
+                                    console.log(result.error);
+
+                                    $('#upload-file-info').html(result.error);
+                                }
+                            }
+                        });
+
+                    } else {
+                        console.log("File size too big")
+
+                    }
+
+                } else {
+                    alert("This browser doesn't support HTML5 file uploads!");
+                }
+            }
+        });
+
+
+        if ((isAdmin === '1')) {
+
+            $('#adminVenu').show();
+            //$('#Divfileupload').hide();
+            $('#multiload').hide();
+            //$('#AVEquipment').css({ "pointer-events": "none", "cursor": "default" });
+            //$('#MealType').css({ "pointer-events": "none", "cursor": "default" });
+
+            $(':checkbox').addClass("readonlyCheckbox");
+
+
+            $("#DivMultiSession").addClass("divReadonly");
+            $("#DivSessionCredits").addClass("divReadonly");
+
+        }
+
+        if ((IsSalesRep === 'True')) {
+
+            $(':checkbox').addClass("readonlyCheckbox");
+            $(":radio").css({ "pointer-events": "none" });
+
+            $('#AVEquipment').css({ "pointer-events": "none", "cursor": "default" });
+            $('#MealType').css({ "pointer-events": "none", "cursor": "default" });
+
+
+            $('#LocationPhoneNumber').attr('readonly', true);
+            $('#LocationWebsite').attr('readonly', true);
+            $('#Comments').attr('readonly', true);
+            $('#personCost').attr('readonly', true);
+            $('#txtRegistrationFees').attr('readonly', true);
+
+            $("#DivMultiSession").addClass("divReadonly");
+            $("#DivSessionCredits").addClass("divReadonly");
+            //$("#Divfileupload").addClass("divReadonly");
+            $("#UploadFile").attr('disabled', 'disabled');
+
+
+
+
+        }
+
+        $('.imgSpan').popover({
+            html: true,
+            trigger: 'hover',
+            placement: 'top',
+
+            content: function () { return '<img src="' + '../Images/mealExpenses.jpg' + '" />'; }
+        });
+
+
+
+
+
+
+        additionalContactHideAndShow();
+        $('input[type=radio][name=AdditionalSessionContact]').change(function () {
+            additionalContactHideAndShow();
+        });
+
+        setMealTypeAndStartTime();
+        $('input[type=radio][name=MealOption]').change(function () {
+            setMealTypeAndStartTime();
+        });
+        $('input[type=radio][name=ProgramCostsSplit]').change(function () {
+            if ($("#ProgramCostsSplitNo").is(":checked")) {
+               
+                $("#AmgenRepName").val("");
+                $('input[name=AmgenRepName]').val("").prop('readonly', true);
+            } else {
+               
+                $('input[name=AmgenRepName]').prop('readonly', false);
+            }
+        });
+/*
+        $('input[name=MealStartTime]').bind('click keyup', function (event) {
+            $('input[type=radio][name=MealOption]').prop('checked', false);
+            mealTypeHideAndShow();
+        });*/
+
+        hideAndShowFileUpload();
+        $('input[type=radio][name=MultiSession]').change(function () {
+            hideAndShowFileUpload();
+        });
+
+
+
+        eventTypeHideAndShow();
+        $('input[type=radio][name=EventType]').change(function () {
+            eventTypeHideAndShow();
+        });
+
+        //eventLocationDetailsHideAndShow();
+        $('input[type=radio][name=VenueContacted]').change(function () {
+            //eventLocationDetailsHideAndShow();
+        });
+
+        locationTypeOtherHideAndShow();
+        $("#LocationType").change(function () {
+            locationTypeOtherHideAndShow();
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            if (isSuccessful == "true") {
+                if(@Model.ProgramID == 8){
+                    window.location = "/ProgramDetail/?TherapeuticID=1&ProgramID=" + programID;
+                }else{ //program id = 7
+                    window.location = "/ProgramDetail/?TherapeuticID=2&ProgramID=" + programID;
+                }
+            }
+        })
+
+
+        var isHttpPost = "@ViewBag.IsHttpPost".toLowerCase();
+        var isSuccessful = "@ViewBag.IsSuccessful".toLowerCase();
+        if (isHttpPost == "true") {
+            if (isSuccessful == "true") {
+                $("#successful_modal").show();
+                $("#failed_modal").hide();
+            } else {
+                $("#successful_modal").hide();
+                $("#failed_modal").show();
+            }
+            $("#myModal").modal('show');
+        }
+
+        $(".credit").change(function () {
+            if ($(".credit:checked").length > 1 || $(".credit:checked").length == 0) {
+                $("#showErrorMsg").html("Please select one only");
+            } else {
+                $("#showErrorMsg").html("");
+            }
+        });
+        $("#formEventRequest").submit(function (e) { 
+            if ($(".credit:checked").length > 1 || $(".credit:checked").length == 0) {
+                $("#showErrorMsg").html("Please select one only");
+                e.preventDefault();
+            } else {
+                $("#showErrorMsg").html("");
+            }
+        });
+    });
+
+    function additionalContactHideAndShow() {
+        if ($("#AdditionalSessionContactYes").is(":checked")) {
+            $("#additionContactDiv").show();
+        }
+        else {
+            $("#additionContactDiv").hide();
+            $("#additionContactDiv").find("input").val("");
+        }
+    }
+
+    function eventTypeHideAndShow() {
+        if ($("#Webcast").is(":checked")) {
+            $("#divEventTypeDetails").show();
+
+            $('#VenueContactedNA').prop('checked', true);
+            $('#VenueContactedY').attr('disabled', true);
+            $('#VenueContactedN').attr('disabled', true);
+            $('#VenueContactedNA').attr('disabled', false);
+        }
+        else {
+            $("#divEventTypeDetails").hide();
+            $("#divEventTypeDetails").find("input").val("");
+
+            $('#VenueContactedNA').prop('checked', false);
+            $('#VenueContactedY').attr('disabled', false);
+            $('#VenueContactedN').attr('disabled', false);
+            $('#VenueContactedNA').attr('disabled', true);
+        }
+        //eventLocationDetailsHideAndShow();
+    }
+
+    function eventLocationDetailsHideAndShow() {
+        if($("#VenueContactedNA").is(":checked")){
+            $(".divEventLocation").hide();
+            $(".divEventLocation").find("input").val("");
+            $(".divEventLocation").find("select").val("");
+        } else {
+            $(".divEventLocation").show();
+        }
+    }
+
+    function locationTypeOtherHideAndShow() {
+        if ($("#LocationType").val() == "Other") {
+            $("#divLocationTypeOther").show();
+        } else {
+            $("#divLocationTypeOther").hide();
+            $("#divLocationTypeOther").find("input").val("");
+        }
+    }
+
+    function setMealTypeAndStartTime() {
+        if ($("#MealOptionNo").is(":checked")) {
+            $("#mealTypeDiv").hide();
+            $("#MealType").val("");
+            $('input[name=MealStartTime]').val("").prop('readonly', true);
+        } else {
+            $("#mealTypeDiv").show();
+            $('input[name=MealStartTime]').prop('readonly', false);
+        }
+    }
+
+    function hideAndShowFileUpload() {
+        if ($('input:radio[name="MultiSession"]:checked').val() == "Y") {
+            $("#Divfileupload").show();
+        } else {
+            $("#Divfileupload").hide();
+            $('#upload-file-info').html("");
+        }
+    }
+
+</script>

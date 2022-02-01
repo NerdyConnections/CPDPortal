@@ -1,0 +1,2295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CPDPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignedRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RoleDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="COISlidesUpload">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="COISlides" Type="bit" />
+          <Property Name="COISlidesExt" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PayeeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="25" />
+          <Property Name="ChequePayableTo" Type="varchar" MaxLength="100" />
+          <Property Name="InternalRefNum" Type="varchar" MaxLength="50" />
+          <Property Name="MailingAddr1" Type="varchar" MaxLength="250" />
+          <Property Name="MailingAddr2" Type="varchar" MaxLength="250" />
+          <Property Name="AttentionTo" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="75" />
+          <Property Name="ProvinceID" Type="varchar" MaxLength="3" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+          <Property Name="TaxNumber" Type="varchar" MaxLength="50" />
+          <Property Name="AdditionalInstructions" Type="varchar" MaxLength="255" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CPDPortal.dbo.Privilege' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="TherapeuticID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TherapeuticID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TherapeuticID" Type="int" />
+          <Property Name="ProgramID_CHRC" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="500" />
+          <Property Name="ProgramNameFr" Type="varchar" MaxLength="500" />
+          <Property Name="DevelopedBy" Type="varchar" MaxLength="500" />
+          <Property Name="CertifiedBy" Type="varchar" MaxLength="500" />
+          <Property Name="ExpirationDate" Type="varchar" MaxLength="500" />
+          <Property Name="TargetAudience" Type="varchar" MaxLength="500" />
+          <Property Name="CreditHours" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="ProgramCompleted" Type="datetime" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="Archive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProgramModulesLookup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="550" />
+          <Property Name="ModuleDescription" Type="varchar" MaxLength="550" />
+        </EntityType>
+        <EntityType Name="ProgramRequest">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="SponsorID" Type="int" />
+          <Property Name="ContactFirstName" Type="varchar" MaxLength="500" />
+          <Property Name="ContactLastName" Type="varchar" MaxLength="500" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="25" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="500" />
+          <Property Name="SessionAgendaFileName" Type="varchar" MaxLength="500" />
+          <Property Name="SessionAgendaUploaded" Type="bit" />
+          <Property Name="ProgramDate1" Type="datetime" />
+          <Property Name="ProgramDate2" Type="datetime" />
+          <Property Name="ProgramDate3" Type="datetime" />
+          <Property Name="SpeakerStatus" Type="varchar" MaxLength="50" />
+          <Property Name="SpeakerConfirmedProgramDate" Type="datetime" />
+          <Property Name="SpeakerProgramDateNA" Type="bit" />
+          <Property Name="SpeakerConfirmationDate" Type="datetime" />
+          <Property Name="SpeakerDeclined" Type="bit" />
+          <Property Name="SpeakerChosenProgramDate" Type="bit" />
+          <Property Name="ModeratorStatus" Type="varchar" MaxLength="50" />
+          <Property Name="ModeratorConfirmedProgramDate" Type="datetime" />
+          <Property Name="ModeratorProgramDateNA" Type="bit" />
+          <Property Name="ModeratorConfirmationDate" Type="datetime" />
+          <Property Name="ModeratorDeclined" Type="bit" />
+          <Property Name="ModeratorChosenProgramDate" Type="bit" />
+          <Property Name="ConfirmedSessionDate" Type="datetime" />
+          <Property Name="MealStartTime" Type="datetime" />
+          <Property Name="ProgramStartTime" Type="datetime" />
+          <Property Name="ProgramEndTime" Type="datetime" />
+          <Property Name="ProgramCredits" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MultiSession" Type="varchar" MaxLength="1" />
+          <Property Name="RegistrationFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramSpeakerID" Type="int" />
+          <Property Name="ProgramModeratorID" Type="int" />
+          <Property Name="VenueContacted" Type="varchar" MaxLength="2" />
+          <Property Name="LocationType" Type="varchar" MaxLength="500" />
+          <Property Name="LocationTypeOther" Type="varchar" MaxLength="500" />
+          <Property Name="LocationName" Type="varchar" MaxLength="500" />
+          <Property Name="LocationAddress" Type="varchar" MaxLength="500" />
+          <Property Name="LocationCity" Type="varchar" MaxLength="500" />
+          <Property Name="LocationProvince" Type="varchar" MaxLength="5" />
+          <Property Name="LocationPhoneNumber" Type="varchar" MaxLength="25" />
+          <Property Name="LocationWebsite" Type="varchar" MaxLength="500" />
+          <Property Name="CostPerPerson" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CostByParticipant" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MealType" Type="varchar" MaxLength="50" />
+          <Property Name="Proximity" Type="varchar" MaxLength="50" />
+          <Property Name="AVEquipment" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="CancellationReason" Type="varchar(max)" />
+          <Property Name="CancellationRequested" Type="bit" />
+          <Property Name="ModifyReason" Type="varchar(max)" />
+          <Property Name="ModifyRequested" Type="bit" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="RequestStatus" Type="int" />
+          <Property Name="AdminVenueAvailable" Type="varchar" MaxLength="2" />
+          <Property Name="AdminCCASent" Type="bit" />
+          <Property Name="AdminVenueReceipt" Type="bit" />
+          <Property Name="AdminVenueNotes" Type="varchar" MaxLength="150" />
+          <Property Name="AdminCFPCDateSubmitted" Type="datetime" />
+          <Property Name="AdminCFPCDateApproved" Type="datetime" />
+          <Property Name="AdminCFPCFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCImplementationFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCImplementationFeesTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCFeesTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSessionID" Type="varchar" MaxLength="150" />
+          <Property Name="AdminSpeakerHonorium" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerHonoriumTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerExpense" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerExpenseTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorExpense" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorExpenseTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerPaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="AdminSpeakerPaymentSentDate" Type="datetime" />
+          <Property Name="AdminModeratorHonorium" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorHonoriumTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorPaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="AdminModeratorPaymentSentDate" Type="datetime" />
+          <Property Name="AdminVenueFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminVenueFeesTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminAVFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminAVFeesTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminOtherFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminOtherFeesTaxes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AdminFinalAttendance" Type="int" />
+          <Property Name="AdminActionItems" Type="varchar(max)" />
+          <Property Name="AdminEdited" Type="bit" />
+          <Property Name="AdminUserID" Type="int" />
+          <Property Name="AdminEditDate" Type="datetime" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="ApprovedDate" Type="datetime" />
+          <Property Name="ReadOnly" Type="bit" />
+          <Property Name="EventType" Type="varchar" MaxLength="50" />
+          <Property Name="EventTypeQuestion1" Type="varchar" MaxLength="500" />
+          <Property Name="EventTypeQuestion2" Type="varchar" MaxLength="500" />
+          <Property Name="EventTypeQuestion3" Type="varchar" MaxLength="500" />
+          <Property Name="EventTypeQuestion4" Type="varchar" MaxLength="500" />
+          <Property Name="EventTypeQuestion5" Type="varchar" MaxLength="500" />
+          <Property Name="RegistrationArrivalTime" Type="datetime" />
+          <Property Name="MealOption" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramCostsSplit" Type="varchar" MaxLength="1" />
+          <Property Name="AmgenRepName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ProgramRequestFileUpload">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="EvaluationFullPath" Type="varchar(max)" />
+          <Property Name="EvaluationUploaded" Type="bit" />
+          <Property Name="EvaluationFileName" Type="varchar(max)" />
+          <Property Name="EvaluationFileExt" Type="varchar" MaxLength="8" />
+          <Property Name="SignInFullPath" Type="varchar(max)" />
+          <Property Name="SignInUploaded" Type="bit" />
+          <Property Name="SignInFileName" Type="varchar(max)" />
+          <Property Name="SignInFileExt" Type="varchar" MaxLength="8" />
+          <Property Name="UserOtherFullPath" Type="varchar(max)" />
+          <Property Name="UserOtherUploaded" Type="bit" />
+          <Property Name="UserOtherFileName" Type="varchar(max)" />
+          <Property Name="UserOtherFileExt" Type="varchar" MaxLength="8" />
+          <Property Name="SpeakerAgreementFullPath" Type="varchar(max)" />
+          <Property Name="SpeakerAgreementUploaded" Type="bit" />
+          <Property Name="SpeakerAgreementFileName" Type="varchar(max)" />
+          <Property Name="SpeakerAgreementFileExt" Type="varchar" MaxLength="8" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProgramRequestFileUploadOther">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="int" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" />
+          <Property Name="FileName" Type="varchar(max)" />
+          <Property Name="FileExt" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="ProgramRequestModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramRequestID" Type="int" />
+          <Property Name="ProgramModule1" Type="bit" />
+          <Property Name="ProgramModule2" Type="bit" />
+          <Property Name="ProgramModule3" Type="bit" />
+          <Property Name="ProgramModule4" Type="bit" />
+          <Property Name="ProgramModule5" Type="bit" />
+          <Property Name="ProgramModule6" Type="bit" />
+          <Property Name="ProgramModule7" Type="bit" />
+          <Property Name="ProgramModule8" Type="bit" />
+          <Property Name="ProgramModule9" Type="bit" />
+          <Property Name="ProgramModule10" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProgramRequestSessionCredits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionCreditID" Type="int" />
+          <Property Name="ProgramRequestID" Type="int" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="ProvinceID" />
+          </Key>
+          <Property Name="ProvinceID" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ProvinceName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestStatusLookup">
+          <Key>
+            <PropertyRef Name="RequestStatusID" />
+          </Key>
+          <Property Name="RequestStatusID" Type="int" Nullable="false" />
+          <Property Name="RequestStatusDescription" Type="varchar" MaxLength="50" />
+          <Property Name="ActionItems" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SessionCreditLookUp">
+          <Key>
+            <PropertyRef Name="SessionCreditID" />
+          </Key>
+          <Property Name="SessionCreditID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="Descriptionfr" Type="varchar" MaxLength="250" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="SpeakerPayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramRequestID" Type="int" />
+          <Property Name="Speakeruserid" Type="int" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="SponsorID" />
+          </Key>
+          <Property Name="SponsorID" Type="int" Nullable="false" />
+          <Property Name="SponsorName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TerritoryIDRegionLookup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="TerritoryID" Type="int" />
+          <Property Name="Region" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TerritoryLookUp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerritoryID" Type="varchar" MaxLength="50" />
+          <Property Name="TerritoryDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TherapeuticArea">
+          <Key>
+            <PropertyRef Name="TherapeuticID" />
+          </Key>
+          <Property Name="TherapeuticID" Type="int" Nullable="false" />
+          <Property Name="TherapeuticName" Type="varchar" MaxLength="50" />
+          <Property Name="TherapeuticTitle" Type="varchar" MaxLength="250" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="550" />
+          <Property Name="ActivePrograms" Type="int" />
+        </EntityType>
+        <EntityType Name="TherapeuticProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TherapeuticID" Type="int" />
+          <Property Name="ProgramID" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Actviated" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="ActivationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserIDRequestedBy" Type="int" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="AssignedRole" Type="int" />
+          <Property Name="TerritoryID" Type="int" />
+          <Property Name="RepID" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="250" />
+          <Property Name="ClinicName" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Address2" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="250" />
+          <Property Name="Province" Type="varchar" MaxLength="3" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="250" />
+          <Property Name="Fax" Type="varchar" MaxLength="250" />
+          <Property Name="Specialty" Type="varchar" MaxLength="250" />
+          <Property Name="SpeakerHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="ModeratorHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="TherapeuticID" Type="int" />
+          <Property Name="PrivilegeID" Type="int" />
+          <Property Name="SponsorID" Type="int" />
+          <Property Name="BoneWBSCode" Type="varchar" MaxLength="250" />
+          <Property Name="CVWBSCode" Type="varchar" MaxLength="250" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="Language" Type="varchar" MaxLength="2" />
+          <Property Name="SufficientKnowledge" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CPDPortal.dbo.UserInfo_Production_SalesRepSpeakers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserInfo_Production_SalesRepSpeakers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserIDRequestedBy" Type="int" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="250" />
+          <Property Name="ClinicName" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Address2" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="250" />
+          <Property Name="Province" Type="varchar" MaxLength="3" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="250" />
+          <Property Name="Fax" Type="varchar" MaxLength="250" />
+          <Property Name="Specialty" Type="varchar" MaxLength="250" />
+          <Property Name="SpeakerHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="ModeratorHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="TherapeuticID" Type="int" />
+          <Property Name="PrivilegeID" Type="int" />
+          <Property Name="SponsorID" Type="int" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CPDPortal.dbo.UserInfo_Production_SpeakerOnly' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserInfo_Production_SpeakerOnly">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserIDRequestedBy" Type="int" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="250" />
+          <Property Name="ClinicName" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Address2" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="250" />
+          <Property Name="Province" Type="varchar" MaxLength="3" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="250" />
+          <Property Name="Fax" Type="varchar" MaxLength="250" />
+          <Property Name="Specialty" Type="varchar" MaxLength="250" />
+          <Property Name="SpeakerHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="ModeratorHonariumRange" Type="varchar" MaxLength="250" />
+          <Property Name="TherapeuticID" Type="int" />
+          <Property Name="PrivilegeID" Type="int" />
+          <Property Name="SponsorID" Type="int" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserProvince">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Province" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="UserRegistration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="COIForm" Type="bit" />
+          <Property Name="COIFormExt" Type="varchar" MaxLength="8" />
+          <Property Name="PayeeForm" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="UserStatusID" />
+          </Key>
+          <Property Name="UserStatusID" Type="int" Nullable="false" />
+          <Property Name="UserStatusDescription" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="UserTerritory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="TerritoryID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserTypeLookUp">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_COISlidesUpload_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="COISlidesUpload" Type="Self.COISlidesUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COISlidesUpload">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privilege_TherapeuticArea">
+          <End Role="TherapeuticArea" Type="Self.TherapeuticArea" Multiplicity="1" />
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="Privilege">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_Moderator">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramModeratorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_RequestStatusLookup">
+          <End Role="RequestStatusLookup" Type="Self.RequestStatusLookup" Multiplicity="0..1" />
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatusLookup">
+              <PropertyRef Name="RequestStatusID" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="RequestStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_Speaker">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramSpeakerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequestFileUpload_ProgramRequest">
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="1" />
+          <End Role="ProgramRequestFileUpload" Type="Self.ProgramRequestFileUpload" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramRequest">
+              <PropertyRef Name="ProgramRequestID" />
+            </Principal>
+            <Dependent Role="ProgramRequestFileUpload">
+              <PropertyRef Name="ProgramRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpeakerPayment_ProgramRequest">
+          <End Role="ProgramRequest" Type="Self.ProgramRequest" Multiplicity="0..1" />
+          <End Role="SpeakerPayment" Type="Self.SpeakerPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramRequest">
+              <PropertyRef Name="ProgramRequestID" />
+            </Principal>
+            <Dependent Role="SpeakerPayment">
+              <PropertyRef Name="ProgramRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TherapeuticProgram_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="TherapeuticProgram" Type="Self.TherapeuticProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="TherapeuticProgram">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TherapeuticProgram_TherapeuticArea">
+          <End Role="TherapeuticArea" Type="Self.TherapeuticArea" Multiplicity="0..1" />
+          <End Role="TherapeuticProgram" Type="Self.TherapeuticProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="TherapeuticProgram">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_Sponsor">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="SponsorID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="SponsorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_TherapeuticArea">
+          <End Role="TherapeuticArea" Type="Self.TherapeuticArea" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserStatus">
+          <End Role="UserStatus" Type="Self.UserStatus" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatus">
+              <PropertyRef Name="UserStatusID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserTypeLookUp">
+          <End Role="UserTypeLookUp" Type="Self.UserTypeLookUp" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeLookUp">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProvince_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserProvince" Type="Self.UserProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProvince">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRegistration_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRegistration" Type="Self.UserRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRegistration">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTerritory_UserInfo">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserTerritory" Type="Self.UserTerritory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserTerritory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CPDPortalModelStoreContainer">
+          <EntitySet Name="AssignedRole" EntityType="Self.AssignedRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COISlidesUpload" EntityType="Self.COISlidesUpload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayeeInfo" EntityType="Self.PayeeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramModulesLookup" EntityType="Self.ProgramModulesLookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramRequest" EntityType="Self.ProgramRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramRequestFileUpload" EntityType="Self.ProgramRequestFileUpload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramRequestFileUploadOther" EntityType="Self.ProgramRequestFileUploadOther" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramRequestModule" EntityType="Self.ProgramRequestModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramRequestSessionCredits" EntityType="Self.ProgramRequestSessionCredits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStatusLookup" EntityType="Self.RequestStatusLookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionCreditLookUp" EntityType="Self.SessionCreditLookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpeakerPayment" EntityType="Self.SpeakerPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerritoryIDRegionLookup" EntityType="Self.TerritoryIDRegionLookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerritoryLookUp" EntityType="Self.TerritoryLookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TherapeuticArea" EntityType="Self.TherapeuticArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TherapeuticProgram" EntityType="Self.TherapeuticProgram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProvince" EntityType="Self.UserProvince" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegistration" EntityType="Self.UserRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTerritory" EntityType="Self.UserTerritory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeLookUp" EntityType="Self.UserTypeLookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilege" EntityType="Self.Privilege" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Privilege].[PrivilegeID] AS [PrivilegeID], 
+    [Privilege].[Description] AS [Description], 
+    [Privilege].[TherapeuticID] AS [TherapeuticID]
+    FROM [dbo].[Privilege] AS [Privilege]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserInfo_Production_SalesRepSpeakers" EntityType="Self.UserInfo_Production_SalesRepSpeakers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserInfo_Production_SalesRepSpeakers].[id] AS [id], 
+    [UserInfo_Production_SalesRepSpeakers].[UserID] AS [UserID], 
+    [UserInfo_Production_SalesRepSpeakers].[UserIDRequestedBy] AS [UserIDRequestedBy], 
+    [UserInfo_Production_SalesRepSpeakers].[UserType] AS [UserType], 
+    [UserInfo_Production_SalesRepSpeakers].[FirstName] AS [FirstName], 
+    [UserInfo_Production_SalesRepSpeakers].[LastName] AS [LastName], 
+    [UserInfo_Production_SalesRepSpeakers].[EmailAddress] AS [EmailAddress], 
+    [UserInfo_Production_SalesRepSpeakers].[ClinicName] AS [ClinicName], 
+    [UserInfo_Production_SalesRepSpeakers].[Address] AS [Address], 
+    [UserInfo_Production_SalesRepSpeakers].[Address2] AS [Address2], 
+    [UserInfo_Production_SalesRepSpeakers].[City] AS [City], 
+    [UserInfo_Production_SalesRepSpeakers].[Province] AS [Province], 
+    [UserInfo_Production_SalesRepSpeakers].[PostalCode] AS [PostalCode], 
+    [UserInfo_Production_SalesRepSpeakers].[Phone] AS [Phone], 
+    [UserInfo_Production_SalesRepSpeakers].[Fax] AS [Fax], 
+    [UserInfo_Production_SalesRepSpeakers].[Specialty] AS [Specialty], 
+    [UserInfo_Production_SalesRepSpeakers].[SpeakerHonariumRange] AS [SpeakerHonariumRange], 
+    [UserInfo_Production_SalesRepSpeakers].[ModeratorHonariumRange] AS [ModeratorHonariumRange], 
+    [UserInfo_Production_SalesRepSpeakers].[TherapeuticID] AS [TherapeuticID], 
+    [UserInfo_Production_SalesRepSpeakers].[PrivilegeID] AS [PrivilegeID], 
+    [UserInfo_Production_SalesRepSpeakers].[SponsorID] AS [SponsorID], 
+    [UserInfo_Production_SalesRepSpeakers].[SubmittedDate] AS [SubmittedDate], 
+    [UserInfo_Production_SalesRepSpeakers].[Status] AS [Status], 
+    [UserInfo_Production_SalesRepSpeakers].[Comment] AS [Comment], 
+    [UserInfo_Production_SalesRepSpeakers].[LastUpdated] AS [LastUpdated]
+    FROM [dbo].[UserInfo_Production_SalesRepSpeakers] AS [UserInfo_Production_SalesRepSpeakers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserInfo_Production_SpeakerOnly" EntityType="Self.UserInfo_Production_SpeakerOnly" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserInfo_Production_SpeakerOnly].[id] AS [id], 
+    [UserInfo_Production_SpeakerOnly].[UserID] AS [UserID], 
+    [UserInfo_Production_SpeakerOnly].[UserIDRequestedBy] AS [UserIDRequestedBy], 
+    [UserInfo_Production_SpeakerOnly].[UserType] AS [UserType], 
+    [UserInfo_Production_SpeakerOnly].[FirstName] AS [FirstName], 
+    [UserInfo_Production_SpeakerOnly].[LastName] AS [LastName], 
+    [UserInfo_Production_SpeakerOnly].[EmailAddress] AS [EmailAddress], 
+    [UserInfo_Production_SpeakerOnly].[ClinicName] AS [ClinicName], 
+    [UserInfo_Production_SpeakerOnly].[Address] AS [Address], 
+    [UserInfo_Production_SpeakerOnly].[Address2] AS [Address2], 
+    [UserInfo_Production_SpeakerOnly].[City] AS [City], 
+    [UserInfo_Production_SpeakerOnly].[Province] AS [Province], 
+    [UserInfo_Production_SpeakerOnly].[PostalCode] AS [PostalCode], 
+    [UserInfo_Production_SpeakerOnly].[Phone] AS [Phone], 
+    [UserInfo_Production_SpeakerOnly].[Fax] AS [Fax], 
+    [UserInfo_Production_SpeakerOnly].[Specialty] AS [Specialty], 
+    [UserInfo_Production_SpeakerOnly].[SpeakerHonariumRange] AS [SpeakerHonariumRange], 
+    [UserInfo_Production_SpeakerOnly].[ModeratorHonariumRange] AS [ModeratorHonariumRange], 
+    [UserInfo_Production_SpeakerOnly].[TherapeuticID] AS [TherapeuticID], 
+    [UserInfo_Production_SpeakerOnly].[PrivilegeID] AS [PrivilegeID], 
+    [UserInfo_Production_SpeakerOnly].[SponsorID] AS [SponsorID], 
+    [UserInfo_Production_SpeakerOnly].[SubmittedDate] AS [SubmittedDate], 
+    [UserInfo_Production_SpeakerOnly].[Status] AS [Status], 
+    [UserInfo_Production_SpeakerOnly].[Comment] AS [Comment], 
+    [UserInfo_Production_SpeakerOnly].[LastUpdated] AS [LastUpdated]
+    FROM [dbo].[UserInfo_Production_SpeakerOnly] AS [UserInfo_Production_SpeakerOnly]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_COISlidesUpload_UserInfo" Association="Self.FK_COISlidesUpload_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="COISlidesUpload" EntitySet="COISlidesUpload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privilege_TherapeuticArea" Association="Self.FK_Privilege_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticArea" />
+            <End Role="Privilege" EntitySet="Privilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_Moderator" Association="Self.FK_ProgramRequest_Moderator">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_Program" Association="Self.FK_ProgramRequest_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_RequestStatusLookup" Association="Self.FK_ProgramRequest_RequestStatusLookup">
+            <End Role="RequestStatusLookup" EntitySet="RequestStatusLookup" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_Speaker" Association="Self.FK_ProgramRequest_Speaker">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequestFileUpload_ProgramRequest" Association="Self.FK_ProgramRequestFileUpload_ProgramRequest">
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+            <End Role="ProgramRequestFileUpload" EntitySet="ProgramRequestFileUpload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpeakerPayment_ProgramRequest" Association="Self.FK_SpeakerPayment_ProgramRequest">
+            <End Role="ProgramRequest" EntitySet="ProgramRequest" />
+            <End Role="SpeakerPayment" EntitySet="SpeakerPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TherapeuticProgram_Program" Association="Self.FK_TherapeuticProgram_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="TherapeuticProgram" EntitySet="TherapeuticProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TherapeuticProgram_TherapeuticArea" Association="Self.FK_TherapeuticProgram_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticArea" />
+            <End Role="TherapeuticProgram" EntitySet="TherapeuticProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_Sponsor" Association="Self.FK_UserInfo_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_TherapeuticArea" Association="Self.FK_UserInfo_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticArea" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_User" Association="Self.FK_UserInfo_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserStatus" Association="Self.FK_UserInfo_UserStatus">
+            <End Role="UserStatus" EntitySet="UserStatus" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserTypeLookUp" Association="Self.FK_UserInfo_UserTypeLookUp">
+            <End Role="UserTypeLookUp" EntitySet="UserTypeLookUp" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProvince_User" Association="Self.FK_UserProvince_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserProvince" EntitySet="UserProvince" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRegistration_User" Association="Self.FK_UserRegistration_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRegistration" EntitySet="UserRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTerritory_UserInfo" Association="Self.FK_UserTerritory_UserInfo">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserTerritory" EntitySet="UserTerritory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CPDPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.UserRole" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Actviated" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="ActivationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRole" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="UserProvinces" Relationship="CPDPortalModel.FK_UserProvince_User" FromRole="User" ToRole="UserProvince" />
+          <NavigationProperty Name="UserTerritories" Relationship="CPDPortalModel.FK_UserTerritory_UserInfo" FromRole="User" ToRole="UserTerritory" />
+          <NavigationProperty Name="UserRegistrations" Relationship="CPDPortalModel.FK_UserRegistration_User" FromRole="User" ToRole="UserRegistration" />
+          <NavigationProperty Name="UserInfoes" Relationship="CPDPortalModel.FK_UserInfo_User" FromRole="User" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="UserRole">
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CPDPortalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="UserRole" Association="Self.UserRole">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Sponsors" EntityType="CPDPortalModel.Sponsor" />
+          <EntitySet Name="Privileges" EntityType="CPDPortalModel.Privilege" />
+          <EntitySet Name="TherapeuticAreas" EntityType="CPDPortalModel.TherapeuticArea" />
+          <AssociationSet Name="FK_Privilege_TherapeuticArea" Association="CPDPortalModel.FK_Privilege_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticAreas" />
+            <End Role="Privilege" EntitySet="Privileges" />
+          </AssociationSet>
+          <EntitySet Name="TherapeuticPrograms" EntityType="CPDPortalModel.TherapeuticProgram" />
+          <AssociationSet Name="FK_TherapeuticProgram_TherapeuticArea" Association="CPDPortalModel.FK_TherapeuticProgram_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticAreas" />
+            <End Role="TherapeuticProgram" EntitySet="TherapeuticPrograms" />
+          </AssociationSet>
+          <EntitySet Name="RequestStatusLookups" EntityType="CPDPortalModel.RequestStatusLookup" />
+          <EntitySet Name="UserTypeLookUps" EntityType="CPDPortalModel.UserTypeLookUp" />
+          <EntitySet Name="ProgramRequestSessionCredits" EntityType="CPDPortalModel.ProgramRequestSessionCredit" />
+          <EntitySet Name="TerritoryLookUps" EntityType="CPDPortalModel.TerritoryLookUp" />
+          <EntitySet Name="Provinces" EntityType="CPDPortalModel.Province" />
+          <EntitySet Name="SpeakerPayments" EntityType="CPDPortalModel.SpeakerPayment" />
+          <EntitySet Name="UserProvinces" EntityType="CPDPortalModel.UserProvince" />
+          <EntitySet Name="UserTerritories" EntityType="CPDPortalModel.UserTerritory" />
+          <AssociationSet Name="FK_UserProvince_User" Association="CPDPortalModel.FK_UserProvince_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserProvince" EntitySet="UserProvinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTerritory_UserInfo" Association="CPDPortalModel.FK_UserTerritory_UserInfo">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserTerritory" EntitySet="UserTerritories" />
+          </AssociationSet>
+          <EntitySet Name="ProgramRequestFileUploadOthers" EntityType="CPDPortalModel.ProgramRequestFileUploadOther" />
+          <EntitySet Name="UserStatus" EntityType="CPDPortalModel.UserStatu" />
+          <EntitySet Name="Programs" EntityType="CPDPortalModel.Program" />
+          <AssociationSet Name="FK_TherapeuticProgram_Program" Association="CPDPortalModel.FK_TherapeuticProgram_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="TherapeuticProgram" EntitySet="TherapeuticPrograms" />
+          </AssociationSet>
+          <EntitySet Name="PayeeInfoes" EntityType="CPDPortalModel.PayeeInfo" />
+          <EntitySet Name="ProgramRequests" EntityType="CPDPortalModel.ProgramRequest" />
+          <AssociationSet Name="FK_ProgramRequest_Program" Association="CPDPortalModel.FK_ProgramRequest_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_RequestStatusLookup" Association="CPDPortalModel.FK_ProgramRequest_RequestStatusLookup">
+            <End Role="RequestStatusLookup" EntitySet="RequestStatusLookups" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpeakerPayment_ProgramRequest" Association="CPDPortalModel.FK_SpeakerPayment_ProgramRequest">
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+            <End Role="SpeakerPayment" EntitySet="SpeakerPayments" />
+          </AssociationSet>
+          <EntitySet Name="ProgramRequestFileUploads" EntityType="CPDPortalModel.ProgramRequestFileUpload" />
+          <AssociationSet Name="FK_ProgramRequestFileUpload_ProgramRequest" Association="CPDPortalModel.FK_ProgramRequestFileUpload_ProgramRequest">
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+            <End Role="ProgramRequestFileUpload" EntitySet="ProgramRequestFileUploads" />
+          </AssociationSet>
+          <EntitySet Name="UserRegistrations" EntityType="CPDPortalModel.UserRegistration" />
+          <AssociationSet Name="FK_UserRegistration_User" Association="CPDPortalModel.FK_UserRegistration_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRegistration" EntitySet="UserRegistrations" />
+          </AssociationSet>
+          <EntitySet Name="COISlidesUploads" EntityType="CPDPortalModel.COISlidesUpload" />
+          <EntitySet Name="TerritoryIDRegionLookups" EntityType="CPDPortalModel.TerritoryIDRegionLookup" />
+          <EntitySet Name="UserInfo_Production_SalesRepSpeakers" EntityType="CPDPortalModel.UserInfo_Production_SalesRepSpeakers" />
+          <EntitySet Name="UserInfo_Production_SpeakerOnly" EntityType="CPDPortalModel.UserInfo_Production_SpeakerOnly" />
+          <EntitySet Name="UserInfoes" EntityType="CPDPortalModel.UserInfo" />
+          <AssociationSet Name="FK_COISlidesUpload_UserInfo" Association="CPDPortalModel.FK_COISlidesUpload_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="COISlidesUpload" EntitySet="COISlidesUploads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_Moderator" Association="CPDPortalModel.FK_ProgramRequest_Moderator">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramRequest_Speaker" Association="CPDPortalModel.FK_ProgramRequest_Speaker">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="ProgramRequest" EntitySet="ProgramRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_Sponsor" Association="CPDPortalModel.FK_UserInfo_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_TherapeuticArea" Association="CPDPortalModel.FK_UserInfo_TherapeuticArea">
+            <End Role="TherapeuticArea" EntitySet="TherapeuticAreas" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_User" Association="CPDPortalModel.FK_UserInfo_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserStatus" Association="CPDPortalModel.FK_UserInfo_UserStatus">
+            <End Role="UserStatu" EntitySet="UserStatus" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserTypeLookUp" Association="CPDPortalModel.FK_UserInfo_UserTypeLookUp">
+            <End Role="UserTypeLookUp" EntitySet="UserTypeLookUps" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <EntitySet Name="SessionCreditLookUps" EntityType="CPDPortalModel.SessionCreditLookUp" />
+          <EntitySet Name="AssignedRoles" EntityType="CPDPortalModel.AssignedRole" />
+          <EntitySet Name="ProgramModulesLookups" EntityType="CPDPortalModel.ProgramModulesLookup" />
+          <EntitySet Name="ProgramRequestModules" EntityType="CPDPortalModel.ProgramRequestModule" />
+          </EntityContainer>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="SponsorID" />
+          </Key>
+          <Property Name="SponsorID" Type="Int32" Nullable="false" />
+          <Property Name="SponsorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserInfoes" Relationship="CPDPortalModel.FK_UserInfo_Sponsor" FromRole="Sponsor" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="TherapeuticID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TherapeuticID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TherapeuticArea" Relationship="CPDPortalModel.FK_Privilege_TherapeuticArea" FromRole="Privilege" ToRole="TherapeuticArea" />
+        </EntityType>
+        <EntityType Name="TherapeuticArea">
+          <Key>
+            <PropertyRef Name="TherapeuticID" />
+          </Key>
+          <Property Name="TherapeuticID" Type="Int32" Nullable="false" />
+          <Property Name="TherapeuticName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TherapeuticTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="ActivePrograms" Type="Int32" />
+          <NavigationProperty Name="Privileges" Relationship="CPDPortalModel.FK_Privilege_TherapeuticArea" FromRole="TherapeuticArea" ToRole="Privilege" />
+          <NavigationProperty Name="TherapeuticPrograms" Relationship="CPDPortalModel.FK_TherapeuticProgram_TherapeuticArea" FromRole="TherapeuticArea" ToRole="TherapeuticProgram" />
+          <NavigationProperty Name="UserInfoes" Relationship="CPDPortalModel.FK_UserInfo_TherapeuticArea" FromRole="TherapeuticArea" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="FK_Privilege_TherapeuticArea">
+          <End Type="CPDPortalModel.TherapeuticArea" Role="TherapeuticArea" Multiplicity="1" />
+          <End Type="CPDPortalModel.Privilege" Role="Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="Privilege">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TherapeuticProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TherapeuticID" Type="Int32" />
+          <Property Name="ProgramID" Type="Int32" />
+          <NavigationProperty Name="TherapeuticArea" Relationship="CPDPortalModel.FK_TherapeuticProgram_TherapeuticArea" FromRole="TherapeuticProgram" ToRole="TherapeuticArea" />
+          <NavigationProperty Name="Program" Relationship="CPDPortalModel.FK_TherapeuticProgram_Program" FromRole="TherapeuticProgram" ToRole="Program" />
+        </EntityType>
+        <Association Name="FK_TherapeuticProgram_TherapeuticArea">
+          <End Type="CPDPortalModel.TherapeuticArea" Role="TherapeuticArea" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.TherapeuticProgram" Role="TherapeuticProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="TherapeuticProgram">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RequestStatusLookup">
+          <Key>
+            <PropertyRef Name="RequestStatusID" />
+          </Key>
+          <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
+          <Property Name="RequestStatusDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActionItems" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProgramRequests" Relationship="CPDPortalModel.FK_ProgramRequest_RequestStatusLookup" FromRole="RequestStatusLookup" ToRole="ProgramRequest" />
+        </EntityType>
+        <EntityType Name="UserTypeLookUp">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserInfoes" Relationship="CPDPortalModel.FK_UserInfo_UserTypeLookUp" FromRole="UserTypeLookUp" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="ProgramRequestSessionCredit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionCreditID" Type="Int32" />
+          <Property Name="ProgramRequestID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TerritoryLookUp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerritoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TerritoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceID" />
+          </Key>
+          <Property Name="ProvinceID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SpeakerPayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramRequestID" Type="Int32" />
+          <Property Name="Speakeruserid" Type="Int32" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProgramRequest" Relationship="CPDPortalModel.FK_SpeakerPayment_ProgramRequest" FromRole="SpeakerPayment" ToRole="ProgramRequest" />
+        </EntityType>
+        <EntityType Name="UserProvince">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Province" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="CPDPortalModel.FK_UserProvince_User" FromRole="UserProvince" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserTerritory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="TerritoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="CPDPortalModel.FK_UserTerritory_UserInfo" FromRole="UserTerritory" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserProvince_User">
+          <End Type="CPDPortalModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserProvince" Role="UserProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProvince">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTerritory_UserInfo">
+          <End Type="CPDPortalModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserTerritory" Role="UserTerritory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserTerritory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProgramRequestFileUploadOther">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="Int32" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserStatu">
+          <Key>
+            <PropertyRef Name="UserStatusID" />
+          </Key>
+          <Property Name="UserStatusID" Type="Int32" Nullable="false" />
+          <Property Name="UserStatusDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserInfoes" Relationship="CPDPortalModel.FK_UserInfo_UserStatus" FromRole="UserStatu" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DevelopedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CertifiedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TargetAudience" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreditHours" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="ProgramCompleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TherapeuticPrograms" Relationship="CPDPortalModel.FK_TherapeuticProgram_Program" FromRole="Program" ToRole="TherapeuticProgram" />
+          <NavigationProperty Name="ProgramRequests" Relationship="CPDPortalModel.FK_ProgramRequest_Program" FromRole="Program" ToRole="ProgramRequest" />
+          <Property Name="ProgramID_CHRC" Type="Int32" />
+          <Property Name="TherapeuticID" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="Archive" Type="Boolean" />
+          <Property Name="ProgramNameFr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_TherapeuticProgram_Program">
+          <End Type="CPDPortalModel.Program" Role="Program" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.TherapeuticProgram" Role="TherapeuticProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="TherapeuticProgram">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PayeeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ChequePayableTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InternalRefNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailingAddr1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MailingAddr2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AttentionTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinceID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalInstructions" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProgramRequest">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="SponsorID" Type="Int32" />
+          <Property Name="ContactFirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContactLastName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SessionAgendaFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SessionAgendaUploaded" Type="Boolean" />
+          <Property Name="ProgramDate1" Type="DateTime" Precision="3" />
+          <Property Name="ProgramDate2" Type="DateTime" Precision="3" />
+          <Property Name="ProgramDate3" Type="DateTime" Precision="3" />
+          <Property Name="SpeakerStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerConfirmedProgramDate" Type="DateTime" Precision="3" />
+          <Property Name="SpeakerProgramDateNA" Type="Boolean" />
+          <Property Name="SpeakerConfirmationDate" Type="DateTime" Precision="3" />
+          <Property Name="SpeakerDeclined" Type="Boolean" />
+          <Property Name="SpeakerChosenProgramDate" Type="Boolean" />
+          <Property Name="ModeratorStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModeratorConfirmedProgramDate" Type="DateTime" Precision="3" />
+          <Property Name="ModeratorProgramDateNA" Type="Boolean" />
+          <Property Name="ModeratorConfirmationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModeratorDeclined" Type="Boolean" />
+          <Property Name="ModeratorChosenProgramDate" Type="Boolean" />
+          <Property Name="ConfirmedSessionDate" Type="DateTime" Precision="3" />
+          <Property Name="MealStartTime" Type="DateTime" Precision="3" />
+          <Property Name="ProgramStartTime" Type="DateTime" Precision="3" />
+          <Property Name="ProgramEndTime" Type="DateTime" Precision="3" />
+          <Property Name="ProgramCredits" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MultiSession" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramSpeakerID" Type="Int32" />
+          <Property Name="ProgramModeratorID" Type="Int32" />
+          <Property Name="VenueContacted" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LocationType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationProvince" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="LocationPhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LocationWebsite" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CostPerPerson" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CostByParticipant" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MealType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Proximity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AVEquipment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CancellationReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CancellationRequested" Type="Boolean" />
+          <Property Name="ModifyReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyRequested" Type="Boolean" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="RequestStatus" Type="Int32" />
+          <Property Name="AdminVenueAvailable" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AdminCCASent" Type="Boolean" />
+          <Property Name="AdminVenueReceipt" Type="Boolean" />
+          <Property Name="AdminVenueNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AdminCFPCDateSubmitted" Type="DateTime" Precision="3" />
+          <Property Name="AdminCFPCDateApproved" Type="DateTime" Precision="3" />
+          <Property Name="AdminCFPCFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCImplementationFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCImplementationFeesTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminCFPCFeesTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSessionID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AdminSpeakerHonorium" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerHonoriumTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerExpense" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerExpenseTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorExpense" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorExpenseTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminSpeakerPaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminSpeakerPaymentSentDate" Type="DateTime" Precision="3" />
+          <Property Name="AdminModeratorHonorium" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorHonoriumTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminModeratorPaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminModeratorPaymentSentDate" Type="DateTime" Precision="3" />
+          <Property Name="AdminVenueFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminVenueFeesTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminAVFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminAVFeesTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminOtherFees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminOtherFeesTaxes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdminFinalAttendance" Type="Int32" />
+          <Property Name="AdminActionItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AdminEdited" Type="Boolean" />
+          <Property Name="AdminUserID" Type="Int32" />
+          <Property Name="AdminEditDate" Type="DateTime" Precision="3" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+          <Property Name="ReadOnly" Type="Boolean" />
+          <NavigationProperty Name="Program" Relationship="CPDPortalModel.FK_ProgramRequest_Program" FromRole="ProgramRequest" ToRole="Program" />
+          <NavigationProperty Name="RequestStatusLookup" Relationship="CPDPortalModel.FK_ProgramRequest_RequestStatusLookup" FromRole="ProgramRequest" ToRole="RequestStatusLookup" />
+          <NavigationProperty Name="SpeakerPayments" Relationship="CPDPortalModel.FK_SpeakerPayment_ProgramRequest" FromRole="ProgramRequest" ToRole="SpeakerPayment" />
+          <NavigationProperty Name="ProgramRequestFileUpload" Relationship="CPDPortalModel.FK_ProgramRequestFileUpload_ProgramRequest" FromRole="ProgramRequest" ToRole="ProgramRequestFileUpload" />
+          <NavigationProperty Name="ModeratorInfo" Relationship="CPDPortalModel.FK_ProgramRequest_Moderator" FromRole="ProgramRequest" ToRole="UserInfo" />
+          <NavigationProperty Name="SpeakerInfo" Relationship="CPDPortalModel.FK_ProgramRequest_Speaker" FromRole="ProgramRequest" ToRole="UserInfo" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EventTypeQuestion1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventTypeQuestion2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventTypeQuestion3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventTypeQuestion4" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventTypeQuestion5" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="MealOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationTypeOther" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramCostsSplit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AmgenRepName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <Association Name="FK_ProgramRequest_Program">
+          <End Type="CPDPortalModel.Program" Role="Program" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_RequestStatusLookup">
+          <End Type="CPDPortalModel.RequestStatusLookup" Role="RequestStatusLookup" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatusLookup">
+              <PropertyRef Name="RequestStatusID" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="RequestStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpeakerPayment_ProgramRequest">
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.SpeakerPayment" Role="SpeakerPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramRequest">
+              <PropertyRef Name="ProgramRequestID" />
+            </Principal>
+            <Dependent Role="SpeakerPayment">
+              <PropertyRef Name="ProgramRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProgramRequestFileUpload">
+          <Key>
+            <PropertyRef Name="ProgramRequestID" />
+          </Key>
+          <Property Name="ProgramRequestID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="EvaluationFullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EvaluationUploaded" Type="Boolean" />
+          <Property Name="EvaluationFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EvaluationFileExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SignInFullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SignInUploaded" Type="Boolean" />
+          <Property Name="SignInFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SignInFileExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UserOtherFullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserOtherUploaded" Type="Boolean" />
+          <Property Name="UserOtherFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserOtherFileExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerAgreementFullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerAgreementUploaded" Type="Boolean" />
+          <Property Name="SpeakerAgreementFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerAgreementFileExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProgramRequest" Relationship="CPDPortalModel.FK_ProgramRequestFileUpload_ProgramRequest" FromRole="ProgramRequestFileUpload" ToRole="ProgramRequest" />
+        </EntityType>
+        <Association Name="FK_ProgramRequestFileUpload_ProgramRequest">
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="1" />
+          <End Type="CPDPortalModel.ProgramRequestFileUpload" Role="ProgramRequestFileUpload" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramRequest">
+              <PropertyRef Name="ProgramRequestID" />
+            </Principal>
+            <Dependent Role="ProgramRequestFileUpload">
+              <PropertyRef Name="ProgramRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserRegistration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="COIForm" Type="Boolean" />
+          <Property Name="COIFormExt" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PayeeForm" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="CPDPortalModel.FK_UserRegistration_User" FromRole="UserRegistration" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserRegistration_User">
+          <End Type="CPDPortalModel.User" Role="User" Multiplicity="1" />
+          <End Type="CPDPortalModel.UserRegistration" Role="UserRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRegistration">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="COISlidesUpload">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="COISlides" Type="Boolean" />
+          <Property Name="COISlidesExt" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserInfo" Relationship="CPDPortalModel.FK_COISlidesUpload_UserInfo" FromRole="COISlidesUpload" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="TerritoryIDRegionLookup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="TerritoryID" Type="Int32" />
+          <Property Name="Region" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserInfo_Production_SalesRepSpeakers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserIDRequestedBy" Type="Int32" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ClinicName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Specialty" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ModeratorHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TherapeuticID" Type="Int32" />
+          <Property Name="PrivilegeID" Type="Int32" />
+          <Property Name="SponsorID" Type="Int32" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserInfo_Production_SpeakerOnly">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserIDRequestedBy" Type="Int32" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ClinicName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Specialty" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ModeratorHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TherapeuticID" Type="Int32" />
+          <Property Name="PrivilegeID" Type="Int32" />
+          <Property Name="SponsorID" Type="Int32" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserIDRequestedBy" Type="Int32" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="AssignedRole" Type="Int32" />
+          <Property Name="TerritoryID" Type="Int32" />
+          <Property Name="RepID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ClinicName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Specialty" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SpeakerHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ModeratorHonariumRange" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TherapeuticID" Type="Int32" />
+          <Property Name="PrivilegeID" Type="Int32" />
+          <Property Name="SponsorID" Type="Int32" />
+          <Property Name="BoneWBSCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CVWBSCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="COISlidesUploads" Relationship="CPDPortalModel.FK_COISlidesUpload_UserInfo" FromRole="UserInfo" ToRole="COISlidesUpload" />
+          <NavigationProperty Name="ProgramRequests" Relationship="CPDPortalModel.FK_ProgramRequest_Moderator" FromRole="UserInfo" ToRole="ProgramRequest" />
+          <NavigationProperty Name="ProgramRequests1" Relationship="CPDPortalModel.FK_ProgramRequest_Speaker" FromRole="UserInfo" ToRole="ProgramRequest" />
+          <NavigationProperty Name="Sponsor" Relationship="CPDPortalModel.FK_UserInfo_Sponsor" FromRole="UserInfo" ToRole="Sponsor" />
+          <NavigationProperty Name="TherapeuticArea" Relationship="CPDPortalModel.FK_UserInfo_TherapeuticArea" FromRole="UserInfo" ToRole="TherapeuticArea" />
+          <NavigationProperty Name="User" Relationship="CPDPortalModel.FK_UserInfo_User" FromRole="UserInfo" ToRole="User" />
+          <NavigationProperty Name="UserStatus" Relationship="CPDPortalModel.FK_UserInfo_UserStatus" FromRole="UserInfo" ToRole="UserStatu" />
+          <NavigationProperty Name="UserTypeLookUp" Relationship="CPDPortalModel.FK_UserInfo_UserTypeLookUp" FromRole="UserInfo" ToRole="UserTypeLookUp" />
+          <Property Name="Language" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SufficientKnowledge" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_COISlidesUpload_UserInfo">
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="CPDPortalModel.COISlidesUpload" Role="COISlidesUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COISlidesUpload">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_Moderator">
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramModeratorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramRequest_Speaker">
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.ProgramRequest" Role="ProgramRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProgramRequest">
+              <PropertyRef Name="ProgramSpeakerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_Sponsor">
+          <End Type="CPDPortalModel.Sponsor" Role="Sponsor" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="SponsorID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="SponsorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_TherapeuticArea">
+          <End Type="CPDPortalModel.TherapeuticArea" Role="TherapeuticArea" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TherapeuticArea">
+              <PropertyRef Name="TherapeuticID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="TherapeuticID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_User">
+          <End Type="CPDPortalModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserStatus">
+          <End Type="CPDPortalModel.UserStatu" Role="UserStatu" Multiplicity="0..1" />
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatu">
+              <PropertyRef Name="UserStatusID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserTypeLookUp">
+          <End Type="CPDPortalModel.UserTypeLookUp" Role="UserTypeLookUp" Multiplicity="1" />
+          <End Type="CPDPortalModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeLookUp">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SessionCreditLookUp">
+          <Key>
+            <PropertyRef Name="SessionCreditID" />
+          </Key>
+          <Property Name="SessionCreditID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptionfr" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AssignedRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProgramModulesLookup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="ModuleName" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleDescription" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProgramRequestModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramRequestID" Type="Int32" />
+          <Property Name="ProgramModule1" Type="Boolean" />
+          <Property Name="ProgramModule2" Type="Boolean" />
+          <Property Name="ProgramModule3" Type="Boolean" />
+          <Property Name="ProgramModule4" Type="Boolean" />
+          <Property Name="ProgramModule5" Type="Boolean" />
+          <Property Name="ProgramModule6" Type="Boolean" />
+          <Property Name="ProgramModule7" Type="Boolean" />
+          <Property Name="ProgramModule8" Type="Boolean" />
+          <Property Name="ProgramModule9" Type="Boolean" />
+          <Property Name="ProgramModule10" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CPDPortalModelStoreContainer" CdmEntityContainer="CPDPortalEntities">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CPDPortalModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CPDPortalModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Actviated" ColumnName="Actviated" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRole" TypeName="CPDPortalModel.UserRole" StoreEntitySet="UserRole">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="CPDPortalModel.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="SponsorName" ColumnName="SponsorName" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privileges">
+            <EntityTypeMapping TypeName="CPDPortalModel.Privilege">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TherapeuticAreas">
+            <EntityTypeMapping TypeName="CPDPortalModel.TherapeuticArea">
+              <MappingFragment StoreEntitySet="TherapeuticArea">
+                <ScalarProperty Name="ActivePrograms" ColumnName="ActivePrograms" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="TherapeuticTitle" ColumnName="TherapeuticTitle" />
+                <ScalarProperty Name="TherapeuticName" ColumnName="TherapeuticName" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TherapeuticPrograms">
+            <EntityTypeMapping TypeName="CPDPortalModel.TherapeuticProgram">
+              <MappingFragment StoreEntitySet="TherapeuticProgram">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStatusLookups">
+            <EntityTypeMapping TypeName="CPDPortalModel.RequestStatusLookup">
+              <MappingFragment StoreEntitySet="RequestStatusLookup">
+                <ScalarProperty Name="ActionItems" ColumnName="ActionItems" />
+                <ScalarProperty Name="RequestStatusDescription" ColumnName="RequestStatusDescription" />
+                <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypeLookUps">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserTypeLookUp">
+              <MappingFragment StoreEntitySet="UserTypeLookUp">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramRequestSessionCredits">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramRequestSessionCredit">
+              <MappingFragment StoreEntitySet="ProgramRequestSessionCredits">
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+                <ScalarProperty Name="SessionCreditID" ColumnName="SessionCreditID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerritoryLookUps">
+            <EntityTypeMapping TypeName="CPDPortalModel.TerritoryLookUp">
+              <MappingFragment StoreEntitySet="TerritoryLookUp">
+                <ScalarProperty Name="TerritoryDescription" ColumnName="TerritoryDescription" />
+                <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="CPDPortalModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpeakerPayments">
+            <EntityTypeMapping TypeName="CPDPortalModel.SpeakerPayment">
+              <MappingFragment StoreEntitySet="SpeakerPayment">
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="Speakeruserid" ColumnName="Speakeruserid" />
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProvinces">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserProvince">
+              <MappingFragment StoreEntitySet="UserProvince">
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTerritories">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserTerritory">
+              <MappingFragment StoreEntitySet="UserTerritory">
+                <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramRequestFileUploadOthers">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramRequestFileUploadOther">
+              <MappingFragment StoreEntitySet="ProgramRequestFileUploadOther">
+                <ScalarProperty Name="FileExt" ColumnName="FileExt" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatus">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserStatu">
+              <MappingFragment StoreEntitySet="UserStatus">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserStatusDescription" ColumnName="UserStatusDescription" />
+                <ScalarProperty Name="UserStatusID" ColumnName="UserStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="CPDPortalModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="ProgramNameFr" ColumnName="ProgramNameFr" />
+                <ScalarProperty Name="Archive" ColumnName="Archive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="ProgramID_CHRC" ColumnName="ProgramID_CHRC" />
+                <ScalarProperty Name="ProgramCompleted" ColumnName="ProgramCompleted" />
+                <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
+                <ScalarProperty Name="TargetAudience" ColumnName="TargetAudience" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CertifiedBy" ColumnName="CertifiedBy" />
+                <ScalarProperty Name="DevelopedBy" ColumnName="DevelopedBy" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayeeInfoes">
+            <EntityTypeMapping TypeName="CPDPortalModel.PayeeInfo">
+              <MappingFragment StoreEntitySet="PayeeInfo">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="AdditionalInstructions" ColumnName="AdditionalInstructions" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AttentionTo" ColumnName="AttentionTo" />
+                <ScalarProperty Name="MailingAddr2" ColumnName="MailingAddr2" />
+                <ScalarProperty Name="MailingAddr1" ColumnName="MailingAddr1" />
+                <ScalarProperty Name="InternalRefNum" ColumnName="InternalRefNum" />
+                <ScalarProperty Name="ChequePayableTo" ColumnName="ChequePayableTo" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramRequests">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramRequest">
+              <MappingFragment StoreEntitySet="ProgramRequest">
+                <ScalarProperty Name="AmgenRepName" ColumnName="AmgenRepName" />
+                <ScalarProperty Name="ProgramCostsSplit" ColumnName="ProgramCostsSplit" />
+                <ScalarProperty Name="LocationTypeOther" ColumnName="LocationTypeOther" />
+                <ScalarProperty Name="MealOption" ColumnName="MealOption" />
+                <ScalarProperty Name="RegistrationArrivalTime" ColumnName="RegistrationArrivalTime" />
+                <ScalarProperty Name="EventTypeQuestion5" ColumnName="EventTypeQuestion5" />
+                <ScalarProperty Name="EventTypeQuestion4" ColumnName="EventTypeQuestion4" />
+                <ScalarProperty Name="EventTypeQuestion3" ColumnName="EventTypeQuestion3" />
+                <ScalarProperty Name="EventTypeQuestion2" ColumnName="EventTypeQuestion2" />
+                <ScalarProperty Name="EventTypeQuestion1" ColumnName="EventTypeQuestion1" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="AdminEditDate" ColumnName="AdminEditDate" />
+                <ScalarProperty Name="AdminUserID" ColumnName="AdminUserID" />
+                <ScalarProperty Name="AdminEdited" ColumnName="AdminEdited" />
+                <ScalarProperty Name="AdminActionItems" ColumnName="AdminActionItems" />
+                <ScalarProperty Name="AdminFinalAttendance" ColumnName="AdminFinalAttendance" />
+                <ScalarProperty Name="AdminOtherFeesTaxes" ColumnName="AdminOtherFeesTaxes" />
+                <ScalarProperty Name="AdminOtherFees" ColumnName="AdminOtherFees" />
+                <ScalarProperty Name="AdminAVFeesTaxes" ColumnName="AdminAVFeesTaxes" />
+                <ScalarProperty Name="AdminAVFees" ColumnName="AdminAVFees" />
+                <ScalarProperty Name="AdminVenueFeesTaxes" ColumnName="AdminVenueFeesTaxes" />
+                <ScalarProperty Name="AdminVenueFees" ColumnName="AdminVenueFees" />
+                <ScalarProperty Name="AdminModeratorPaymentSentDate" ColumnName="AdminModeratorPaymentSentDate" />
+                <ScalarProperty Name="AdminModeratorPaymentMethod" ColumnName="AdminModeratorPaymentMethod" />
+                <ScalarProperty Name="AdminModeratorHonoriumTaxes" ColumnName="AdminModeratorHonoriumTaxes" />
+                <ScalarProperty Name="AdminModeratorHonorium" ColumnName="AdminModeratorHonorium" />
+                <ScalarProperty Name="AdminSpeakerPaymentSentDate" ColumnName="AdminSpeakerPaymentSentDate" />
+                <ScalarProperty Name="AdminSpeakerPaymentMethod" ColumnName="AdminSpeakerPaymentMethod" />
+                <ScalarProperty Name="AdminModeratorExpenseTaxes" ColumnName="AdminModeratorExpenseTaxes" />
+                <ScalarProperty Name="AdminModeratorExpense" ColumnName="AdminModeratorExpense" />
+                <ScalarProperty Name="AdminSpeakerExpenseTaxes" ColumnName="AdminSpeakerExpenseTaxes" />
+                <ScalarProperty Name="AdminSpeakerExpense" ColumnName="AdminSpeakerExpense" />
+                <ScalarProperty Name="AdminSpeakerHonoriumTaxes" ColumnName="AdminSpeakerHonoriumTaxes" />
+                <ScalarProperty Name="AdminSpeakerHonorium" ColumnName="AdminSpeakerHonorium" />
+                <ScalarProperty Name="AdminSessionID" ColumnName="AdminSessionID" />
+                <ScalarProperty Name="AdminCFPCFeesTaxes" ColumnName="AdminCFPCFeesTaxes" />
+                <ScalarProperty Name="AdminCFPCImplementationFeesTaxes" ColumnName="AdminCFPCImplementationFeesTaxes" />
+                <ScalarProperty Name="AdminCFPCImplementationFees" ColumnName="AdminCFPCImplementationFees" />
+                <ScalarProperty Name="AdminCFPCFees" ColumnName="AdminCFPCFees" />
+                <ScalarProperty Name="AdminCFPCDateApproved" ColumnName="AdminCFPCDateApproved" />
+                <ScalarProperty Name="AdminCFPCDateSubmitted" ColumnName="AdminCFPCDateSubmitted" />
+                <ScalarProperty Name="AdminVenueNotes" ColumnName="AdminVenueNotes" />
+                <ScalarProperty Name="AdminVenueReceipt" ColumnName="AdminVenueReceipt" />
+                <ScalarProperty Name="AdminCCASent" ColumnName="AdminCCASent" />
+                <ScalarProperty Name="AdminVenueAvailable" ColumnName="AdminVenueAvailable" />
+                <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="ModifyRequested" ColumnName="ModifyRequested" />
+                <ScalarProperty Name="ModifyReason" ColumnName="ModifyReason" />
+                <ScalarProperty Name="CancellationRequested" ColumnName="CancellationRequested" />
+                <ScalarProperty Name="CancellationReason" ColumnName="CancellationReason" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AVEquipment" ColumnName="AVEquipment" />
+                <ScalarProperty Name="Proximity" ColumnName="Proximity" />
+                <ScalarProperty Name="MealType" ColumnName="MealType" />
+                <ScalarProperty Name="CostByParticipant" ColumnName="CostByParticipant" />
+                <ScalarProperty Name="CostPerPerson" ColumnName="CostPerPerson" />
+                <ScalarProperty Name="LocationWebsite" ColumnName="LocationWebsite" />
+                <ScalarProperty Name="LocationPhoneNumber" ColumnName="LocationPhoneNumber" />
+                <ScalarProperty Name="LocationProvince" ColumnName="LocationProvince" />
+                <ScalarProperty Name="LocationCity" ColumnName="LocationCity" />
+                <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationType" ColumnName="LocationType" />
+                <ScalarProperty Name="VenueContacted" ColumnName="VenueContacted" />
+                <ScalarProperty Name="ProgramModeratorID" ColumnName="ProgramModeratorID" />
+                <ScalarProperty Name="ProgramSpeakerID" ColumnName="ProgramSpeakerID" />
+                <ScalarProperty Name="RegistrationFees" ColumnName="RegistrationFees" />
+                <ScalarProperty Name="MultiSession" ColumnName="MultiSession" />
+                <ScalarProperty Name="ProgramCredits" ColumnName="ProgramCredits" />
+                <ScalarProperty Name="ProgramEndTime" ColumnName="ProgramEndTime" />
+                <ScalarProperty Name="ProgramStartTime" ColumnName="ProgramStartTime" />
+                <ScalarProperty Name="MealStartTime" ColumnName="MealStartTime" />
+                <ScalarProperty Name="ConfirmedSessionDate" ColumnName="ConfirmedSessionDate" />
+                <ScalarProperty Name="ModeratorChosenProgramDate" ColumnName="ModeratorChosenProgramDate" />
+                <ScalarProperty Name="ModeratorDeclined" ColumnName="ModeratorDeclined" />
+                <ScalarProperty Name="ModeratorConfirmationDate" ColumnName="ModeratorConfirmationDate" />
+                <ScalarProperty Name="ModeratorProgramDateNA" ColumnName="ModeratorProgramDateNA" />
+                <ScalarProperty Name="ModeratorConfirmedProgramDate" ColumnName="ModeratorConfirmedProgramDate" />
+                <ScalarProperty Name="ModeratorStatus" ColumnName="ModeratorStatus" />
+                <ScalarProperty Name="SpeakerChosenProgramDate" ColumnName="SpeakerChosenProgramDate" />
+                <ScalarProperty Name="SpeakerDeclined" ColumnName="SpeakerDeclined" />
+                <ScalarProperty Name="SpeakerConfirmationDate" ColumnName="SpeakerConfirmationDate" />
+                <ScalarProperty Name="SpeakerProgramDateNA" ColumnName="SpeakerProgramDateNA" />
+                <ScalarProperty Name="SpeakerConfirmedProgramDate" ColumnName="SpeakerConfirmedProgramDate" />
+                <ScalarProperty Name="SpeakerStatus" ColumnName="SpeakerStatus" />
+                <ScalarProperty Name="ProgramDate3" ColumnName="ProgramDate3" />
+                <ScalarProperty Name="ProgramDate2" ColumnName="ProgramDate2" />
+                <ScalarProperty Name="ProgramDate1" ColumnName="ProgramDate1" />
+                <ScalarProperty Name="SessionAgendaUploaded" ColumnName="SessionAgendaUploaded" />
+                <ScalarProperty Name="SessionAgendaFileName" ColumnName="SessionAgendaFileName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+                <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramRequestFileUploads">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramRequestFileUpload">
+              <MappingFragment StoreEntitySet="ProgramRequestFileUpload">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="SpeakerAgreementFileExt" ColumnName="SpeakerAgreementFileExt" />
+                <ScalarProperty Name="SpeakerAgreementFileName" ColumnName="SpeakerAgreementFileName" />
+                <ScalarProperty Name="SpeakerAgreementUploaded" ColumnName="SpeakerAgreementUploaded" />
+                <ScalarProperty Name="SpeakerAgreementFullPath" ColumnName="SpeakerAgreementFullPath" />
+                <ScalarProperty Name="UserOtherFileExt" ColumnName="UserOtherFileExt" />
+                <ScalarProperty Name="UserOtherFileName" ColumnName="UserOtherFileName" />
+                <ScalarProperty Name="UserOtherUploaded" ColumnName="UserOtherUploaded" />
+                <ScalarProperty Name="UserOtherFullPath" ColumnName="UserOtherFullPath" />
+                <ScalarProperty Name="SignInFileExt" ColumnName="SignInFileExt" />
+                <ScalarProperty Name="SignInFileName" ColumnName="SignInFileName" />
+                <ScalarProperty Name="SignInUploaded" ColumnName="SignInUploaded" />
+                <ScalarProperty Name="SignInFullPath" ColumnName="SignInFullPath" />
+                <ScalarProperty Name="EvaluationFileExt" ColumnName="EvaluationFileExt" />
+                <ScalarProperty Name="EvaluationFileName" ColumnName="EvaluationFileName" />
+                <ScalarProperty Name="EvaluationUploaded" ColumnName="EvaluationUploaded" />
+                <ScalarProperty Name="EvaluationFullPath" ColumnName="EvaluationFullPath" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegistrations">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserRegistration">
+              <MappingFragment StoreEntitySet="UserRegistration">
+                <ScalarProperty Name="PayeeForm" ColumnName="PayeeForm" />
+                <ScalarProperty Name="COIFormExt" ColumnName="COIFormExt" />
+                <ScalarProperty Name="COIForm" ColumnName="COIForm" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COISlidesUploads">
+            <EntityTypeMapping TypeName="CPDPortalModel.COISlidesUpload">
+              <MappingFragment StoreEntitySet="COISlidesUpload">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="COISlidesExt" ColumnName="COISlidesExt" />
+                <ScalarProperty Name="COISlides" ColumnName="COISlides" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerritoryIDRegionLookups">
+            <EntityTypeMapping TypeName="CPDPortalModel.TerritoryIDRegionLookup">
+              <MappingFragment StoreEntitySet="TerritoryIDRegionLookup">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo_Production_SalesRepSpeakers">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserInfo_Production_SalesRepSpeakers">
+              <MappingFragment StoreEntitySet="UserInfo_Production_SalesRepSpeakers">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="ModeratorHonariumRange" ColumnName="ModeratorHonariumRange" />
+                <ScalarProperty Name="SpeakerHonariumRange" ColumnName="SpeakerHonariumRange" />
+                <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserIDRequestedBy" ColumnName="UserIDRequestedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo_Production_SpeakerOnly">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserInfo_Production_SpeakerOnly">
+              <MappingFragment StoreEntitySet="UserInfo_Production_SpeakerOnly">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="ModeratorHonariumRange" ColumnName="ModeratorHonariumRange" />
+                <ScalarProperty Name="SpeakerHonariumRange" ColumnName="SpeakerHonariumRange" />
+                <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserIDRequestedBy" ColumnName="UserIDRequestedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="CPDPortalModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="SufficientKnowledge" ColumnName="SufficientKnowledge" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="CVWBSCode" ColumnName="CVWBSCode" />
+                <ScalarProperty Name="BoneWBSCode" ColumnName="BoneWBSCode" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="TherapeuticID" ColumnName="TherapeuticID" />
+                <ScalarProperty Name="ModeratorHonariumRange" ColumnName="ModeratorHonariumRange" />
+                <ScalarProperty Name="SpeakerHonariumRange" ColumnName="SpeakerHonariumRange" />
+                <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="RepID" ColumnName="RepID" />
+                <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+                <ScalarProperty Name="AssignedRole" ColumnName="AssignedRole" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserIDRequestedBy" ColumnName="UserIDRequestedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionCreditLookUps">
+            <EntityTypeMapping TypeName="CPDPortalModel.SessionCreditLookUp">
+              <MappingFragment StoreEntitySet="SessionCreditLookUp">
+                <ScalarProperty Name="Descriptionfr" ColumnName="Descriptionfr" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SessionCreditID" ColumnName="SessionCreditID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignedRoles">
+            <EntityTypeMapping TypeName="CPDPortalModel.AssignedRole">
+              <MappingFragment StoreEntitySet="AssignedRole">
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramModulesLookups">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramModulesLookup">
+              <MappingFragment StoreEntitySet="ProgramModulesLookup">
+                <ScalarProperty Name="ModuleDescription" ColumnName="ModuleDescription" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramRequestModules">
+            <EntityTypeMapping TypeName="CPDPortalModel.ProgramRequestModule">
+              <MappingFragment StoreEntitySet="ProgramRequestModule">
+                <ScalarProperty Name="ProgramModule10" ColumnName="ProgramModule10" />
+                <ScalarProperty Name="ProgramModule9" ColumnName="ProgramModule9" />
+                <ScalarProperty Name="ProgramModule8" ColumnName="ProgramModule8" />
+                <ScalarProperty Name="ProgramModule7" ColumnName="ProgramModule7" />
+                <ScalarProperty Name="ProgramModule6" ColumnName="ProgramModule6" />
+                <ScalarProperty Name="ProgramModule5" ColumnName="ProgramModule5" />
+                <ScalarProperty Name="ProgramModule4" ColumnName="ProgramModule4" />
+                <ScalarProperty Name="ProgramModule3" ColumnName="ProgramModule3" />
+                <ScalarProperty Name="ProgramModule2" ColumnName="ProgramModule2" />
+                <ScalarProperty Name="ProgramModule1" ColumnName="ProgramModule1" />
+                <ScalarProperty Name="ProgramRequestID" ColumnName="ProgramRequestID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

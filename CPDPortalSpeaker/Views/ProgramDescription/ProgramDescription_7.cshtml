@@ -1,0 +1,312 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Program Description</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+
+
+
+                <div class="margin-top-24">
+                    <h3>
+                        A PRIMARY CARE GUIDE TO
+                        KEY CLINICAL QUESTIONS IN OSTEOPOROSIS MANAGEMENT
+                    </h3>
+                    <p></p><h3>
+                        ABOUT:
+                    </h3>
+                    <ul>
+                        <li> This interactive program has been specifically designed to address the most frequently encountered clinical challenges in the management of patients with osteoporosis or at risk for osteoporotic fracture in the primary care setting. This activity was developed by leading Canadian Experts to provide clinicians with answers to frequently asked questions and key take-away messages that can be applied to real-world practice.</li>
+                    </ul>
+                    <p></p><h3>
+                        FORMAT:
+                    </h3>
+                    <ul>
+                        <li>
+                            This program consists of ten (10) modules.  Each module addresses a key clinical question in osteoporosis management in the primary care setting. Each module requires approximately 15 minutes of presentation time. Additionally, 15 minutes have been allotted to welcome, introductions and Q&amp;A.
+                            <ul>
+                                <li> 1-hour program: 3 modules </li>
+                                <li>1 hour 30-minute program: 5 modules</li>
+                                <li>2-hour program: 7 modules </li>
+                                <li>2 hour and 45-minute program: 10 modules </li>
+                            </ul>
+                        </li>
+                        <li> As the speaker, you will be responsible for picking the modules you wish to present during your session. You will complete this step at the time you receive the invitation by email and confirm the session date. We ask that you pick the commensurate number of modules based on the program duration (e.g. a 1-hour program = 3 modules). </li>
+                    </ul>
+                    <p></p><h3>CERTIFICATION:</h3>
+                    <ul>
+                        <li> 	This Group Learning activity has been certified for up to 2.75 MAINPRO+ one-credit-per-hour credits by the CFPC.</li>
+                        <li><strong>As per the CFPC guidelines for certified programs, speakers are required to use the presentation slides provided by the physician organization and are not permitted to make any changes to the program materials/slides.</strong></li>
+                    </ul>
+                    <p>
+                    </p><h3><strong>PROGRAM OVERVIEW AND MODULES:</strong></h3>
+                    <ul>
+                        <li>
+                            Total Number of Modules: 10 modules - 150 slides total including intro slides
+                            <ul>
+                                <li>
+                                    <strong> Slides 1 – 7:</strong> Introduction, Disclosure, Program Development and Program Overview <br>
+                                    <br>
+                                </li>
+                                <li>
+                                    <strong>Slide 7:</strong> Summary of Clinical Questions
+                                    <ul>
+                                        <li> Slide 7 lists all the available modules </li>
+                                        <li>This slide will also allow you to navigate to the module of your choice when in “slide show” mode </li>
+                                        <li><strong>To navigate to a specific module, click on the <span class="glyphicon glyphicon-circle-arrow-right" style="font-size: 16px"></span>          in the applicable box </strong></li>
+
+
+                                        <div class="col-sm-12" style="padding-bottom:20px; padding-top:20px">
+                                            <table width="60%" border="0" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="50%" align="center"><img src="/Images/7/b3-slide_img.png" width="300" height="225"></td>
+                                                        <td width="50%" align="center">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <li>
+                                            <strong> The last slide of each module includes a  <span class="glyphicon glyphicon-circle-arrow-left" style="font-size: 16px"></span>         in the footer which will allow you to navigate back to slide 7 </strong><br>
+                                            <br>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                                <li>
+                                    <strong>Slides 8-20:</strong> Clinical Question 1
+                                    <ul>
+                                        <li>What parameters indicate a diagnosis of osteoporosis?</li>
+                                        <li>
+                                            How does this differ from assessment of fracture risk? <br>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives: </strong>
+                                    <ol>
+                                        <li>Perform risk assessments and screening for all patients at high risk for fracture</li>
+                                        <li>
+                                            Explain the factors that determine osteoporotic fracture risk<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong>Slides 21-32:</strong> Clinical Question 2
+                                    <ul>
+                                        <li>
+                                            In order for our osteoporosis patients to understand the balance of risks and benefits, it is crucial for them to understand the impact of osteoporotic fractures on their quality of life.
+                                            <ul>
+                                                <li>How can we best explain the impact of osteoporosis to our patients?</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives: </strong>
+                                    <ol>
+                                        <li>Describe the morbidity, mortality and economic burden of illness associated with osteoporosis in Canada</li>
+                                        <li>Explain the factors that determine osteoporotic fracture risk</li>
+                                        <li>
+                                            Communicate to patients the impact of osteoporotic fractures on their quality of life and the actions they can take to reduce risk <br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <strong>Slides	33-44:</strong> Clinical Question 3
+                                    <ul>
+                                        <li>How do we evaluate fracture risk in postmenopausal women with a view to identifying women who would benefit from osteoporosis pharmacotherapy?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives: </strong>
+                                    <ol>
+                                        <li>Identify clinical and diagnostic risk factors which further increase the risk of fractures in post menopausal women</li>
+                                        <li>Apply evidence-based management protocols to prevent future fractures in post menopausal women</li>
+                                        <li>
+                                            Assess patients on treatment for occurrence of side effects and select appropriate therapies based on the patient characteristics<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong> Slides 45-61:</strong> Clinical Question 4
+                                    <ul>
+                                        <li>How do we evaluate fracture risk in older men, and what are the therapeutic options?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Learning Objectives:</strong>
+                                    <ol>
+                                        <li>Identify social, clinical and diagnostic risk factors which further increase the risk of fractures specific to male patients</li>
+                                        <li>Apply evidence-based management protocols to prevent future fractures in male patients</li>
+                                        <li>
+                                            Assess patients on treatment for occurrence of side effects and select appropriate therapies based on the patient characteristics<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong>Slides 62-77:</strong> Clinical Question 5
+                                    <ul>
+                                        <li>Do patients on glucocorticoid require osteoporosis pharmacotherapy?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Learning Objectives: </strong>
+                                    <ol>
+                                        <li>Explain the impact of co-morbidities on the risk profile of patients with osteoporosis</li>
+                                        <li> Describe why glucocorticoid treatment is associated with bone loss and increased fracture risk</li>
+                                        <li>
+                                            Mitigate the impact of medication-related factors which may increase the risk of bone loss and fragility fractures <br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <strong>Slides 78-91:</strong> Clinical Question 6
+                                    <ul>
+                                        <li>What is the risk of fracture in patients on aromatase inhibitor therapy?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives:</strong>
+                                    <ol>
+                                        <li>Explain the impact of co-morbidities on the risk profile of patients with osteoporosis</li>
+                                        <li>Describe why aromatase inhibitor therapy is associated with bone loss and increased fracture risk</li>
+                                        <li>
+                                            Mitigate the impact of medication-related factors which may increase the risk of bone loss and fragility fractures<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <strong>Slides 92-105:</strong> Clinical Question 7
+                                    <ul>
+                                        <li>Do patients on androgen deprivation therapy require osteoporosis pharmacotherapy?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives:</strong>
+                                    <ol>
+                                        <li>Explain the impact of co-morbidities on the risk profile of patients with osteoporosis</li>
+                                        <li>Describe why patients on androgen deprivation therapy are at risk for bone loss and will benefit from pharmacotherapy to prevent osteoporotic fractures</li>
+                                        <li>
+                                            Mitigate the impact of medication-related factors which may increase the risk of bone loss and fragility fractures<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong>Slides 106-119:</strong> Clinical Question 8
+                                    <ul>
+                                        <li>Do proton pump inhibitors cause bone loss?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives: </strong>
+                                    <ol>
+                                        <li>	Explain the impact of co-morbidities on the risk profile of patients with osteoporosis</li>
+                                        <li>Describe why treatment with proton pump inhibitors may be associated with bone loss and increased fracture risk</li>
+                                        <li>
+                                            Mitigate the impact of medication-related factors which may increase the risk of bone loss and fragility fractures<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong>Slides 120-132:</strong> Clinical Question 9
+                                    <ul>
+                                        <li>When patients are treated with Selective Serotonin Receptor Inhibitors, do they have an increase in the risk of fracture?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Learning Objectives:</strong>
+                                    <ol>
+                                        <li>Explain the impact of co-morbidities on the risk profile of patients with osteoporosis</li>
+                                        <li>Describe why chronic SSRI treatment is associated with bone loss and increased fragility fracture risk</li>
+                                        <li>
+                                            Mitigate the impact of medication-related factors which may increase the risk of bone loss and fragility fractures<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li>
+                                    <strong>Slides 133-150:</strong> Clinical Question 10
+                                    <ul>
+                                        <li>How long do osteoporosis patients need to be treated?</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong> Learning Objectives: </strong>
+                                    <ol>
+                                        <li>Incorporate the history of prior fractures in determining future risk</li>
+                                        <li>Assess the risk of falls as a major and independent risk for fractures</li>
+                                        <li>Consider patient preference when selecting long term treatment</li>
+                                        <li>
+                                            Explain the importance of adherence including avoidance of drug holidays in high risk individuals<br>
+                                            <br>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Please ensure that you engage the audience in discussion and utilize the Q&amp;A slides included throughout the presentation
+                            <ul></ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div>
+
+
+                </div>
+
+
+                <div style="padding-bottom:20px">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>

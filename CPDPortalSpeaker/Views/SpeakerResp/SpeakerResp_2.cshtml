@@ -1,0 +1,112 @@
+﻿@using CPDPortalSpeaker.Models
+@using CPDPortalSpeaker.Util
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle"></h1>
+            <!--div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>Back</span></!--div-->
+            <!-- <div class="lead1" style="color: #534d4d">CFPC &nbsp;&nbsp; FMOQ</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+
+        @{
+
+            Html.RenderPartial("_LeftNav", UserHelper.GetLoggedInUser());
+        }
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+
+            <div class="1">
+                <h1>Speaker Responsibilies</h1>
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+
+
+                <div class="margin-top-24">
+                    <p>Thank you for accepting our invitation as subject matter expert for a certified educational activity on Osteoporosis. &nbsp;You will assist us in delivering the content of this activity at regional sessions across Canada.&nbsp; Your expertise in Bone Health and the management of patients at risk for fractures is essential to the overall success of the program.</p>
+                    <p>The Scientific Planning Committee oversaw the design of this program to be scientifically rigorous, educationally sound, fair balanced, and free of commercial bias. As per the CFPC guidelines for certified activities, you are required to use the presentation materials that will be provided to you and are not permitted to make any changes.</p>
+                    <p>
+                        This certified educational activity was developed by the Canadian Centre for Professional Development in Health &amp; Medicine (CCPDHM), a division of the Canadian Heart Research Centre, a not-for-profit Physician Organization and is intended for primary care physicians. This program has received an educational grant and in-kind support from Amgen Canada<br>
+                    </p>
+                    <h3>
+                        Educational Content
+                    </h3>
+                    <ul>
+                        <li>This program contains a core didactic presentation as well as five case-based modules                            </li>
+                    </ul>
+                    <h3>
+                        Overall Learning Objectives: Upon completion of this activity, participants will be able to:
+                    </h3>
+                    <ol>
+                        <li>Perform risk assessments and screening for all patients at high risk for stress fracture, including all patients who are treatment naïve or currently on therapy </li>
+                        <li>Translate scientific and clinical evidence into the management and treatment of all high-risk patients in primary care practice </li>
+                        <li>Integrate expert recommendations and practical strategies for future assessment, treatment and management of all patients at high risk for stress fracture                            </li>
+                    </ol>
+                    <h3>
+                        Educational Format
+                    </h3>
+                    <p><strong>This program is designed as a Mainpro+ one-credit-per hour and includes the following interactive components </strong></p>
+                    <ul>
+                        <li>Case-Based Learning </li>
+                        <li>Audience Discussion                            </li>
+                    </ul>
+                    <h3>
+                        Conflict of Interest
+                    </h3>
+                    <p>The College of Family Physicians of Canada and the CCPDHM requires instructors, presenters, planners, managers and other individuals who are in a position to control and/or deliver the content of this activity to disclose any real or apparent conflict of interest they may have as related to the content of this activity. All identified conflicts of interest are thoroughly vetted by the CCPDHM for fair balance, scientific objectivity of studies mentioned in the materials or used as the basis for content, and appropriateness of patient care recommendations.</p>
+                    <ul>
+                        <li>You must complete and submit      the Conflict of Interest Form to the CCPDHM</li>
+                        <li>You must disclose any real or      apparent conflicts of interest to the program participants prior to the      start of the program.                            </li>
+                    </ul>
+                    <h3>
+                        Honorarium
+                    </h3>
+                    <p>To make your participation possible, the CCPDHM will provide you with: </p>
+                    <ul>
+                        <li>An honorarium for presenting      the program materials.&nbsp; The      honoraria amount for your role and a presenter and/or a moderator was provided      in the initial invitation.&nbsp; If you      have any questions, please do not hesitate to contact us at <a href="mailto:info@ccpdhm.com">info@ccpdhm.com</a></li>
+                        <li>Reimbursement of transportation      costs (/taxi fares/parking).&nbsp; You      will be asked to provide a copy of the receipts. </li>
+                    </ul>
+                    <p>The CCPDHM is committed to providing quality education. We appreciate the opportunity to work with you. </p>
+                    <p>Please do not hesitate to get in touch with us should you have any questions. </p>
+                    <p>
+                        <br>
+                        With best regards,
+                    </p>
+                    <p>
+                        Lianne Goldin<br>
+                        Executive Director <br>
+                        Continuing Professional Development
+                    </p>
+                    <p><strong></strong></p>
+                    <strong>
+                        <h3>
+                            Important Links:
+                        </h3>
+                    </strong>
+                    <ul>
+                        <li><a href="downloads/QuickTips_COI_Final_ENGLISH.pdf" target="new" style="color: #333333">Quick Tips: Identification and Management of Conflicts of Interest and Transparency to Learners</a></li>
+                        <li><a href="downloads/cma-policy-guidelines-for-physicians-in-interactions-with-industry-pd08-01-e.pdf" target="new" style="color: #333333">CMA Guidelines for Physicians in Interactions with Industry</a></li>
+                        <li><a href="downloads/Code-Formatted_Regular_EN-2.pdf" target="new" style="color: #333333">Innovative Medicines Canada Code of Ethical Practices</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+
