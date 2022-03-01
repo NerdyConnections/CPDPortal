@@ -377,6 +377,7 @@
     <Content Include="Images\8\habert.png" />
     <Content Include="Images\8\leiter.png" />
     <Content Include="Images\8\lin.png" />
+    <Content Include="Images\AlanBell.jpg" />
     <Content Include="Images\alpha.gif" />
     <Content Include="Images\Amgen.svg" />
     <Content Include="Images\belanger.png" />
@@ -400,6 +401,7 @@
     <Content Include="Images\CHRClogos_mer.svg" />
     <Content Include="Images\CHRClogos_mer_grey.svg" />
     <Content Include="Images\CPDLOGO\amgen.png" />
+    <Content Include="Images\DanielNgui.jpg" />
     <Content Include="Images\Delete.jpg" />
     <Content Include="Images\dufour.png" />
     <Content Include="Images\EvalForm2\Case1.jpg" />
@@ -490,6 +492,7 @@
     <Content Include="Images\h2.jpg" />
     <Content Include="Images\habert.png" />
     <Content Include="Images\health-521386_1920.png" />
+    <Content Include="Images\JacquesBrown.jpg" />
     <Content Include="Images\kendler.png" />
     <Content Include="Images\khan.png" />
     <Content Include="Images\leiter.png" />
@@ -548,6 +551,7 @@
     <Content Include="Images\slideimgs\5-b.png" />
     <Content Include="Images\square.svg" />
     <Content Include="Images\ViewFile.jpg" />
+    <Content Include="Images\VivienBrown.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -692,6 +696,12 @@
     <Content Include="PDF\8\InvitationWebinarPreEthicsFrench.pdf" />
     <Content Include="PDF\8\ParticipantHandOutFrench.pdf" />
     <Content Include="PDF\8\SignInSheetFrench.pdf" />
+    <Content Include="PDF\9\COA.pdf" />
+    <Content Include="PDF\9\InvitationNationalLive.pdf" />
+    <Content Include="PDF\9\InvitationNationalWeb.pdf" />
+    <Content Include="PDF\9\InvitationRegionalLive.pdf" />
+    <Content Include="PDF\9\InvitationRegionalWeb.pdf" />
+    <Content Include="PDF\9\ParticipantHandOut.pdf" />
     <None Include="Properties\PublishProfiles\AliUAT.pubxml" />
     <None Include="Properties\PublishProfiles\CPDPortalProduction.pubxml" />
     <None Include="Properties\PublishProfiles\CPDPortalUAT.pubxml" />
@@ -831,7 +841,7 @@
     <Content Include="Template\7\COA.pdf" />
     <Content Include="Template\7\SignInSheet.pdf" />
     <Content Include="Views\Program\Description_8.cshtml" />
-    <Content Include="Views\Home\ScientificCommittee_5 - Copy.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_7.cshtml" />
     <Content Include="Views\Home\ProgramMaterials_8.cshtml" />
     <Content Include="Template\8\COA.pdf" />
     <Content Include="Template\8\SignInSheet.pdf" />
@@ -840,6 +850,8 @@
     <Content Include="Template\8\RegionalInvitationLive.pdf" />
     <Content Include="Template\8\RegionalInvitationWeb.pdf" />
     <Content Include="Views\Home\ProgramMaterials_9.cshtml" />
+    <Content Include="Views\Program\Description_9.cshtml" />
+    <Content Include="Views\Home\ScientificCommittee_9.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\EvalForm5\" />

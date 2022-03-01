@@ -1,0 +1,120 @@
+﻿@using CPDPortalMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pnl-portal">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="lblTitle" style="color: rgb(255, 75, 75);">@ViewBag.TherapeuticArea</h1>
+            <div class="btn-back"><span class="glyphicon glyphicon-chevron-left"></span><span>@Html.ActionLink("Back", "Index", "Home", null, new { @class = "NoUnderlineLink" })</span></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @{
+
+            Html.RenderPartial("_LeftNav", (ProgramRequestStatusCount)@ViewBag.ProgramRequestStatusCounts);
+        }
+
+        <div class="col-md-9" style="margin-bottom: 2px; color: #2b2b2b">
+            <div class="1">
+                <h1>Scientific Planning Committee</h1>
+
+                <!-- <div class="link-blue"><a class="link-blue" href="javascript:void(0)">Download Process Document</a></div>-->
+
+                <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="~/Images/JacquesBrown.jpg" width="190" height="190"><br>
+                        <h5>
+                            <strong>
+                                Jacques Brown, MD, FRCPC -   Chair <br>
+                              
+                            </strong>
+                        </h5>
+                        <h6>
+                            Clinical Professor<br>
+                            Department of Medicine<br>
+                            Laval University<br>
+                          
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="/Images/AlanBell.jpg" width="190" height="190"><br>
+                        <h5>
+                            <strong>Alan Bell, MD, FCFP	</strong>
+                        </h5>
+                        <h6>
+                            Assistant Professor<br>
+                            Department of Family and Community Medicine<br/>
+                            University of Toronto
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="~/Images/VivienBrown.jpg" width="190" height="190"><br>
+                        <h5><strong>Vivian Brown, MDCM, CCFP, FCFP, NCMP</strong></h5>
+                        <h6>
+                            Assistant Professor
+                            <br>
+                            Department of Family and Community Medicine <br>
+                            University of Toronto
+                        </h6>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-left:0px; padding-top:15px; padding-bottom:20px">
+
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="~/Images/DanielNgui.jpg" width="190" height="190"><br>
+                    <strong>
+                        <h5><strong>Daniel Ngui, MD, CCFP, FCFP</strong></h5>
+                        <h6>
+                            Clinical Professor
+                            <br>
+                            Department of Family Medicine
+                            <br>
+                            University of British Columbia<br>
+                            
+                        </h6>
+                    </strong>
+                </div>
+
+                    <div class="col-sm-4">
+                      &nbsp;
+                    </div>
+
+                    <div class="col-sm-4">
+                        &nbsp;
+                    </div>
+
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+</div>
+<script src="/Scripts/jquery-3.1.0.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/jquery.easing.min.js"></script>
+<script src="/Scripts/circleCharts.js"></script>
+
+
+<script>
+
+        $(document).ready(function () {
+            /**/
+
+        });
+</script>
